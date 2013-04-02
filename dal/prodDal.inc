@@ -1,0 +1,355 @@
+<?php
+
+include_once (PATH_LIB . "/myPDO.inc");
+include_once (PATH_DAL . "/db.inc");
+
+class prodDal {
+
+    static function addDict($type, $dict_name) {
+        $sql = "insert into hua_dict (dict_type,dict_name,cdate,udate)
+            values ('$type','$dict_name',now(),now())";
+
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->simplePrepare($sql);
+    }
+
+    static function getDict($type) {
+        $sql = "select * from hua_dict where dict_type='$type'";
+        if($type=="all")
+        {
+            $sql="select * from hua_dict";
+        }
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+
+    static function delDict($dict_id) {
+        $sql = "delete from hua_dict where dict_id=$dict_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->simplePrepare($sql);
+    }
+
+    static function addProd($prod_show_seq, $prod_index_show,$prod_name, $prod_title, $prod_origin_price, 
+            $prod_sale_price, $prod_discount, $prod_type, $prod_medium, $prod_word, 
+            $prod_date_range, $prod_area_range, $prod_freight, $prod_desc, $prod_onshelf_type, 
+            $prod_onshelf_time,$standards,$prod_cat,$prod_stock_up) 
+    {
+        $sql = "insert into hua_prod(prod_show_seq,prod_index_show,prod_name,prod_title,prod_origin_price,prod_sale_price,prod_discount,prod_type,prod_medium,
+            prod_word,prod_date_range,prod_area_range,prod_freight,prod_desc,prod_onshelf_type,
+            prod_onshelf_time,standards,prod_cat,prod_stock_up,cdate,udate)
+            values
+            ($prod_show_seq,$prod_index_show,'$prod_name','$prod_title',$prod_origin_price,$prod_sale_price,$prod_discount,$prod_type,'$prod_medium',
+            '$prod_word','$prod_date_range','$prod_area_range','$prod_freight','$prod_desc',$prod_onshelf_type,
+            '$prod_onshelf_time','$standards',$prod_cat,$prod_stock_up,now(),now())";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $row = DB::huaDB()->simplePrepare($sql);
+        if (!$row->isEmpty()) {
+            return DB::huaDB()->lastInsertId();
+        }
+    }
+    
+    static function updateProd($prod_id,$prod_show_seq, $prod_index_show,$prod_name, $prod_title, $prod_origin_price, 
+            $prod_sale_price, $prod_discount, $prod_type, $prod_medium, $prod_word, 
+            $prod_date_range, $prod_area_range, $prod_freight, $prod_desc, $prod_onshelf_type, 
+            $prod_onshelf_time,$standards,$prod_stock_up) 
+    {
+        $sql = "update hua_prod set 
+            prod_show_seq=$prod_show_seq,prod_index_show = $prod_index_show,prod_name='$prod_name',prod_title='$prod_title',   
+            prod_origin_price=$prod_origin_price,prod_sale_price=$prod_sale_price,
+            prod_discount=$prod_discount,prod_type=$prod_type,prod_medium='$prod_medium',
+            prod_word='$prod_word',prod_date_range=$prod_date_range,prod_area_range='$prod_area_range',
+            prod_freight='$prod_freight',prod_desc='$prod_desc',prod_onshelf_type=$prod_onshelf_type,
+            prod_onshelf_time='$prod_onshelf_time',standards='$standards',prod_stock_up=$prod_stock_up,udate=now()
+            where prod_id=$prod_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $row = DB::huaDB()->simplePrepare($sql);
+        if (!$row->isEmpty()) {
+            return TRUE;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    static function addProdTag($prod_tag,$prod_id)
+    {
+        $prod_tag_arr=explode(",",$prod_tag);
+        foreach ($prod_tag_arr as $k => $v) {
+            if($v!="")
+            {
+                $sql = "insert into hua_prod_tag (tag_id,prod_id,cdate,udate)
+                    values ($v,$prod_id,now(),now())";
+                if (!is_object(DB::huaDB()))
+                    return array();
+                DB::huaDB()->simplePrepare($sql);
+            }
+        }
+    }
+    static function updateProdTag($prod_tag,$prod_id)
+    {
+        $sql="delete from hua_prod_tag where prod_id=$prod_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        DB::huaDB()->simplePrepare($sql);
+        $prod_tag_arr=explode(",",$prod_tag);
+        foreach ($prod_tag_arr as $k => $v) {
+            if($v!="")
+            {
+                $sql = "insert into hua_prod_tag (tag_id,prod_id,cdate,udate)
+                    values ($v,$prod_id,now(),now())";
+                if (!is_object(DB::huaDB()))
+                    return array();
+                DB::huaDB()->simplePrepare($sql);
+            }
+        }
+    }
+    static function addProdPic($pic_arr, $prod_id) {
+        foreach ($pic_arr as $k => $v) {
+            if ($v) {
+                $sql = "insert into hua_prod_pic (pic_path,pic_seq,prod_id,cdate,udate)
+                    values ('$v',$k,$prod_id,now(),now())";
+                if (!is_object(DB::huaDB()))
+                    return array();
+                DB::huaDB()->simplePrepare($sql);
+            }
+        }
+    }
+    
+    static function updateProdPic($pic_arr, $prod_id) {
+        $sql="delete from hua_prod_pic where prod_id=$prod_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        DB::huaDB()->simplePrepare($sql);
+        foreach ($pic_arr as $k => $v) {
+            if ($v) {
+                $sql = "insert into hua_prod_pic (pic_path,pic_seq,prod_id,cdate,udate)
+                    values ('$v',$k,$prod_id,now(),now())";
+                DB::huaDB()->simplePrepare($sql);
+            }
+        }
+    }
+    
+    static function getProdByname($prod_name) {
+        $sql = "select * from hua_prod where prod_name='$prod_name' and prod_cat=1";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $result = DB::huaDB()->allPrepare($sql);
+        if ($result->data) {
+            return $result->data[0];
+        } else {
+            return array();
+        }
+    }
+
+    static function getProdByid($prod_id) {
+        $sql = "select a.*,b.dict_name from hua_prod a
+            left join hua_dict b on a.prod_type=b.dict_id 
+            where prod_id=$prod_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $result = DB::huaDB()->allPrepare($sql);
+        if ($result->data) {
+            return $result->data[0];
+        } else {
+            return array();
+        }
+    }
+
+    static function getOnlyprods($n)
+    {
+        $sql="select a.*,b.pic_path 
+        from hua_prod a 
+        left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+        where a.prod_cat=2 and a.prod_onshelf_type=1
+        order by a.prod_show_seq desc limit $n";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+
+   static function getallOnlyprods()
+    {
+        $sql="select a.*,b.pic_path 
+        from hua_prod a 
+        left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+        where a.prod_cat=2 
+        order by a.prod_id desc";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+
+    static function getProdByids($prod_id_list) {
+        $sql = "select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in ($prod_id_list) and prod_cat=1";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $result = DB::huaDB()->allPrepare($sql);
+        if ($result->data) {
+            return $result->data;
+        } else {
+            return array();
+        }
+    }
+    
+    static function getProdPicByprodid($prod_id) {
+        $sql = "select * from hua_prod_pic where prod_id='$prod_id' order by pic_seq asc";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+
+    static function getProdTagByprodid($prod_id)
+    {
+        $sql="select a.prod_id,a.tag_id,b.dict_type,b.dict_name 
+        from hua_prod_tag a
+            left join hua_dict b on a.tag_id=b.dict_id
+            where a.prod_id='$prod_id'";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+    
+    static function getTagsByprodid($prod_id)
+    {
+        $sql="select tag_id
+            from hua_prod_tag
+            where prod_id='$prod_id'";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+    static function getProdTopN($n) {
+        $sql = "select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            order by a.prod_show_seq desc limit $n";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+    static function getProdByType($prod_type) {
+        $sql = "select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_type=$prod_type
+            order by a.prod_show_seq desc";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+
+
+    static function getProds($where,$page_num=1,$page_size=10) {
+        $start = $page_size*($page_num-1);
+        $sql = "select * from hua_prod $where
+            order by prod_id desc limit $start,$page_size";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+
+    static function prodLike($user_id, $prod_id) {
+        $sql = "update hua_prod set prod_like=prod_like+1,udate=now() where prod_id=$prod_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        DB::huaDB()->simplePrepare($sql);
+
+        if ($user_id != "") {
+            $sql = "insert into hua_like (user_id,prod_id,cdate,udate)
+                values ($user_id,$prod_id,now(),now())";
+            DB::huaDB()->simplePrepare($sql);
+        }
+    }
+
+    static function getLike($user_id, $prod_id) {
+        $sql = "select * from hua_like where user_id=$user_id and prod_id=$prod_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+
+    static function getLikeByuserid($user_id)
+    {
+        $sql="select a.prod_id,b.prod_name,b.prod_like,c.pic_path
+            from hua_like a 
+            left join hua_prod b on a.prod_id=b.prod_id
+            left join hua_prod_pic c on c.prod_id=b.prod_id and c.pic_seq=0
+            where a.user_id=$user_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);
+    }
+    
+    static function prodOnshelf($prod_id, $prod_onshelf_status) {
+        $sql = "update hua_prod set prod_onshelf_type=$prod_onshelf_status where prod_id=$prod_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->simplePrepare($sql);
+    }
+
+    static function prodAlsoTag($prod_id)
+    {
+        $sql="
+            select distinct a.prod_id,b.pic_path,c.prod_name 
+            from hua_prod_tag a
+            join hua_prod_pic b on a.prod_id=b.prod_id and pic_seq=0
+            join hua_prod c on a.prod_id=c.prod_id
+            where a.prod_id<>$prod_id and a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id=$prod_id
+            ) order by c.prod_sale_price desc limit 4";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql);   
+    }
+
+    static function getProdPic($prod_id,$pic_seq)
+    {
+        $sql="select prod_id,pic_path from hua_prod_pic where prod_id=$prod_id and pic_seq=$pic_seq";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql); 
+    }
+
+    static function listSearch($dict_list)
+    {
+        $sql="select * from hua_prod a
+        join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+        where 
+        a.prod_onshelf_type=1 and a.prod_cat=1
+        and a.prod_id in
+        (
+            select prod_id 
+            from hua_prod_tag
+            where tag_id in ($dict_list)
+        )";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql); 
+    }
+
+    static function getProdTagName($prod_tag)
+    {
+        $sql="select * from hua_dict where dict_id=$prod_tag";
+        if (!is_object(DB::huaDB()))
+            return array();
+        return DB::huaDB()->allPrepare($sql); 
+    }
+}
+
+?>

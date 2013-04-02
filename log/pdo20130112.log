@@ -1,0 +1,564 @@
+
+20130112 12:48:32-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'target=' at line 3
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'target=' at line 3
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select a.*,b.dict_name from hua_prod a
+            left join hua_dict b on a.prod_type=b.dict_id 
+            where prod_id=36 target=
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 155
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select a.*,b.dict_name from hua_prod a
+            left join hua_dict b on a.prod_type=b.dict_id 
+            where prod_id=36 target=
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 115
+                    [function] => getProdByid
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 36 target=
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 7
+                    [function] => getProdByid
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 36 target=
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'target=' at line 3
+        )
+
+)
+<--
+20130112 12:48:32-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='36 target='
+            )
+            and b.pic_seq=2
+        
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 301
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='36 target='
+            )
+            and b.pic_seq=2
+        
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 199
+                    [function] => prodAlsoTag
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 36 target=
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 10
+                    [function] => prodAlsoTag
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 36 target=
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in field list is ambiguous
+        )
+
+)
+<--
+20130112 12:48:48-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='36'
+            )
+            and b.pic_seq=2
+        
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 301
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='36'
+            )
+            and b.pic_seq=2
+        
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 199
+                    [function] => prodAlsoTag
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 36
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 10
+                    [function] => prodAlsoTag
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 36
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in field list is ambiguous
+        )
+
+)
+<--
+20130112 12:50:25-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='51'
+            )
+            and b.pic_seq=2
+        
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 301
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='51'
+            )
+            and b.pic_seq=2
+        
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 199
+                    [function] => prodAlsoTag
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 51
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 10
+                    [function] => prodAlsoTag
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 51
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in field list is ambiguous
+        )
+
+)
+<--
+20130112 13:02:08-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='52'
+            )
+            and b.pic_seq=2
+        
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 301
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='52'
+            )
+            and b.pic_seq=2
+        
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 199
+                    [function] => prodAlsoTag
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 52
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 10
+                    [function] => prodAlsoTag
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 52
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in field list is ambiguous
+        )
+
+)
+<--

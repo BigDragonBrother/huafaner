@@ -1,0 +1,13 @@
+/* 
+    Document   : admin.css
+    Created on : 2012-7-14, 14:14:57
+    Author     : liuxiao
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.button{height:30px;width:50px}
+.adminmenu{width:150px;boder:0;cellspacing:0;cellpadding:0}
+
+.fieldset{margin-top: 10px;margin-bottom: 10px}
+.fieldset div{position:relative;left: 5px}
+

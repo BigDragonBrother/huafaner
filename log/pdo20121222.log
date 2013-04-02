@@ -1,0 +1,1055 @@
+
+20121222 18:08:53-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in () and prod_cat=1
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 193
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in () and prod_cat=1
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 120
+                    [function] => getProdByids
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/sub.php
+                    [line] => 12
+                    [function] => getProdByids
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+        )
+
+)
+<--
+20121222 20:28:15-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='56'
+            )
+            and b.pic_seq=2
+        
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 292
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='56'
+            )
+            and b.pic_seq=2
+        
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 189
+                    [function] => prodAlsoTag
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 56
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 10
+                    [function] => prodAlsoTag
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 56
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in field list is ambiguous
+        )
+
+)
+<--
+20121222 20:28:22-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='51'
+            )
+            and b.pic_seq=2
+        
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 292
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='51'
+            )
+            and b.pic_seq=2
+        
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 189
+                    [function] => prodAlsoTag
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 51
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 10
+                    [function] => prodAlsoTag
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 51
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in field list is ambiguous
+        )
+
+)
+<--
+20121222 20:28:28-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='52'
+            )
+            and b.pic_seq=2
+        
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 292
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='52'
+            )
+            and b.pic_seq=2
+        
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 189
+                    [function] => prodAlsoTag
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 52
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 10
+                    [function] => prodAlsoTag
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 52
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in field list is ambiguous
+        )
+
+)
+<--
+20121222 21:12:32-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in () and prod_cat=1
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 193
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in () and prod_cat=1
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 120
+                    [function] => getProdByids
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/sub.php
+                    [line] => 12
+                    [function] => getProdByids
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+        )
+
+)
+<--
+20121222 21:15:37-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in () and prod_cat=1
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 193
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in () and prod_cat=1
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 120
+                    [function] => getProdByids
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/sub.php
+                    [line] => 12
+                    [function] => getProdByids
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+        )
+
+)
+<--
+20121222 21:15:44-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select * from hua_sub where sub_id=
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/subDal.inc
+                    [line] => 68
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select * from hua_sub where sub_id=
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/subBll.inc
+                    [line] => 33
+                    [function] => getSubByid
+                    [class] => subDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/sublist.php
+                    [line] => 7
+                    [function] => getSubByid
+                    [class] => subBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+        )
+
+)
+<--
+20121222 21:16:20-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select * from hua_sub where sub_id=
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/subDal.inc
+                    [line] => 68
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select * from hua_sub where sub_id=
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/subBll.inc
+                    [line] => 33
+                    [function] => getSubByid
+                    [class] => subDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/sublist.php
+                    [line] => 7
+                    [function] => getSubByid
+                    [class] => subBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+        )
+
+)
+<--
+20121222 21:17:00-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select * from hua_sub where sub_id=
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/subDal.inc
+                    [line] => 68
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select * from hua_sub where sub_id=
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/subBll.inc
+                    [line] => 33
+                    [function] => getSubByid
+                    [class] => subDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/sublist.php
+                    [line] => 7
+                    [function] => getSubByid
+                    [class] => subBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+        )
+
+)
+<--
+20121222 22:07:22-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in () and prod_cat=1
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 193
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select a.*,b.* from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where a.prod_id in () and prod_cat=1
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 120
+                    [function] => getProdByids
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/sub.php
+                    [line] => 12
+                    [function] => getProdByids
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and prod_cat=1' at line 3
+        )
+
+)
+<--

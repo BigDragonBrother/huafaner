@@ -1,0 +1,577 @@
+
+20130401 22:00:21-->allPrepare Error!: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'a.prod_id' in 'order clause'
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'a.prod_id' in 'order clause'
+    [string:Exception:private] => 
+    [code:protected] => 42S22
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select * from hua_prod 
+            order by a.prod_id desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 262
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select * from hua_prod 
+            order by a.prod_id desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 173
+                    [function] => getProds
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                    [line] => 3
+                    [function] => getProds
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [5] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin.php
+                    [line] => 62
+                    [args] => Array
+                        (
+                            [0] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                        )
+
+                    [function] => include_once
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42S22
+            [1] => 1054
+            [2] => Unknown column 'a.prod_id' in 'order clause'
+        )
+
+)
+<--
+20130401 22:00:48-->allPrepare Error!: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'a.prod_id' in 'order clause'
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'a.prod_id' in 'order clause'
+    [string:Exception:private] => 
+    [code:protected] => 42S22
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select * from hua_prod
+            order by a.prod_id desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 262
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select * from hua_prod
+            order by a.prod_id desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 173
+                    [function] => getProds
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => prod_cat>0
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                    [line] => 3
+                    [function] => getProds
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => prod_cat>0
+                        )
+
+                )
+
+            [5] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin.php
+                    [line] => 62
+                    [args] => Array
+                        (
+                            [0] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                        )
+
+                    [function] => include_once
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42S22
+            [1] => 1054
+            [2] => Unknown column 'a.prod_id' in 'order clause'
+        )
+
+)
+<--
+20130401 22:12:16-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10,10' at line 2
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10,10' at line 2
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select * from hua_prod
+            order by prod_id desc limit -10,10
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 263
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select * from hua_prod
+            order by prod_id desc limit -10,10
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 173
+                    [function] => getProds
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => prod_cat>0
+                            [1] => 
+                            [2] => 10
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                    [line] => 4
+                    [function] => getProds
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => prod_cat>0
+                            [1] => 
+                            [2] => 10
+                        )
+
+                )
+
+            [5] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin.php
+                    [line] => 62
+                    [args] => Array
+                        (
+                            [0] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                        )
+
+                    [function] => include_once
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10,10' at line 2
+        )
+
+)
+<--
+20130401 22:12:22-->allPrepare Error!: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10,10' at line 2
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10,10' at line 2
+    [string:Exception:private] => 
+    [code:protected] => 42000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select * from hua_prod
+            order by prod_id desc limit -10,10
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 263
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select * from hua_prod
+            order by prod_id desc limit -10,10
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 173
+                    [function] => getProds
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => prod_cat>0
+                            [1] => 
+                            [2] => 10
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                    [line] => 4
+                    [function] => getProds
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => prod_cat>0
+                            [1] => 
+                            [2] => 10
+                        )
+
+                )
+
+            [5] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin.php
+                    [line] => 62
+                    [args] => Array
+                        (
+                            [0] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                        )
+
+                    [function] => include_once
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42000
+            [1] => 1064
+            [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10,10' at line 2
+        )
+
+)
+<--
+20130401 23:17:48-->allPrepare Error!: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fff' in 'where clause'
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fff' in 'where clause'
+    [string:Exception:private] => 
+    [code:protected] => 42S22
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select * from hua_prod where  prod_name='fsfds' and prod_type=1 and prod_onshelf_time >='dfs' and prod_onshelf_time <='dfdsf' and prod_sale_price >=fff and prod_sale_price <=ddd
+            order by prod_id desc limit 0,10
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 263
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select * from hua_prod where  prod_name='fsfds' and prod_type=1 and prod_onshelf_time >='dfs' and prod_onshelf_time <='dfdsf' and prod_sale_price >=fff and prod_sale_price <=ddd
+            order by prod_id desc limit 0,10
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 173
+                    [function] => getProds
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => where  prod_name='fsfds' and prod_type=1 and prod_onshelf_time >='dfs' and prod_onshelf_time <='dfdsf' and prod_sale_price >=fff and prod_sale_price <=ddd
+                            [1] => 1
+                            [2] => 10
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                    [line] => 19
+                    [function] => getProds
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => where  prod_name='fsfds' and prod_type=1 and prod_onshelf_time >='dfs' and prod_onshelf_time <='dfdsf' and prod_sale_price >=fff and prod_sale_price <=ddd
+                            [1] => 1
+                            [2] => 10
+                        )
+
+                )
+
+            [5] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/admin.php
+                    [line] => 62
+                    [args] => Array
+                        (
+                            [0] => /Users/liuxiao/Sites/huafaner/admin/prodlist.inc
+                        )
+
+                    [function] => include_once
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42S22
+            [1] => 1054
+            [2] => Unknown column 'fff' in 'where clause'
+        )
+
+)
+<--

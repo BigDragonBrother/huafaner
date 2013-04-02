@@ -1,0 +1,193 @@
+@charset "gbk";
+/* CSS Document */
+
+body { background:url(../image/flower_bj.gif);}
+.header,.banner,.main,.publicize,.order,.footer_con { width:966px; margin:auto;}
+/*** 网站图片 ***/
+.prod_con dl dd.browse,.prod_con dl dd.collect,.sina,.qq,.renren,.dou,.tui,.share,.weibo a.sina,.weibo a.qq,.weibo a.renren,.weibo a.dou,.weibo a.tui,.help_col ul li { background:url(../image/icon.gif) no-repeat;}
+.line {background:url(../image/dashed.gif) repeat-x bottom left;}
+
+h2 { font-size:18px; font-weight:normal;}
+.logo,.nav,.nav ul li,.tel,.prod,.prod_con dl,.prod_con h4,.prod_con dl dd.browse,.prod_con dl dd.collect,.prods,.send a,.info_left,.info_right,.pin_share li label,.share,.weibo,.weibo a.sina,.weibo a.qq,.weibo a.renren,.weibo a.dou,.weibo a.tui,.parameter li label,.parameter li span,.order_info dl dd label,.order_info dl dd input,.order_info dl dd select,.error,.order_info dl.list h3 p,.order_info dl.list ul li p,.submit ol.submit_l,.submit_l li label,.submit_r li label,.submit_r li p,.order_info dl ul.bank li,.order_info dl ul.webpay li,.order_info dl.info_dome dd p,.help_col,.help_col ul li { float:left;}
+.login,.submit ol.submit_r,.copyright { float:right;}
+.margin_top { margin-top:30px;}
+
+/***  网站头部  ***/
+.top { height:73px; background:#fff; border-bottom:1px #ddd solid;}
+.logo { padding-top:10px; width:120px;}
+
+/***  网站导航  ***/
+.nav { width:480px; margin:35px 0 0 60px;}
+.nav ul li { margin:0 14px;}
+.nav ul li a{ font-family:"微软雅黑"; font-size:16px; color:#585757;}
+.nav ul li a:hover {color:#36AB65;}
+.nav ul li a.select { color:#36AB65;}
+.tel { margin:38px 0 0 50px;}
+.login { margin-top:35px}
+.login span { padding:0 5px;}
+/***  海报  ***/
+.banner { margin-bottom:19px;}
+.slideBox{ position:relative; width:670px; height:300px; overflow:hidden;}
+.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
+.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
+.slideBox ul.items li a{ float:left; line-height:normal !important; padding:0px !important; border:none;}
+.slideBox ul.items li a img{ margin:0px !important; padding:0px !important; display:block; border:none;}
+.slideBox div.tips{ position:absolute; bottom:0px; width:100%; height:50px; background-color:#000; overflow:hidden;}
+.slideBox div.tips div.title{ position:absolute; left:0px; top:0px; height:100%;}
+.slideBox div.tips div.title a{ color:#FFF; font-size:18px; line-height:50px; margin-left:10px; text-decoration:none;}
+.slideBox div.tips div.title a:hover{ text-decoration:underline !important;}
+.slideBox div.tips div.nums{ position:absolute; right:0px; top:0px; height:100%;}
+.slideBox div.tips div.nums a{ display:inline-block; >float:left; width:20px; height:20px; background-color:#FFF; text-indent:-99999px; margin:15px 10px 0px 0px;}
+.slideBox div.tips div.nums a.active{ background-color:#093;}
+
+/***  上架产品  ***/
+.pout_box { margin-top:19px;}
+.prod { position: relative; width:307px; margin:0 22px 19px 0px;}
+.prod_info { position: absolute; bottom:0;*bottom:-1px; left: 0; overflow: hidden; width: 100%;}
+.send { display:none; height:27px; line-height:27px; padding:10px 0 0 5px;background:rgba(255, 255, 255, 0.7)!important;filter:Alpha(opacity=70); *background:#fff; }
+.send a { margin:0 5px; line-height:0px; font-size:0px; overflow:hidden; width:21px; height:21px; display:block; }
+.send a.sina { background-position:0px -104px;}
+.send a.qq{ background-position:0px -132px;}
+.send a.renren{ background-position:0px -160px;}
+.send a.dou { background-position:0px -187px;}
+.send a.tui{ background-position:0px -213px;}
+.prod_info .prod_con { height:65px; line-height:65px; background:rgba(255, 255, 255, 0.7)!important;filter:Alpha(opacity=70); *background:#fff;}
+.prod_info .prod_con dl { width:222px;}
+.prod_info .prod_con dl dt { padding-left:10px;line-height:34px;}
+.prod_info .prod_con dl dd { margin:0 8px 0 10px; display:inline;}
+.prod_info .prod_con dl dd.browse { background-position:0 5px; padding-left:20px; line-height:24px;}
+.prod_info .prod_con dl dd.collect { background-position:0 -47px; padding-left:30px; line-height:24px;}
+.prod_info .prod_con h4 { width:85px; line-height:65px; font-size:20px; text-align:center; color:#858585; background:rgba(192, 192, 192, 0.7)!important;filter:Alpha(opacity=70); *background:#c0c0c0;}
+
+.prod_infohover .prod_con { height:65px; line-height:65px; background:rgba(255, 255, 255, 1)!important;filter:Alpha(opacity=100); *background:#fff;}
+.prod_infohover .send{display:block;}
+.prod_infohover .prod_con h4 { width:85px; line-height:65px; font-size:20px; text-align:center; color:#fff; background:rgba(36, 129, 1, 1)!important;filter:Alpha(opacity=100); *background:#01882c;}
+
+.prods { width:477px; margin-right:11px;}
+.prod_right { margin-right:0px;}
+.publicize { background:#fff; overflow:hidden; height:1%; padding:5px 0; text-align:center; margin-bottom:30px;}
+.publicize img { float:left; border:none;}
+
+/*** 产品详情 ***/
+.info { margin:30px auto; padding:20px; width:926px; background:#fff; overflow:hidden;}
+.info_left { width:429px; margin-right:40px;}
+#cfoot ul,#cfoot li{ margin:0;padding:0;list-style-type:none;} 
+#cdiv{ width:429px;height:406px;line-height:406px;text-align:center;float:left;} 
+#cfoot li{ display:inline-block;width:100px;height:100px;line-height:100px;float:left;text-align:center;border:1px solid #D5DDF9;margin-right:20px;cursor:pointer;} 
+#cfoot li.cur{ border:1px solid #ffcc33; } 
+#cright{ float:right;} 
+.clearfloat{ clear: both;height: 0;font-size: 1px;line-height: 0px;} 
+
+.info_right { width:446px;}
+.number { text-align:right; font-size:12px; width:446px; padding-bottom:10px; overflow:hidden;color:#858585;}
+.slogan { padding:21px 0;}
+.info_right h3 { font-size:24px; color:#858585; margin:20px 0; font-weight:normal;}
+.info_right ul li.margin_t { margin-top:5px;}
+.info_right ul li b { color:#309d6f; font-weight:normal;}
+.info_right ul li b span { font-size:26px; font-weight:bold;}
+.pin_share,.parameter { padding:20px 0;}
+.pin_share li { width:100%; overflow:hidden; line-height:35px;}
+.pin_share li label { width:80px; text-align:right;}
+.pin_share li span { padding:0 10px;}
+a.share { background-position:0 -239px; margin-top:7px; width:21px; height:21px; display:block; cursor:pointer;}
+a.share_hover { background-position:0 -271px;}
+.weibo { margin:7px 0 0 -5px;}
+.weibo a { margin:0 5px; line-height:0px; font-size:0px; overflow:hidden; width:25px; height:25px; display:block; }
+.weibo a.sina { background-position:0px -315px;}
+.weibo a.qq{ background-position:0px -340px;}
+.weibo a.renren{ background-position:0px -365px;}
+.weibo a.dou { background-position:0px -389px;}
+.weibo a.tui{ background-position:0px -414px;}
+.parameter li { line-height:35px; width:100%; overflow:hidden;}
+.parameter li label { width:80px; text-align:right;}
+.parameter li span { width:366px;}
+
+/*** 订单信息 ***/
+.order { margin-top:20px;}
+.order h3 { font-size:18px; font-weight:normal;}
+.order_info,.success { padding:10px 0 20px 0; margin-bottom:10px; overflow:hidden;}
+.order_info h3,.order_info h3 b {font-weight:normal;font-size:14px; }
+.order_info h3 span { padding-left:5px;}
+.order_info .bank_pay span { font-size:12px; margin-left:10px; color: #aeaeae; line-height:20px;}
+.order_info span a { color:#36AB65;}
+.mar_top { margin-top:10px;}
+.order_info ul { font-size:14px; margin:15px 0 0 0px;}
+.order_info ul.radio_left { font-size:14px; margin:15px 0 0 55px;}
+.order_info ul li { padding:6px 0px;}
+.order_info dl { margin:10px 60px 0px 60px; padding:15px 0px; background:#f1f1f1; overflow:hidden; height:1%;}
+.order_info dl.showinfo { padding:15px 0px 15px 0;}
+.order_info dl dd { width:100%; overflow:hidden; margin:15px 0;}
+.order_info dl dd input,.order_info dl dd select { margin-right:10px;}
+.order_info dl dd label { width:100px; text-align:right; line-height:24px;}
+.order_info dl.list { padding: 20px 32px 17px 32px;}
+.order_info dl.list h3 { overflow:hidden; padding-bottom:15px;}
+.order_info dl.list ul li { line-height:30px; height:30px; padding:0 0 0 0px;}
+.order_info dl.list ul li p { width:49%;}
+.order_info dl.list h3 p { display:block; padding-left:100px; width:215px;}
+.order_info dl.list h3.wid p { width:15%; text-align:center; display:block;}
+.order_info dl.list h3.wid p.sty300,.order_info dl.list ul.wids li p.sty300 { width:280px; text-align:left;}
+.order_info dl.list h3.wid p.sty300 { text-align:center;}
+.order_info dl.list h3.wid p.sty300,.order_info dl.list h3.wid p { padding-left:0px;}
+.order_info dl.list ul.wids li { padding:0px; text-align:;}
+.order_info dl.list ul.wids li p { width:15%; text-align:center;}
+.pad_left { padding-left:100px; margin-top:11px;}
+.error { color:#f00; padding-left:5px; font-size:12px; line-height:24px;}
+.submit { padding:0 16px 10px 16px; margin-top:22px; height:1%; overflow:hidden;}
+.wireframe { border:1px #ababab solid; width:95%; margin-left:9px;}
+.wireframe tr td { line-height:40px;}
+.wireframe tr td.text_cen { text-align:center; width:130px; border:1px #ababab solid;}
+.wireframe tr td.text_left { text-align:left; border:1px #ababab solid; padding-left:10px;}
+.submit ol.submit_l { width:450px;}
+.submit ol.submit_r { width:320px;}
+.submit_l li label,.submit_r li label { width:150px; text-align:right;}
+.submit_r li { line-height:30px; height:30px;}
+.order_info dl .bank_pay { padding:6px 0 6px 20px;}
+
+.order_info dl.info_dome { background:none; margin:0px; padding:4px 0px;}
+.order_info dl.info_dome dd label { width:125px; text-align:right;}
+.order_info dl.info_dome dd p { width:750px; line-height:24px;}
+/*** 银行列表 ***/
+.bankpay,.bankpay_con { display:none; background:#fff;width:90%; margin:auto auto 15px auto;}
+.order_info dl .bankpay ul.bank,.order_info dl .bankpay_con ul.bank{ padding:15px 50px; overflow:hidden; height:1%;}
+.order_info dl ul.bank li,.order_info dl ul.webpay li { padding:0px; margin:9px 13px;}
+.order_info dl ul.bank h3,.order_info dl ul.webpay h3 { color:#aeaeae; font-size:12px; margin-bottom:5px;}
+.bank_card {background:url(../image/bank.gif) no-repeat; width:126px; height:36px;border:1px #ddd solid; cursor:pointer;}
+.bank_card_gs { background-position:0 0;}	/* 工商银行 */
+.bank_card_js { background-position:0 -37px;}	/* 建设银行 */
+.bank_card_ny { background-position:0 -74px;}	/* 农业银行 */
+.bank_card_yz { background-position:0 -111px;}	/* 邮政储蓄 */
+.bank_card_zg { background-position:0 -148px;}	/* 中国银行 */
+.bank_card_jt { background-position:0 -185px;}	/* 交通银行 */
+.bank_card_zs { background-position:0 -222px;}	/* 招商银行 */
+.bank_card_gd { background-position:0 -259px;}	/* 光大银行 */
+.bank_card_pf { background-position:0 -296px;}	/* 浦发银行 */
+.bank_card_hx { background-position:0 -333px;}	/* 华夏银行 */
+.bank_card_gf { background-position:0 -370px;}	/* 广发银行 */
+.bank_card_zx { background-position:0 -407px;}	/* 中信银行 */
+.bank_card_xy { background-position:0 -444px;}	/* 兴业银行 */
+.bank_card_sf { background-position:0 -481px;}	/* 深发银行 */
+.bank_card_ms { background-position:0 -518px;}	/* 民生银行 */
+.bank_card_hz { background-position:0 -555px;}	/* 杭州银行 */
+.bank_card_sh { background-position:0 -592px;}	/* 上海银行 */
+.bank_card_nb { background-position:0 -629px;}	/* 宁波银行 */
+.bank_card_pa { background-position:0 -666px;}	/* 平安银行 */
+
+.order_info dl .bankpay ul.webpay { padding:0 50px 15px 50px; margin-top:0px; overflow:hidden; height:1%;}
+.pay {background:url(../image/pay.gif) no-repeat; width:126px; height:36px;border:1px #ddd solid; cursor:pointer;}
+.pay_card_ten { background-position:0 0px;}	/* 财付通 */
+.pay_card_ali { background-position:0 -37px;}	/* 支付宝 */
+.bank_cardhover,.pay_cardhover{ border:1px #f60 solid;}
+
+.success { padding:30px 0 20px 180px;}
+.success h3 { font-size:16px; line-height:40px; font-weight:normal;}
+.success h3 b,.success p b { font-weight:normal;}
+.success p { line-height:40px;}
+.tip { height:40px; line-height:40px; color:#828282; padding-left:10px;}
+
+/***  网站底部  ***/
+.footer { widows:100%; margin-top:30px; padding:16px 0 35px 0; background:#fff; overflow:hidden; height:1%;}
+.footicon { }
+.help_col ul li { background-position:right -456px; padding:0 10px 0 7px;}
+.help_col ul li.bg_none { background:none;}
+.help_col,.copyright { padding-top:25px;}
+.copyright p { text-align:right; font-size:12px; color:#4c4c4c; font-family:Arial; line-height:20px;}

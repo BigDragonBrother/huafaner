@@ -1,0 +1,104 @@
+
+20130124 21:49:31-->allPrepare Error!: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'undefined' in 'where clause'
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[42S22]: Column not found: 1054 Unknown column 'undefined' in 'where clause'
+    [string:Exception:private] => 
+    [code:protected] => 42S22
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select a.*,b.dict_name from hua_prod a
+            left join hua_dict b on a.prod_type=b.dict_id 
+            where prod_id=undefined
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 155
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select a.*,b.dict_name from hua_prod a
+            left join hua_dict b on a.prod_type=b.dict_id 
+            where prod_id=undefined
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 117
+                    [function] => getProdByid
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => undefined
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/confirm.php
+                    [line] => 21
+                    [function] => getProdByid
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => undefined
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 42S22
+            [1] => 1054
+            [2] => Unknown column 'undefined' in 'where clause'
+        )
+
+)
+<--

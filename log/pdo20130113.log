@@ -1,0 +1,1871 @@
+
+20130113 16:19:30-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=11)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=11)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 11
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 11
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:19:48-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:22:01-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:22:14-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:22:15-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:22:27-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:22:48-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:22:50-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:22:57-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:26:36-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:27:23-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:27:23-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:27:27-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=11)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=11)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 11
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 11
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:27:31-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 16:27:42-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 254
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => select 
+            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_sale_price,a.prod_onshelf_type,b.pic_path
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            where 
+            prod_onshelf_type=1 and prod_cat=1
+            and prod_id in
+            (select prod_id from hua_prod_tag where tag_id=13)
+            order by a.prod_show_seq desc
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 158
+                    [function] => getProdByType
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/list.php
+                    [line] => 15
+                    [function] => getProdByType
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 13
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in IN/ALL/ANY subquery is ambiguous
+        )
+
+)
+<--
+20130113 17:05:23-->allPrepare Error!: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+:::PDOException Object
+(
+    [message:protected] => SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'prod_id' in field list is ambiguous
+    [string:Exception:private] => 
+    [code:protected] => 23000
+    [file:protected] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+    [line:protected] => 60
+    [trace:Exception:private] => Array
+        (
+            [0] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 60
+                    [function] => execute
+                    [class] => PDOStatement
+                    [type] => ->
+                    [args] => Array
+                        (
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/lib/myPDO.inc
+                    [line] => 104
+                    [function] => bindParams
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => PDOStatement Object
+                                (
+                                    [queryString] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='52'
+            )
+            and b.pic_seq=2
+        
+                                )
+
+                            [1] => Array
+                                (
+                                )
+
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/dal/prodDal.inc
+                    [line] => 319
+                    [function] => allPrepare
+                    [class] => myPDO
+                    [type] => ->
+                    [args] => Array
+                        (
+                            [0] => 
+            select prod_id,b.pic_path from hua_prod_tag a
+            left join hua_prod_pic b on a.prod_id=b.prod_id
+            where a.tag_id in
+            (
+                select tag_id from hua_prod_tag where prod_id='52'
+            )
+            and b.pic_seq=2
+        
+                        )
+
+                )
+
+            [3] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/bll/prodBll.inc
+                    [line] => 206
+                    [function] => prodAlsoTag
+                    [class] => prodDal
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 52
+                        )
+
+                )
+
+            [4] => Array
+                (
+                    [file] => /Users/liuxiao/Sites/huafaner/prod.php
+                    [line] => 10
+                    [function] => prodAlsoTag
+                    [class] => prodBll
+                    [type] => ::
+                    [args] => Array
+                        (
+                            [0] => 52
+                        )
+
+                )
+
+        )
+
+    [previous:Exception:private] => 
+    [errorInfo] => Array
+        (
+            [0] => 23000
+            [1] => 1052
+            [2] => Column 'prod_id' in field list is ambiguous
+        )
+
+)
+<--
