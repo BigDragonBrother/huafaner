@@ -20,6 +20,8 @@ class Conf
     public static $cookieSet = array('domain' => 'huafanerb.com', 'path' => '/', 'lifetime' => 144000, 'numlifetime' => 14400);
     public static $urlSet = array('registerurl'=>'http://huafanerb.com/index.php?t=reg','loginurl' => 'http://huafanerb.com/index.php?t=login', 'homepage' => 'http://huafanerb.com/index.php','domain'=>'http://huafanerb.com/huafaner/');
     
+
+    
     //memcache
     public static $memCacheHost = array(array('127.0.0.1', 11211, 33), array('127.0.0.1', 11211, 33));
     public static $memCacheTime = 14400; 
