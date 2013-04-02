@@ -383,7 +383,6 @@ function adminlogout()
         }
     });
 }
-
 function prodlistsearch()
 {
     $where = "prod_name="+$('#prod_name').val()+"&prod_cat="+$('#prod_cat').val()

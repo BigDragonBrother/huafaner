@@ -20,14 +20,12 @@ class Conf
     public static $cookieSet = array('domain' => 'huafanerb.com', 'path' => '/', 'lifetime' => 144000, 'numlifetime' => 14400);
     public static $urlSet = array('registerurl'=>'http://huafanerb.com/index.php?t=reg','loginurl' => 'http://huafanerb.com/index.php?t=login', 'homepage' => 'http://huafanerb.com/index.php','domain'=>'http://huafanerb.com/huafaner/');
     
-
-    
     //memcache
     public static $memCacheHost = array(array('127.0.0.1', 11211, 33), array('127.0.0.1', 11211, 33));
     public static $memCacheTime = 14400; 
     public static $permitInfoMemCacheKey = "p%s";
     //路径
-    public static $log_path = '/Users/liuxiao/Sites/huafaner/log/';
+    public static $log_path = '/var/www/huafaner/log/';
     public static $titleArr=array(0=>"后台管理",1=>"");
     public static $picArr=array('jpg','gif','jpeg');
     public static $pic_path="http://huafanerb.com/huafaner/";

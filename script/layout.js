@@ -195,6 +195,7 @@ $(document).mouseup(function(e) {
 	$("")
 	$(".List tr").hover(
 		function(){
+			
 			$(this).addClass('current')
 			$('tr.show').removeClass('current');
 			},

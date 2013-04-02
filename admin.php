@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>运营后台登录</title>
-<link href="style/global.css" rel="stylesheet" type="text/css" />
-<link href="style/index.css" rel="stylesheet" type="text/css" />
+<link href="style/css/global.css" rel="stylesheet" type="text/css" />
+<link href="style/css/index.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="script/jquery-1.7.1.min.js"></script>
 <script language="javascript" src="script/layout.js"></script>
 <script type="text/javascript" src="script/admin.js" ></script>
