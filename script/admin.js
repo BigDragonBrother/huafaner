@@ -1,11 +1,12 @@
-function dict_add()
+function dict_add(dict_type)
 {
     $.ajax({
         url:"dbport.php",
         data:{
             action:'dict_add',
-            dict_type:$("#dict_type").find('option:selected').attr('value'),
-            dict_name:$('#dict_name').val()
+            dict_type:dict_type,
+            dict_name:$('#dict_name').val(),
+            dict_desc:$('#dict_desc').val(),
         },
         type: "POST",
         dataType: "json",
@@ -15,13 +16,47 @@ function dict_add()
         }
     });
 }
-function Prod_type_del(dict_id)
+function Prod_type_add()
 {
     $.ajax({
         url:"dbport.php",
         data:{
-            action:'prod_type_del',
-            value:dict_id
+            action:'dict_add',
+            dict_type:'prod_type',
+            dict_name:$('#dict_prod_type').val()
+        },
+        type: "POST",
+        dataType: "json",
+        success: function()
+        {
+            location.reload();
+        }
+    });
+}
+function Prod_tag_add()
+{
+    $.ajax({
+        url:"dbport.php",
+        data:{
+            action:'dict_add',
+            dict_type:'prod_tag',
+            dict_name:$('#dict_prod_tag').val()
+        },
+        type: "POST",
+        dataType: "json",
+        success: function()
+        {
+            location.reload();
+        }
+    });
+}
+function dict_del()
+{
+    $.ajax({
+        url:"dbport.php",
+        data:{
+            action:'dict_del',
+            value:$('#dict_del_id').val()
         },
         type: "POST",
         dataType: "json",
@@ -37,12 +72,6 @@ function Prod_add(prod_id)
     {
         alert('商品名称不能为空');
         return;
-    }
-
-    $prod_index_show=0;
-    if($('#prod_index_show').attr('checked')==true)
-    {
-        $prod_index_show=1;
     }
     
     if(prod_id==undefined)
@@ -65,28 +94,23 @@ function Prod_add(prod_id)
         data:{
             action:action,
             prod_id:prod_id,
-            prod_show_seq:$('#prod_show_seq').val().trim(),
-            prod_index_show:$prod_index_show,
             prod_name:$('#prod_name').val().trim(),
             prod_title:$('#prod_title').val().trim(),
-            prod_origin_price:$('#prod_origin_price').val(),
-            prod_sale_price:$('#prod_sale_price').val(),
             prod_type:$('#prod_type').val(),
-            prod_medium:$('#prod_medium').val().trim(),
+            prod_sale_price:$('#prod_sale_price').val(),
+            pic0:$('#pic0').attr('src'),
+            pic1:$('#pic1').attr('src'),
+            pic2:$('#pic2').attr('src'),
             prod_word:$('#prod_word').val().trim(),
-            prod_date_range:$('#prod_date_range').val().trim(),
-            prod_area_range:$('#prod_area_range').val().trim(),
-            prod_freight:$('#prod_freight').val().trim(),
-            prod_desc:$('#prod_desc').val().trim(),
-            prod_onshelf_type:$('input:radio[name="prod_onshelf_type"]:checked').val(),
-            prod_onshelf_time:'',//$('#prod_onshelf_time').val().trim()
+            prod_medium:$('#prod_medium').val().trim(),
             standards:$('#standards').val().trim(),
-            pic0:$('#pic0').find('#pic_path').val(),
-            pic1:$('#pic1').find('#pic_path').val(),
-            pic2:$('#pic2').find('#pic_path').val(),
+            prod_care_desc:$('#prod_care_desc').val(),
+            prod_order_desc:$('#prod_order_desc').val(),
             prod_tag:str,
-            prod_cat:1,
-            prod_stock_up:$('#prod_stock_up').val().trim()
+            prod_stock_up:$('#prod_stock_up').val().trim(),
+            prod_date_range:$('#prod_date_range').val().trim(),
+            prod_onshelf_type:$('input:radio[name="prod_onshelf_type"]:checked').val(),
+            prod_onshelf_time:$('#prod_onshelf_time').val().trim()
         },
         type: "POST",
         dataType: "json",
@@ -185,7 +209,7 @@ function prod_onshelf(prod_id,prod_onshelf_status)
 var pic;
 function fileupload(obj)
 {
-    pic=obj;
+    //pic=obj;
     var options = {
     dataType:'json', 
     type:'post',
@@ -207,8 +231,7 @@ function showRequest()
 
 function showResponse(data)
 {
-    $('#'+pic).find('#pic_path').val(data);   
-    $('#'+pic).find('#pic_yulan').attr("src",data);
+    $('#pic'+pic).attr('src',data);
 }
 
 function deletesubstr(p,s)

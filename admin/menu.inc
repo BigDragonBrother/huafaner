@@ -29,10 +29,10 @@
     <dt>商品管理</dt>
     <dd><a href="admin.php?k=prod">发布商品</a></dd>
     <dd><a href="admin.php?k=prodlist">维护商品</a></dd>
-    <dd><a href="维护商品分类.html">维护商品分类</a></dd>
-    <dd><a href="维护保养说明.html">维护保养说明</a></dd>
-    <dd><a href="维护订购说明.html">维护订购说明</a></dd>
-    <dd><a href="维护商品标签.html">维护商品标签</a></dd>
+    <dd><a href="admin.php?k=dict&dict_type=prod_type">维护商品分类</a></dd>
+    <dd><a href="admin.php?k=dict&dict_type=prod_care_desc">维护保养说明</a></dd>
+    <dd><a href="admin.php?k=dict&dict_type=prod_order_desc">维护订购说明</a></dd>
+    <dd><a href="admin.php?k=dict&dict_type=prod_tag">维护商品标签</a></dd>
 </dl>
 <dl>
     <dt>专题管理</dt>

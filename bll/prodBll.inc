@@ -8,9 +8,9 @@ class prodBll
         return prodDal::getDict($type)->data;
     }
     
-    static function addDict($type,$dict_name)
+    static function addDict($type,$dict_name,$dict_desc="")
     {
-        return prodDal::addDict($type,  $dict_name);
+        return prodDal::addDict($type,$dict_name,$dict_desc);
     }
     
     static function delDict($dict_id)
@@ -18,43 +18,28 @@ class prodBll
         return prodDal::delDict($dict_id);
     }
     
-    static function addProd($prod_show_seq,$prod_index_show,$prod_name,$prod_title,$prod_origin_price,$prod_sale_price,$prod_type,$prod_medium,
-            $prod_word,$prod_date_range,$prod_area_range,$prod_freight,$prod_desc,$prod_onshelf_type,
-            $prod_onshelf_time,$standards,$pic_arr,$prod_tag,$prod_cat,$prod_stock_up)
+    static function addProd($prod_name,$prod_title,$prod_type,$prod_sale_price,$pic_arr,
+        $prod_word,$prod_medium,$standards,$prod_care_desc,$prod_order_desc,$prod_tag,
+        $prod_stock_up,$prod_date_range,$prod_onshelf_type,$prod_onshelf_time)
     {
         //if(count(self::getProdByname($prod_name))>0)
         //{
         //    return 0;
         //}
-        if($prod_origin_price==0)
-        {
-            $prod_discount=0;
-        }
-        else 
-        {
-            $prod_discount=round($prod_sale_price/$prod_origin_price,1);
-        }
-        $prod_show_seq=(int)$prod_show_seq;
         $prod_id = prodDal::addProd(
-                $prod_show_seq,
-                $prod_index_show,
                 $prod_name,
                 $prod_title,
-                $prod_origin_price,
-                $prod_sale_price,
-                $prod_discount,
                 $prod_type,
-                $prod_medium,
+                $prod_sale_price,
                 $prod_word,
-                $prod_date_range,
-                $prod_area_range,
-                $prod_freight,
-                $prod_desc,
-                $prod_onshelf_type,
-                $prod_onshelf_time,
+                $prod_medium,
                 $standards,
-                $prod_cat,
-                $prod_stock_up);
+                $prod_care_desc,
+                $prod_order_desc,
+                $prod_stock_up,
+                $prod_date_range,
+                $prod_onshelf_type,
+                $prod_onshelf_time);
         if(!$prod_id)
         {
             return false;
@@ -64,44 +49,25 @@ class prodBll
         return true;
     }
     
-    static function updateProd($prod_id,$prod_show_seq,$prod_index_show,$prod_name,$prod_title,$prod_origin_price,
-            $prod_sale_price,$prod_type,$prod_medium,
-            $prod_word,$prod_date_range,$prod_area_range,$prod_freight,$prod_desc,$prod_onshelf_type,
-            $prod_onshelf_time,$standards,$pic_arr,$prod_tag,$prod_stock_up)
+    static function updateProd($prod_id,$prod_name,$prod_title,$prod_type,$prod_sale_price,$pic_arr,
+        $prod_word,$prod_medium,$standards,$prod_care_desc,$prod_order_desc,$prod_tag,
+        $prod_stock_up,$prod_date_range,$prod_onshelf_type,$prod_onshelf_time)
     {
-        //if(count(self::getProdByname($prod_name))>0)
-        //{
-        //    return 0;
-        //}
-        if($prod_origin_price==0)
-        {
-            $prod_discount=0;
-        }
-        else 
-        {
-            $prod_discount=round($prod_sale_price/$prod_origin_price,1);
-        }
-        $prod_show_seq=(int)$prod_show_seq;
         $result = prodDal::updateProd(
                 $prod_id,
-                $prod_show_seq,
-                $prod_index_show,
                 $prod_name,
                 $prod_title,
-                $prod_origin_price,
-                $prod_sale_price,
-                $prod_discount,
                 $prod_type,
-                $prod_medium,
+                $prod_sale_price,
                 $prod_word,
-                $prod_date_range,
-                $prod_area_range,
-                $prod_freight,
-                $prod_desc,
-                $prod_onshelf_type,
-                $prod_onshelf_time,
+                $prod_medium,
                 $standards,
-                $prod_stock_up);
+                $prod_care_desc,
+                $prod_order_desc,
+                $prod_stock_up,
+                $prod_date_range,
+                $prod_onshelf_type,
+                $prod_onshelf_time);
         if(!$result)
         {
             return false;

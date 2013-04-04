@@ -32,6 +32,31 @@ cdate datetime,
 udate datetime
 )
 
+prod_name,prod_title,prod_type,prod_sale_price,prod_word,
+                prod_medium,standards,prod_care_desc,prod_order_desc,prod_stock_up,
+                prod_date_range,prod_onshelf_type,prod_onshelf_time,cdate,udate
+创建商品信息表
+create table hua_prod
+(
+prod_id int not null auto_increment primary key,
+prod_name varchar(500) not null,
+prod_title varchar(500),
+prod_type int,
+prod_sale_price decimal(18,2),
+prod_word varchar(500),
+prod_medium varchar(500),
+standards varchar(500),
+prod_care_desc int,
+prod_order_desc int,
+prod_stock_up int,
+prod_date_range int,
+prod_onshelf_type int,
+prod_onshelf_time varchar(100),
+prod_like int,
+cdate datetime,
+udate datetime
+)
+
 创建商品图片表
 create table hua_prod_pic
 (

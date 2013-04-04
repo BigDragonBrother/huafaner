@@ -5,9 +5,9 @@ include_once (PATH_DAL . "/db.inc");
 
 class prodDal {
 
-    static function addDict($type, $dict_name) {
-        $sql = "insert into hua_dict (dict_type,dict_name,cdate,udate)
-            values ('$type','$dict_name',now(),now())";
+    static function addDict($type, $dict_name,$dict_desc) {
+        $sql = "insert into hua_dict (dict_type,dict_name,dict_desc,cdate,udate)
+            values ('$type','$dict_name','$dict_desc',now(),now())";
 
         if (!is_object(DB::huaDB()))
             return array();
@@ -32,18 +32,17 @@ class prodDal {
         return DB::huaDB()->simplePrepare($sql);
     }
 
-    static function addProd($prod_show_seq, $prod_index_show,$prod_name, $prod_title, $prod_origin_price, 
-            $prod_sale_price, $prod_discount, $prod_type, $prod_medium, $prod_word, 
-            $prod_date_range, $prod_area_range, $prod_freight, $prod_desc, $prod_onshelf_type, 
-            $prod_onshelf_time,$standards,$prod_cat,$prod_stock_up) 
+    static function addProd($prod_name,$prod_title,$prod_type,$prod_sale_price,$prod_word,
+                $prod_medium,$standards,$prod_care_desc,$prod_order_desc,$prod_stock_up,
+                $prod_date_range,$prod_onshelf_type,$prod_onshelf_time) 
     {
-        $sql = "insert into hua_prod(prod_show_seq,prod_index_show,prod_name,prod_title,prod_origin_price,prod_sale_price,prod_discount,prod_type,prod_medium,
-            prod_word,prod_date_range,prod_area_range,prod_freight,prod_desc,prod_onshelf_type,
-            prod_onshelf_time,standards,prod_cat,prod_stock_up,cdate,udate)
+        $sql = "insert into hua_prod(prod_name,prod_title,prod_type,prod_sale_price,prod_word,
+                prod_medium,standards,prod_care_desc,prod_order_desc,prod_stock_up,
+                prod_date_range,prod_onshelf_type,prod_onshelf_time,cdate,udate)
             values
-            ($prod_show_seq,$prod_index_show,'$prod_name','$prod_title',$prod_origin_price,$prod_sale_price,$prod_discount,$prod_type,'$prod_medium',
-            '$prod_word','$prod_date_range','$prod_area_range','$prod_freight','$prod_desc',$prod_onshelf_type,
-            '$prod_onshelf_time','$standards',$prod_cat,$prod_stock_up,now(),now())";
+            ('$prod_name','$prod_title',$prod_type,$prod_sale_price,'$prod_word',
+                '$prod_medium','$standards',$prod_care_desc,$prod_order_desc,$prod_stock_up,
+                $prod_date_range,$prod_onshelf_type,'$prod_onshelf_time',now(),now())";
         if (!is_object(DB::huaDB()))
             return array();
         $row = DB::huaDB()->simplePrepare($sql);
@@ -52,18 +51,16 @@ class prodDal {
         }
     }
     
-    static function updateProd($prod_id,$prod_show_seq, $prod_index_show,$prod_name, $prod_title, $prod_origin_price, 
-            $prod_sale_price, $prod_discount, $prod_type, $prod_medium, $prod_word, 
-            $prod_date_range, $prod_area_range, $prod_freight, $prod_desc, $prod_onshelf_type, 
-            $prod_onshelf_time,$standards,$prod_stock_up) 
+    static function updateProd($prod_id,$prod_name,$prod_title,$prod_type,$prod_sale_price,$prod_word,
+                $prod_medium,$standards,$prod_care_desc,$prod_order_desc,$prod_stock_up,
+                $prod_date_range,$prod_onshelf_type,$prod_onshelf_time) 
     {
         $sql = "update hua_prod set 
-            prod_show_seq=$prod_show_seq,prod_index_show = $prod_index_show,prod_name='$prod_name',prod_title='$prod_title',   
-            prod_origin_price=$prod_origin_price,prod_sale_price=$prod_sale_price,
-            prod_discount=$prod_discount,prod_type=$prod_type,prod_medium='$prod_medium',
-            prod_word='$prod_word',prod_date_range=$prod_date_range,prod_area_range='$prod_area_range',
-            prod_freight='$prod_freight',prod_desc='$prod_desc',prod_onshelf_type=$prod_onshelf_type,
-            prod_onshelf_time='$prod_onshelf_time',standards='$standards',prod_stock_up=$prod_stock_up,udate=now()
+            prod_name='$prod_name',prod_title ='$prod_title',prod_type=$prod_type,prod_sale_price=$prod_sale_price,   
+            prod_word='$prod_word',prod_medium='$prod_medium',standards='$standards',
+            prod_care_desc=$prod_care_desc,prod_order_desc=$prod_order_desc,
+            prod_stock_up=$prod_stock_up,prod_date_range=$prod_date_range,prod_onshelf_type=$prod_onshelf_type,
+            prod_onshelf_time='$prod_onshelf_time',udate=now()
             where prod_id=$prod_id";
         if (!is_object(DB::huaDB()))
             return array();

@@ -14,63 +14,53 @@ $return='';
 switch ($action)
 {
     case 'dict_add':
-        $return =  prodBll::addDict(Tools::getValue('dict_type'), Tools::getValue('dict_name'));
+        $return =  prodBll::addDict(Tools::getValue('dict_type'), Tools::getValue('dict_name'),Tools::getValue('dict_desc'));
         break;
     case 'prod_type_get':
         $return=prodBll::getDict('prod_type');
         break;
-    case 'prod_type_del':
+    case 'dict_del':
         $return =  prodBll::delDict(Tools::getValue('value'));
         break;
     case 'prod_add':
         $pic_arr=array(0=>Tools::getValue('pic0'),1=>Tools::getValue('pic1'),2=>Tools::getValue('pic2'));
-        $return 
-           = prodBll::addProd(
-                    Tools::getValue('prod_show_seq'),
-                    Tools::getValue('prod_index_show'),
+        $return = prodBll::addProd(
                     Tools::getValue('prod_name'),
                     str_replace("'","\\'",Tools::getValue('prod_title')),
-                    Tools::getValue('prod_origin_price'),
-                    Tools::getValue('prod_sale_price'),
                     Tools::getValue('prod_type'),
-                    str_replace("'","\\'",Tools::getValue('prod_medium')),
-                    str_replace("'","\\'",Tools::getValue('prod_word')),
-                    Tools::getValue('prod_date_range'),
-                    str_replace("'","\\'",Tools::getValue('prod_area_range')),
-                    str_replace("'","\\'",Tools::getValue('prod_freight')),
-                    str_replace("'","\\'",Tools::getValue('prod_desc')),
-                    Tools::getValue('prod_onshelf_type'),
-                    Tools::getValue('prod_onshelf_time'),
-                    str_replace("'","\\'",Tools::getValue('standards')),
+                    Tools::getValue('prod_sale_price'),
                     $pic_arr,
+                    str_replace("'","\\'",Tools::getValue('prod_word')),
+                    str_replace("'","\\'",Tools::getValue('prod_medium')),
+                    str_replace("'","\\'",Tools::getValue('standards')),
+                    Tools::getValue('prod_care_desc'),
+                    Tools::getValue('prod_order_desc'),
                     Tools::getValue('prod_tag'),
-                    Tools::getValue('prod_cat'),
-                    Tools::getValue('prod_stock_up'));
+                    Tools::getValue('prod_stock_up'),
+                    Tools::getValue('prod_date_range'),
+                    Tools::getValue('prod_onshelf_type'),
+                    Tools::getValue('prod_onshelf_time'));
         break;
     case 'prod_update':
         $pic_arr=array(0=>Tools::getValue('pic0'),1=>Tools::getValue('pic1'),2=>Tools::getValue('pic2'));
         $return 
            = prodBll::updateProd(
                     Tools::getValue('prod_id'),
-                    Tools::getValue('prod_show_seq'),
-                    Tools::getValue('prod_index_show'),
                     Tools::getValue('prod_name'),
                     str_replace("'","\\'",Tools::getValue('prod_title')),
-                    Tools::getValue('prod_origin_price'),
-                    Tools::getValue('prod_sale_price'),
                     Tools::getValue('prod_type'),
-                    str_replace("'","\\'",Tools::getValue('prod_medium')),
-                    str_replace("'","\\'",Tools::getValue('prod_word')),
-                    Tools::getValue('prod_date_range'),
-                    str_replace("'","\\'",Tools::getValue('prod_area_range')),
-                    str_replace("'","\\'",Tools::getValue('prod_freight')),
-                    str_replace("'","\\'",Tools::getValue('prod_desc')),
-                    Tools::getValue('prod_onshelf_type'),
-                    Tools::getValue('prod_onshelf_time'),
-                    str_replace("'","\\'",Tools::getValue('standards')),
+                    Tools::getValue('prod_sale_price'),
                     $pic_arr,
+                    str_replace("'","\\'",Tools::getValue('prod_word')),
+                    str_replace("'","\\'",Tools::getValue('prod_medium')),
+                    str_replace("'","\\'",Tools::getValue('standards')),
+                    Tools::getValue('prod_care_desc'),
+                    Tools::getValue('prod_order_desc'),
                     Tools::getValue('prod_tag'),
-                    Tools::getValue('prod_stock_up'));
+                    Tools::getValue('prod_stock_up'),
+                    Tools::getValue('prod_date_range'),
+                    Tools::getValue('prod_onshelf_type'),
+                    Tools::getValue('prod_onshelf_time'));
         break;
     case 'prod_onshelf':
         $return =  prodBll::prodOnshelf(Tools::getValue('prod_id'),Tools::getValue('prod_onshelf_status'));

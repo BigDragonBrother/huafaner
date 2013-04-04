@@ -1,10 +1,6 @@
 <?php 
 include_once PATH_BLL.'/prodBll.inc';
-
-$prod_type_list=  prodBll::getDict("prod_type");
-$tag_1_list=  prodBll::getDict("tag_1");
-$tag_2_list=  prodBll::getDict("tag_2");
-$tag_3_list=  prodBll::getDict("tag_3");
+$dict_list=  prodBll::getDict();
 $prod_id=Tools::getValue('id');
 if($prod_id)
 {
@@ -18,6 +14,34 @@ else
     $prod_tag=array();
 }
 ?>
+<link href="style/jquery.ui.theme.css" rel="stylesheet" type="text/css"/>
+<link href="style/jquery.ui.datepicker.css" rel="stylesheet" type="text/css"/>
+<script language="javascript" src="script/jquery.ui.core.min.js"></script>
+<script language="javascript" src="script/jquery.ui.datepicker.js"></script>
+<script language="javascript">
+$(function(){
+    var options= {
+        //changeMonth: true, //显示月份下拉框
+        //changeYear: true, //显示年份下拉框
+        dateFormat: 'yy-mm-dd',  //日期格式，自己设置
+        buttonImage: 'image/calendar.gif',  //按钮的图片路径，自己设置
+        buttonImageOnly: true,  //Show an image trigger without any button.
+        showOn: 'both',//触发条件，both表示点击文本域和图片按钮都生效
+        yearRange: '2012:2040',//年份范围
+        clearText:'清除',
+        closeText:'关闭',
+        prevText:'<',
+        nextText:'>',
+        currentText:"now",
+        monthNames:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+        dayNamesMin:['日','一','二','三','四','五','六'],
+        showMonthAfterYear: true,
+        defaultDate: 0 //设置当前日期
+    };
+    $(".datepicker").datepicker(options);
+    var today = new Date();
+});
+</script>
 <div class="title">
     <h2>发布商品</h2>
     <span>以下均为必填项</span>
@@ -38,23 +62,24 @@ else
         <p>
             <select id="prod_type" name="prod_type">
                 <?php
-                foreach($prod_type_list as $k=>$v)
+                foreach($dict_list as $k=>$v)
                 {
+                    if($v['dict_type']!="prod_type")
+                        continue;
                     if($prod&$prod['prod_type']===$v['dict_id'])
                     {
-                        echo '<option selected= "selected" value="'.$v['dict_id'].'">'.$v['dict_name'].'</option>';
+                        echo '<option selected= "selected" value="',$v['dict_id'],'">',$v['dict_name'],'</option>';
                     }
                     else
                     {
-                        echo '<option value="'.$v['dict_id'].'">'.$v['dict_name'].'</option>';
+                        echo '<option value="',$v['dict_id'],'">',$v['dict_name'],'</option>';
                     }
                 }
                 ?>
             </select>
         </p>
         <span class="linka">
-            <a href="admin.php?k=admindict" target="_blank">增加类型</a>
-            <!--<a href="javascript:void(0)" onclick="Popup.popping('add_sort',true)">添加分类</a>-->
+            <a href="javascript:void(0)" onclick="Popup.popping('add_sort',true)">添加分类</a>
         </span>
         <div class="error">请选择商品类型！</div>
     </div>
@@ -67,10 +92,19 @@ else
     <div class="con_list">
         <span class="con_tit">商品图片：</span>
         <div class="imgpic">
-            <a href="javascript:void(0)" onclick="Popup.popping('add_pic',true)">列表图</a>
+            <a href="javascript:void(0)" onclick="pic=0;Popup.popping('add_pic',true);">
+                <img id="pic0" style="width:150px;height:143px;" alt="列表图" src="<?php echo count($prod_pic)>0?$prod_pic[0]['pic_path']:''; ?>"/>
+            </a>
         </div>
         <div class="imgpic">
-            <a href="javascript:void(0)" onclick="Popup.popping('add_pic',true)">详情图</a>
+            <a href="javascript:void(0)" onclick="pic=1;Popup.popping('add_pic',true);">
+                <img id="pic1" style="width:150px;height:143px;" alt="缩略图" src="<?php echo count($prod_pic)>1?$prod_pic[1]['pic_path']:''; ?>"/>
+            </a>
+        </div>
+        <div class="imgpic">
+            <a href="javascript:void(0)" onclick="pic=2;Popup.popping('add_pic',true);">
+                <img id="pic2" style="width:150px;height:143px;" alt="详情图" src="<?php echo count($prod_pic)>2?$prod_pic[2]['pic_path']:''; ?>"/>
+            </a>
         </div>
         <div class="error">请上传列表图/详情图！</div>                
     </div>
@@ -97,22 +131,46 @@ else
     </div>
     <div class="con_list"><span class="con_tit">保养说明：</span>
         <p>
-            <select id="" name="">
-                <option value="请选择保养说明" selected="">请选择保养说明</option>
-                <option value="花束保养说明">花束保养说明</option>
-                <option value="瓶花保养说明">瓶花保养说明</option>
-                <option value="花盒保养说明">花盒保养说明</option>
-                <option value="多肉保养说明">多肉保养说明</option>
+            <select id="prod_care_desc">
+                <?php
+                    foreach($dict_list as $k=>$v)
+                    {
+                        if($v['dict_type']!="prod_care_desc")
+                            continue;
+
+                        if($prod&$prod['prod_care_desc']===$v['dict_id'])
+                        {
+                            echo '<option selected= "selected" value="',$v['dict_id'],'">',$v['dict_name'],'</option>';
+                        }
+                        else
+                        {
+                            echo '<option value="',$v['dict_id'],'">',$v['dict_name'],'</option>';
+                        }
+                    }
+                ?>
             </select>
         </p>
         <div class="error">请输入保养说明！</div>
     </div>
     <div class="con_list"><span class="con_tit">订购说明：</span>
         <p>
-            <select id="" name="">
-                <option value="请选择订购说明" selected="">请选择订购说明</option>
-                <option value="鲜花订购说明">鲜花订购说明</option>
-                <option value="多肉订购说明">多肉订购说明</option>
+            <select id="prod_order_desc">
+                <?php
+                    foreach($dict_list as $k=>$v)
+                    {
+                        if($v['dict_type']!="prod_order_desc")
+                            continue;
+                        
+                        if($prod&$prod['prod_order_desc']===$v['dict_id'])
+                        {
+                            echo '<option selected= "selected" value="',$v['dict_id'],'">',$v['dict_name'],'</option>';
+                        }
+                        else
+                        {
+                            echo '<option value="',$v['dict_id'],'">',$v['dict_name'],'</option>';
+                        }
+                    }
+                ?>
             </select>
         </p>
         <div class="error">请输订购养说明！</div>
@@ -120,30 +178,27 @@ else
     <div class="con_list">
         <span class="con_tit">标签：</span>
         <div class="pad_l120">
-            <div class="tag_info"><p><input name="" class="same" type="text" /></p><div class="error">请输入订购说明！</div></div>
-            <div class="clearer"></div>
-            <div class="tag_info"><p>常用标签：</p><a href="javascript:void(0)" onclick="Popup.popping('add_tag',true)">添加标签</a></div>
             <div class="tag_info">
                 <ul>
-                    <li>+爱情</li>
-                    <li>+暗恋</li>
-                    <li>+表白</li>
-                    <li>+求婚</li>
-                    <li>+兄弟基情</li>
-                    <li>+闺蜜蜜糖</li>
-                    <li>+友情</li>
-                    <li>+生日祝福</li>
-                    <li>+家居</li>
-                    <li>+爱情</li>
-                    <li>+暗恋</li>
-                    <li>+表白</li>
-                    <li>+求婚</li>
-                    <li>+兄弟基情</li>
-                    <li>+闺蜜蜜糖</li>
-                    <li>+友情</li>
-                    <li>+生日祝福</li>
-                    <li>+家居</li>
+                <?php 
+                    foreach ($dict_list as $k => $v) 
+                    {
+                        if($v['dict_type']!="prod_tag")
+                            continue;
+                        if($prod&in_array($v['dict_id'],$prod_tag))
+                        {
+                            echo "<li><input name=\"prod_tag\" type=\"checkbox\" value=\"",$v['dict_id'],"\" checked=\"checked\" />",$v['dict_name'],"</li>";
+                        }
+                        else
+                        {
+                            echo "<li><input name=\"prod_tag\" type=\"checkbox\" value=\"",$v['dict_id'],"\" />",$v['dict_name'],"</li>";
+                        }
+                    }
+                ?>
                 </ul>
+            </div>
+            <div class="tag_info">
+                <a href="javascript:void(0)" onclick="Popup.popping('add_tag',true)">添加标签</a>
             </div>
         </div>
     
@@ -167,9 +222,20 @@ else
     <div class="con_list">
         <span class="con_tit">上架时间：</span>
         <div class="radio_list">
-            <p><label for="a1"><input name="toptime" checked="checked" id="a1" type="radio" value="0" />立即上架</label></p>
-            <p><label for="a2"><input name="toptime" id="a2" type="radio" value="1" />设定</label><input name="" class="same sty120" type="text" /><span class="note">上架</span></p>
-            <p><label for="a3"><input name="toptime" id="a3" type="radio" value="2" />放入仓库</label></p>
+            <p>
+                <label for="a1">
+                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==0?'checked="checked"':''; ?> type="radio" value="0" />
+                立即上架</label>
+            </p>
+            <p>
+                <label for="a2">
+                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==1?'checked="checked"':''; ?> type="radio" value="1" />设定</label>
+                <input type="text" id="prod_onshelf_time" name="prod_onshelf_time" value="<?php echo $prod&$prod['prod_onshelf_type']==1?$prod['prod_onshelf_time']:''; ?>" class="datepicker"/>上架
+            </p>
+            <p>
+                <label for="a3">
+                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==2?'checked="checked"':''; ?> type="radio" value="2" />放入仓库</label>
+            </p>
         </div>
     </div>
     <div class="btn_submit">
@@ -182,14 +248,17 @@ else
 <!-- 弹出层 分类 -->
 <div class="popping sty500" id="add_sort" style="display:none;">
     <div class="popping_title">
-        <h2>取消订单</h2>
+        <h2>添加分类</h2>
         <div class="closed" onclick="Popup.closed('add_sort')"><a href="javascript:void(0)">×</a></div>
     </div>
     <div class="popping_content">
-         <div class="con_list"><span class="pop_tit">分类名称：</span><p><input name="" class="same" type="text" /></p><div class="error">名称重复请重新命名！</div></div>
-         
+         <div class="con_list">
+            <span class="pop_tit">分类名称：</span>
+            <p><input id="dict_prod_type" class="same" type="text" /></p>
+            <div class="error">名称重复请重新命名！</div>
+        </div>
         <div class="pop_submit">
-            <input type="button" value="保 存" class="loginbtn" onclick="Popup.closed('add_sort')" />
+            <input type="button" value="保 存" class="loginbtn" onclick="Prod_type_add();Popup.closed('add_sort');" />
             <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('add_sort')" />
         </div>
     </div>
@@ -197,14 +266,17 @@ else
 <!-- 弹出层 标签 -->
 <div class="popping sty500" id="add_tag" style="display:none;">
     <div class="popping_title">
-        <h2>取消订单</h2>
+        <h2>添加标签</h2>
         <div class="closed" onclick="Popup.closed('add_tag')"><a href="javascript:void(0)">×</a></div>
     </div>
     <div class="popping_content">
-         <div class="con_list"><span class="pop_tit">分类名称：</span><p><input name="" class="same" type="text" /></p><div class="error">名称重复请重新命名！</div></div>
-         
+         <div class="con_list">
+            <span class="pop_tit">标签名称：</span>
+            <p><input id="dict_prod_tag" class="same" type="text" /></p>
+            <div class="error">名称重复请重新命名！</div>
+        </div>
         <div class="pop_submit">
-            <input type="button" value="保 存" class="loginbtn" onclick="Popup.closed('add_tag')" />
+            <input type="button" value="保 存" class="loginbtn" onclick="Prod_tag_add();Popup.closed('add_tag')" />
             <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('add_tag')" />
         </div>
     </div>
@@ -216,11 +288,18 @@ else
         <div class="closed" onclick="Popup.closed('add_pic')"><a href="javascript:void(0)">×</a></div>
     </div>
     <div class="popping_content">
-         <div class="con_list"><span class="pop_tit">选择文件：</span><p><input name="" class="" type="file" /></p><div class="error">文件格式错误！</div></div>
-         
+        <form id="pic" name="pic" action="picupload.php" method="post" enctype="multipart/form-data">
+        <div class="con_list">
+            <span class="pop_tit">选择文件：</span>
+            <p>
+                <input type="file" id="pic" name="pic" onchange=""/>
+            </p>
+            <div class="error">文件格式错误！</div>
+        </div>
         <div class="pop_submit">
-            <input type="button" value="上 传" class="loginbtn" onclick="Popup.closed('add_pic')" />
+            <input type="button" value="上 传" class="loginbtn" onclick="fileupload('pic');Popup.closed('add_pic')" />
             <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('add_pic')" />
         </div>
+        </form>
     </div>
 </div>

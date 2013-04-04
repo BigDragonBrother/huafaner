@@ -74,11 +74,11 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
                 <td><input type="checkbox" name="sub" /></td>
                 <td><?php echo $v['prod_id']; ?></td>
                 <td><?php echo $v['prod_name']; ?></td>
-                <td><?php echo Conf::$prod_cat[$v['prod_cat']]; ?></td>
+                <td><?php echo $v['prod_type']; ?></td>
                 <td>￥<?php echo $v['prod_sale_price']; ?></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?php echo $v['prod_onshelf_time']; ?></td>
+                <td><?php echo $v['prod_date_range']; ?></td>
+                <td><?php echo $v['prod_stock_up']; ?></td>
                 <td><?php echo $prod_onshelf; ?></td>
                 <td>
                     <a href="admin.php?k=prod&id=<?php echo $v['prod_id']; ?>">修改</a>

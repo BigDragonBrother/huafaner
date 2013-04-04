@@ -46,7 +46,7 @@
 .con_list p span { padding:0px 3px;}
 .con_list p { margin-right:8px;}
 .con_list p select,.content dl dd select { height:28px; line-height:28px;}
-.con_list .error { color:#f00; font-size:12px;}
+.con_list .error { display:none;color:#f00; font-size:12px;}
 .radio_list { width:85%;}
 .con_list .radio_list p { width:100%; height:28px; line-height:28px;}
 .radio_list p label { margin-right:10px;}
