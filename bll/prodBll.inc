@@ -22,10 +22,9 @@ class prodBll
         $prod_word,$prod_medium,$standards,$prod_care_desc,$prod_order_desc,$prod_tag,
         $prod_stock_up,$prod_date_range,$prod_onshelf_type,$prod_onshelf_time)
     {
-        //if(count(self::getProdByname($prod_name))>0)
-        //{
-        //    return 0;
-        //}
+        //立即上架的商品，上架时间为当天
+        if($prod_onshelf_type==0)
+            $prod_onshelf_time=date("Y-m-d");
         $prod_id = prodDal::addProd(
                 $prod_name,
                 $prod_title,
@@ -53,6 +52,9 @@ class prodBll
         $prod_word,$prod_medium,$standards,$prod_care_desc,$prod_order_desc,$prod_tag,
         $prod_stock_up,$prod_date_range,$prod_onshelf_type,$prod_onshelf_time)
     {
+        //立即上架的商品，上架时间为当天
+        if($prod_onshelf_type==0)
+            $prod_onshelf_time=date("Y-m-d");
         $result = prodDal::updateProd(
                 $prod_id,
                 $prod_name,

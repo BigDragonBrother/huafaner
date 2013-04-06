@@ -127,7 +127,8 @@ function Prod_add(prod_id)
                 return;
             }
             alert(succ);
-            window.location.href='admin.php?k=adminprodlist';
+            location.reload();
+            //window.location.href='admin.php?k=prodlist';
         }
     });
 }
@@ -334,21 +335,17 @@ function order_update()
             action:'order_update',
             order_id:$('#order_id').val(),
             cust_name:$('#cust_name').val(),
-            cust_mobile:$('#cust_mobile').val(),
             cust_province:$('#cust_province').val(),
             cust_city:$('#cust_city').val(),
             cust_town:$('#cust_town').val(),
             cust_address:$('#cust_address').val(),
-            cust_zip:$('#cust_zip').val(),
-            order_name:$('#order_name').val(),
-            order_mobile:$('#order_mobile').val(),
+            cust_mobile:$('#cust_mobile').val(),
             book_date:$('#book_date').val(),
-            book_time:$('#book_time').val(),
             book_card:$('#book_card').val(),
-            payment:$('#payment').val(),
-            total:$('#total').val(),
-            shipping_type:$('#shipping_type').val(),
-            shipping_fee:$('#shipping_fee').val()
+            book_card_content:$('#book_card_content').val(),
+            order_sign:$('#order_sign').val(),
+            remarks:$('#remarks').text(),
+            total_pay:$('#total_pay').val()
         },
         type: "POST",
         dataType: "json",
@@ -406,9 +403,10 @@ function adminlogout()
         }
     });
 }
+
 function prodlistsearch()
 {
-    $where = "prod_name="+$('#prod_name').val()+"&prod_cat="+$('#prod_cat').val()
+    $where = "prod_name="+$('#prod_name').val()+"&prod_type="+$('#prod_type').val()
     +"&prod_onshelf_time_low="+$('#prod_onshelf_time_low').val()+"&prod_onshelf_time_high="+$('#prod_onshelf_time_high').val()
     +"&prod_sale_price_low="+$('#prod_sale_price_low').val()+"&prod_sale_price_high="+$('#prod_sale_price_high').val();
     window.location.href='admin.php?k=prodlist&'+$where;
@@ -421,4 +419,23 @@ function prodlistclean()
     $('#prod_onshelf_time_high').val('');
     $('#prod_sale_price_low').val('');
     $('#prod_sale_price_high').val('');
+}
+
+function orderlistsearch()
+{
+    $where = "order_id="+$('#order_id').val()+"&cust_id="+$('#cust_id').val()
+    +"&order_mobile="+$('#order_mobile').val()+"&cust_mobile="+$('#cust_mobile').val()
+    +"&order_status="+$('#order_status').val()+"&book_date_low="+$('#book_date_low').val()
+    +"&book_date_high="+$('#book_date_high').val();
+    window.location.href='admin.php?k=orderlist&'+$where;
+}
+
+function orderlistclean()
+{
+    $('#order_id').val('');
+    $('#cust_id').val('');
+    $('#order_mobile').val('');
+    $('#cust_mobile').val('');
+    $('#book_date_low').val('');
+    $('#book_date_high').val('');
 }

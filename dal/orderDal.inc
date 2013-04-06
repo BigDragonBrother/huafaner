@@ -1,8 +1,7 @@
 <?php
-
 include_once (PATH_LIB . "/myPDO.inc");
 include_once (PATH_DAL . "/db.inc");
-include_once(PATH_SMS."/sms.php");
+//include_once(PATH_SMS."/sms.php");
 
 class orderDal {
 
@@ -68,15 +67,16 @@ class orderDal {
         return $row;
     }
 
-    static function order_update($order_id,$cust_name,$cust_mobile,$cust_province,$cust_city,$cust_town,$cust_address,
-        $cust_zip,$order_name,$order_mobile,$book_date,$book_time,$book_card,$payment,$total,$shipping_type,$shipping_fee)
+    static function order_update($order_id,$cust_name,$cust_province,$cust_city,$cust_town,$cust_address,$cust_mobile,$book_date,$book_card,$book_card_content,$order_sign,$remarks,$total_pay)
     {
+        if($total_pay=="")
+            $total_pay=0;
         $sql="update hua_order set 
-            cust_name='$cust_name',cust_mobile='$cust_mobile',cust_province='$cust_province',
-            cust_city='$cust_city',cust_town='$cust_town',cust_address='$cust_address',
-            cust_zip='$cust_zip',order_name='$order_name',order_mobile='$order_mobile',book_date='$book_date',
-            book_time='$book_time',book_card='$book_card',payment='$payment',total=$total,shipping_type='$shipping_type',
-            shipping_fee=$shipping_fee,udate=now() where order_id=$order_id";
+            cust_name='$cust_name',cust_province='$cust_province',cust_city='$cust_city',
+            cust_town='$cust_town',cust_address='$cust_address',cust_mobile='$cust_mobile',
+            book_date='$book_date',book_card='$book_card',book_card_content='$book_card_content',
+            order_sign='$order_sign',remarks='$remarks',total_pay=$total_pay,udate=now() 
+            where order_id=$order_id";
         if (!is_object(DB::huaDB()))
             return array();
         $row = DB::huaDB()->simplePrepare($sql);
@@ -111,9 +111,11 @@ class orderDal {
     }
 
     static function getOrder($order_id) {
-        $sql = "select a.*,b.prod_name,b.prod_origin_price,b.prod_sale_price
+        $sql = "select a.*,b.prod_name,b.prod_sale_price,c.dict_name,d.user_name
         from hua_order a
         left join hua_prod b on a.prod_id=b.prod_id
+        left join hua_dict c on b.prod_type=c.dict_id
+        left join hua_user d on a.user_id=d.user_id
         where order_id=$order_id";
         if (!is_object(DB::huaDB()))
             return array();
@@ -140,11 +142,11 @@ class orderDal {
         }
     }
 
-    static function getOrders() {
-        $sql = "select a.*,b.prod_name,b.prod_origin_price,b.prod_sale_price
+    static function getOrders($where,$page_num=1,$page_size=10) {
+        $start = $page_size*($page_num-1);
+        $sql = "select a.*,b.prod_name,b.prod_type,b.prod_sale_price
             from hua_order a left join hua_prod b on a.prod_id=b.prod_id
-            order by a.cdate desc
-            ";
+            $where order by a.cdate desc limit $start,$page_size";
         if (!is_object(DB::huaDB()))
             return array();
         return DB::huaDB()->allPrepare($sql);

@@ -14,34 +14,6 @@ else
     $prod_tag=array();
 }
 ?>
-<link href="style/jquery.ui.theme.css" rel="stylesheet" type="text/css"/>
-<link href="style/jquery.ui.datepicker.css" rel="stylesheet" type="text/css"/>
-<script language="javascript" src="script/jquery.ui.core.min.js"></script>
-<script language="javascript" src="script/jquery.ui.datepicker.js"></script>
-<script language="javascript">
-$(function(){
-    var options= {
-        //changeMonth: true, //显示月份下拉框
-        //changeYear: true, //显示年份下拉框
-        dateFormat: 'yy-mm-dd',  //日期格式，自己设置
-        buttonImage: 'image/calendar.gif',  //按钮的图片路径，自己设置
-        buttonImageOnly: true,  //Show an image trigger without any button.
-        showOn: 'both',//触发条件，both表示点击文本域和图片按钮都生效
-        yearRange: '2012:2040',//年份范围
-        clearText:'清除',
-        closeText:'关闭',
-        prevText:'<',
-        nextText:'>',
-        currentText:"now",
-        monthNames:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-        dayNamesMin:['日','一','二','三','四','五','六'],
-        showMonthAfterYear: true,
-        defaultDate: 0 //设置当前日期
-    };
-    $(".datepicker").datepicker(options);
-    var today = new Date();
-});
-</script>
 <div class="title">
     <h2>发布商品</h2>
     <span>以下均为必填项</span>
@@ -224,17 +196,17 @@ $(function(){
         <div class="radio_list">
             <p>
                 <label for="a1">
-                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==0?'checked="checked"':''; ?> type="radio" value="0" />
+                <input name="prod_onshelf_type" checked="checked" type="radio" value="1" />
                 立即上架</label>
             </p>
             <p>
                 <label for="a2">
-                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==1?'checked="checked"':''; ?> type="radio" value="1" />设定</label>
-                <input type="text" id="prod_onshelf_time" name="prod_onshelf_time" value="<?php echo $prod&$prod['prod_onshelf_type']==1?$prod['prod_onshelf_time']:''; ?>" class="datepicker"/>上架
+                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==1?'checked="checked"':''; ?> type="radio" value="2" />设定</label>
+                <input type="text" id="prod_onshelf_time" name="prod_onshelf_time" value="<?php echo $prod&$prod['prod_onshelf_type']==1?$prod['prod_onshelf_time']:''; ?>" class="same sty85"/>上架
             </p>
             <p>
                 <label for="a3">
-                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==2?'checked="checked"':''; ?> type="radio" value="2" />放入仓库</label>
+                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==2?'checked="checked"':''; ?> type="radio" value="3" />放入仓库</label>
             </p>
         </div>
     </div>

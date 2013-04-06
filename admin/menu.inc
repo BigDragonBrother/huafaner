@@ -24,6 +24,7 @@
     <a href="javascript:void(0)" onclick="adminlogout()">退出登陆</a>
     <hr/>
 </div>
+class="sel"
 -->
 <dl>
     <dt>商品管理</dt>
@@ -47,8 +48,7 @@
 </dl>
 <dl>
     <dt>详单管理</dt>
-    <dd><a href="详单查询.html">详单查询</a></dd>
-    <dd><a href="修改订单.html">修改订单</a></dd>
+    <dd><a href="admin.php?k=orderlist">详单查询</a></dd>
 </dl>
 <dl>
     <dt>优惠券管理</dt>
@@ -57,6 +57,6 @@
 </dl>
 <dl>
     <dt>页面管理</dt>
-    <dd class="sel"><a href="首页.html">首页</a></dd>
+    <dd><a href="首页.html">首页</a></dd>
     <dd><a href="专题活动页.html">专题活动页</a></dd>
 </dl>

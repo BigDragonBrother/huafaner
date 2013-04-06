@@ -10,8 +10,35 @@
 <script type="text/javascript" src="script/admin.js" ></script>
 <script language="javascript" src="script/layout.js"></script>
 <script language="javascript" src="script/Library-min.js"></script>
-</head>
 
+<link href="style/jquery.ui.theme.css" rel="stylesheet" type="text/css"/>
+<link href="style/jquery.ui.datepicker.css" rel="stylesheet" type="text/css"/>
+<script language="javascript" src="script/jquery.ui.core.min.js"></script>
+<script language="javascript" src="script/jquery.ui.datepicker.js"></script>
+<script language="javascript">
+$(function(){
+    var options= {
+        //changeMonth: true, //显示月份下拉框
+        //changeYear: true, //显示年份下拉框
+        dateFormat: 'yy-mm-dd',  //日期格式，自己设置
+        buttonImage: 'image/calendar.gif',  //按钮的图片路径，自己设置
+        buttonImageOnly: true,  //Show an image trigger without any button.
+        showOn: 'both',//触发条件，both表示点击文本域和图片按钮都生效
+        yearRange: '2013:2040',//年份范围
+        clearText:'清除',
+        closeText:'关闭',
+        prevText:'',
+        nextText:'',
+        currentText:"now",
+        monthNames:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+        dayNamesMin:['日','一','二','三','四','五','六'],
+        showMonthAfterYear: true,
+        defaultDate: 0 //设置当前日期
+    };
+    $(".sty85").datepicker(options);
+});
+</script>
+</head>
 <body>
     <!-- 网站头部 -->
     <div class="header">

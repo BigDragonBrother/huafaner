@@ -30,8 +30,8 @@ class Conf
     public static $picArr=array('jpg','gif','jpeg');
     public static $pic_path="http://huafanerb.com/huafaner/";
    
-    //各种状态
-    public static $order_status=array("0"=>"交易取消","10"=>"未支付","20"=>"待确认","30"=>"正在配花","40"=>"正在配送","50"=>"交易成功");
+    //各种状态：未支付/已支付未确认/已确认/正在配花/正在配送/交易成功/交易取消
+    public static $order_status=array("0"=>"交易取消","10"=>"未支付","20"=>"已支付未确认","30"=>"已确认","40"=>"正在配花","50"=>"正在配送","60"=>"交易成功");
     public static $coupon_status=array("0"=>"已过期","1"=>"有效","2"=>"已使用");
     public static $prod_onshelf_status=array(1=>"上架",2=>"定时上架",3=>"仓库中");
     public static $prod_cat=array(1=>"普通商品",2=>"定制商品");

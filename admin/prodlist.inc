@@ -1,11 +1,12 @@
 <?php
 include_once PATH_BLL.'/prodBll.inc';
+$prod_type_list=  prodBll::getDict('prod_type');
 $page_num=Tools::getValue('page_num')?Tools::getValue('page_num'):1;
 $where="";
 if(Tools::getValue('prod_name'))
     $where = " and prod_name like '%".Tools::getValue('prod_name')."%'";
-if(Tools::getValue('prod_cat'))
-    $where = $where." and prod_cat=".Tools::getValue('prod_cat');
+if(Tools::getValue('prod_type'))
+    $where = $where." and prod_type=".Tools::getValue('prod_type');
 if(Tools::getValue('prod_onshelf_time_low'))
     $where = $where." and prod_onshelf_time >='".Tools::getValue('prod_onshelf_time_low')."'";
 if(Tools::getValue('prod_onshelf_time_high'))
@@ -26,11 +27,21 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
             <input id="prod_name" class="same" type="text" value="<?php echo Tools::getValue('prod_name');?>"/>
         </dd>
         <dd>
-            <label>商品类型</label>
-            <select id="prod_cat" name="prod_cat">
-                <option value="0" <?php echo Tools::getValue('prod_cat')==0?"selected":"";?>>全部</option>
-                <option value="1" <?php echo Tools::getValue('prod_cat')==1?"selected":"";?>>普通商品</option>
-                <option value="2" <?php echo Tools::getValue('prod_cat')==2?"selected":"";?>>定制商品</option>
+            <label>商品分类</label>
+            <select id="prod_type" name="prod_type">
+                <option selected>全部</option>
+                <?php 
+                    foreach ($prod_type_list as $k => $v) {
+                        if(Tools::getValue('prod_type')==$v['dict_id'])
+                        {
+                            echo '<option value="',$v['dict_id'],'" selected>',$v['dict_name'],'</option>';
+                        }
+                        else
+                        {
+                            echo '<option value="',$v['dict_id'],'">',$v['dict_name'],'</option>';   
+                        }
+                    }
+                ?>
             </select>
         </dd>
         <dd class="sty290">
@@ -69,12 +80,16 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
             {
                 $prod_onshelf=Conf::$prod_onshelf_status[$v['prod_onshelf_type']];
                 $prod_onshelf_op = $v['prod_onshelf_type']==1?"下架":"上架";
+                foreach ($prod_type_list as $a => $b) {
+                    if($b['dict_id']==$v['prod_type'])
+                        $prod_type = $b['dict_name'];
+                }
             ?>
             <tr>
                 <td><input type="checkbox" name="sub" /></td>
                 <td><?php echo $v['prod_id']; ?></td>
                 <td><?php echo $v['prod_name']; ?></td>
-                <td><?php echo $v['prod_type']; ?></td>
+                <td><?php echo $prod_type; ?></td>
                 <td>￥<?php echo $v['prod_sale_price']; ?></td>
                 <td><?php echo $v['prod_onshelf_time']; ?></td>
                 <td><?php echo $v['prod_date_range']; ?></td>
@@ -101,7 +116,6 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
                         <a href="admin.php?k=prodlist">首页</a>
                         <a href="admin.php?k=prodlist&page_num=<?php echo $page_num+1; ?>">下一页</a>
                         <a href="admin.php?k=prodlist&page_num=<?php echo $page_num-1; ?>">上一页</a>
-                        <a href="#">尾页</a>
                     </div>
                 </td>
             </tr>

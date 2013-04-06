@@ -53,13 +53,13 @@ class orderBll
         return orderDal::orderop($newstatus,$order_id)->data;
     }
     
-    static function order_update($order_id,$cust_name,$cust_mobile,$cust_province,
-$cust_city,$cust_town,$cust_address,$cust_zip,$order_name,$order_mobile,$book_date,
-$book_time,$book_card,$payment,$total,$shipping_type,$shipping_fee)
+    static function order_update($order_id,$cust_name,$cust_province,
+$cust_city,$cust_town,$cust_address,$cust_mobile,$book_date,
+$book_card,$book_card_content,$order_sign,$remarks,$total_pay)
     {
         return orderDal::order_update(
-$order_id,$cust_name,$cust_mobile,$cust_province,$cust_city,$cust_town,$cust_address,$cust_zip,
-$order_name,$order_mobile,$book_date,$book_time,$book_card,$payment,$total,$shipping_type,$shipping_fee)->data;
+$order_id,$cust_name,$cust_province,$cust_city,$cust_town,$cust_address,$cust_mobile,$book_date,
+$book_card,$book_card_content,$order_sign,$remarks,$total_pay)->data;
     }
 
     static function getOrder($order_id)
@@ -72,9 +72,9 @@ $order_name,$order_mobile,$book_date,$book_time,$book_card,$payment,$total,$ship
         return orderDal::getOnlyOrder($order_id);
     }
     
-    static function getOrders()
+    static function getOrders($where,$page_num,$page_size)
     {
-        return orderDal::getOrders()->data;
+        return orderDal::getOrders($where,$page_num,$page_size)->data;
     }
     
     static function getOrdersByUserid($user_id,$page_num,$page_size)

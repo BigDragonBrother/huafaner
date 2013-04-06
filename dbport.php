@@ -208,21 +208,17 @@ switch ($action)
         $return=orderBll::order_update(
             Tools::getValue('order_id'),
             Tools::getValue('cust_name'),
-            Tools::getValue('cust_mobile'),
             Tools::getValue('cust_province'),
             Tools::getValue('cust_city'),
             Tools::getValue('cust_town'),
             Tools::getValue('cust_address'),
-            Tools::getValue('cust_zip'),
-            Tools::getValue('order_name'),
-            Tools::getValue('order_mobile'),
+            Tools::getValue('cust_mobile'),
             Tools::getValue('book_date'),
-            Tools::getValue('book_time'),
             Tools::getValue('book_card'),
-            Tools::getValue('payment'),
-            Tools::getValue('total'),
-            Tools::getValue('shipping_type'),
-            Tools::getValue('shipping_fee')
+            Tools::getValue('book_card_content'),
+            Tools::getValue('order_sign'),
+            Tools::getValue('remarks'),
+            Tools::getValue('total_pay')
             );
         break;
     case 'getUserByusername':
