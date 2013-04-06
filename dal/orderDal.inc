@@ -111,9 +111,10 @@ class orderDal {
     }
 
     static function getOrder($order_id) {
-        $sql = "select a.*,b.prod_name,b.prod_sale_price,c.dict_name,d.user_name
+        $sql = "select a.*,b.prod_name,b.prod_sale_price,c.dict_name,d.user_name,e.pic_path
         from hua_order a
         left join hua_prod b on a.prod_id=b.prod_id
+        left join hua_prod_pic e on b.prod_id=e.prod_id and e.pic_seq=1
         left join hua_dict c on b.prod_type=c.dict_id
         left join hua_user d on a.user_id=d.user_id
         where order_id=$order_id";

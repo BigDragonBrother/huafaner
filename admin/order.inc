@@ -106,7 +106,7 @@ if($order['only_order_id']>0)
         <p><?php echo $order['dict_name']; ?></p>
     </div>
     <div class="pad_l120">
-        <img src="<?php echo $order['']; ?>">
+        <img src="<?php echo $order['pic_path']; ?>">
     </div>
 </div>
 <div class="content bot_b">
