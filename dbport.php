@@ -202,7 +202,10 @@ switch ($action)
                 Tools::getValue('prod_id_list'));
         break;
     case 'orderop':
-        $return =orderBll::orderop(Tools::getValue('newstatus'),Tools::getValue('order_id'));
+        $return =orderBll::orderop(Tools::getValue('newstatus'),Tools::getValue('order_id'),Tools::getValue('order_cancel_desc'));
+        break;
+    case 'getorderbyid':
+        $return =orderBll::getOrder(Tools::getValue('order_id'));
         break;
     case 'order_update':
         $return=orderBll::order_update(

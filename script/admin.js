@@ -301,15 +301,60 @@ function sub_add(sub_id)
     });
     
 }
-
-function order_op(type,order_id)
+var order_id_op;
+var total_op;
+function order_op_pre(order_id,total)
 {
+    $('.order_id_op').text("订单编号："+order_id);
+    $('.total_op').text("金额：￥"+total);
+    order_id_op=order_id;
+    total_op=total;
+}
+function order_op_print(order_id)
+{
+    order_id_op=order_id;
+    $.ajax({
+        url:"dbport.php",
+        data:{
+            action:'getorderbyid',
+            order_id:order_id
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(order)
+        {
+            $('#print_order_id').text(order['order_id']);
+            $('#print_cdate').text(order['cdate']);
+            $('#print_cust_name').text(order['cust_name']);
+            $('#print_cust_mobile').text(order['cust_mobile']);
+            $('#print_cust_address').text(order['cust_city']+order['cust_town']+order['cust_address']);
+            $('#print_prod_name').text(order['prod_name']);
+            $('#print_book_date').text(order['book_date']);
+        }
+    }); 
+}
+function printdiv()
+{
+    var headstr = "<html><head><title></title></head><body>";
+    var footstr = "</body>";
+    var newstr = $('#print').html();//document.all.item(printpage).innerHTML;
+    var oldstr = document.body.innerHTML;
+    document.body.innerHTML = headstr+newstr+footstr;
+    window.print();
+    document.body.innerHTML = oldstr;
+    return false;
+}
+
+function order_op(type)
+{
+    order_cancel_desc=$('#order_cancel_desc').val();
     $.ajax({
         url:"dbport.php",
         data:{
             action:'orderop',
             newstatus:type,
-            order_id:order_id
+            order_id:order_id_op,
+            order_cancel_desc:order_cancel_desc
         },
         type: "POST",
         dataType: "json",
@@ -357,6 +402,7 @@ function order_update()
             }
             else
             {
+                alert('更新成功');
                 window.location.reload();   
             }
         }

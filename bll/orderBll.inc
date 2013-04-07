@@ -48,9 +48,9 @@ class orderBll
                 $only_order_id);
     }
 
-    static function orderop($newstatus,$order_id)
+    static function orderop($newstatus,$order_id,$order_cancel_desc)
     {
-        return orderDal::orderop($newstatus,$order_id)->data;
+        return orderDal::orderop($newstatus,$order_id,$order_cancel_desc)->data;
     }
     
     static function order_update($order_id,$cust_name,$cust_province,

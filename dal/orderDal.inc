@@ -41,9 +41,12 @@ class orderDal {
         return $return;
     }
  
-    static function orderop($newstatus,$order_id)
+    static function orderop($newstatus,$order_id,$order_cancel_desc)
     {
-        $sql="update hua_order set order_status=$newstatus where order_id=$order_id";
+        if($newstatus==0)
+            $sql="update hua_order set order_status=$newstatus,order_cancel_desc='$order_cancel_desc' where order_id=$order_id";
+        else
+            $sql="update hua_order set order_status=$newstatus where order_id=$order_id";
         if (!is_object(DB::huaDB()))
             return array();
         $row = DB::huaDB()->simplePrepare($sql);
@@ -61,7 +64,7 @@ class orderDal {
             }
             if($sms_type!=0)
             {
-                huafaner_sendSMS($sms_type,$order['order_name'],$order_id,$order['order_mobile']);    
+                //huafaner_sendSMS($sms_type,$order['order_name'],$order_id,$order['order_mobile']);    
             }
         } 
         return $row;
@@ -145,8 +148,10 @@ class orderDal {
 
     static function getOrders($where,$page_num=1,$page_size=10) {
         $start = $page_size*($page_num-1);
-        $sql = "select a.*,b.prod_name,b.prod_type,b.prod_sale_price
-            from hua_order a left join hua_prod b on a.prod_id=b.prod_id
+        $sql = "select a.*,b.prod_name,b.prod_sale_price,c.dict_name
+            from hua_order a 
+            left join hua_prod b on a.prod_id=b.prod_id
+            left join hua_dict c on b.prod_type=c.dict_id
             $where order by a.cdate desc limit $start,$page_size";
         if (!is_object(DB::huaDB()))
             return array();

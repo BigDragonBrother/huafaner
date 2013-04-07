@@ -85,8 +85,8 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
             foreach ($order_list as $k => $v) {
                 echo "<tr><td>",$v['order_id'],"</td>";
                 echo "<td>",$v['prod_name'],"</td>";
-                echo "<td>",$v['prod_type'],"</td>";
-                echo "<td>￥",$v['prod_sale_price'],"</td>";
+                echo "<td>",$v['dict_name'],"</td>";
+                echo "<td>￥",$v['total'],"</td>";
                 echo "<td>",$v['book_date'],"</td>";
                 echo "<td>",$v['order_name'],"</td>";
                 echo "<td>",$v['cust_name'],"</td>";
@@ -95,24 +95,25 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
                 echo "<td>";
                 switch ($v['order_status']) {
                     case 10:
-                        echo '<a href="javascript:void(0)" onclick="Popup.popping(\'confirm_rmb\',true)">确认到款</a>';
+                        echo '<a href="javascript:void(0)" onclick="order_op_pre(',$v['order_id'],',',$v['total'],');Popup.popping(\'confirm_rmb\',true)">确认到款</a>';
                         echo '<a href="admin.php?k=order&id=',$v['order_id'],'">修改</a>';
-                        echo '<a href="javascript:void(0)" onclick="Popup.popping(\'cancel\',true)">取消</a>';
+                        echo '<a href="javascript:void(0)" onclick="order_op_pre(',$v['order_id'],',',$v['total'],');Popup.popping(\'cancel\',true)">取消</a>';
                         break;
                     case 20:
-                        echo '<a href="javascript:void(0)" onclick="Popup.popping(\'orders\',true)">确认订单</a>';
+                        echo '<a href="javascript:void(0)" onclick="order_op_pre(',$v['order_id'],',',$v['total'],');Popup.popping(\'orders\',true)">确认订单</a>';
                         echo '<a href="admin.php?k=order&id=',$v['order_id'],'">修改</a>';
-                        echo '<a href="javascript:void(0)" onclick="Popup.popping(\'cancel\',true)">取消</a>';
+                        echo '<a href="javascript:void(0)" onclick="order_op_pre(',$v['order_id'],',',$v['total'],');Popup.popping(\'cancel\',true)">取消</a>';
                         break;
                     case 30:
-                        echo '<a href="javascript:void(0)" onclick="Popup.popping(\'print\',true)">打印发货单</a>';
-                        echo '<a href="javascript:void(0)" onclick="Popup.popping(\'cancel\',true)">取消</a>';
+                        echo '<a href="javascript:void(0)" onclick="order_op_print(',$v['order_id'],');Popup.popping(\'print\',true)">打印发货单</a>';
+                        //echo '<a href="print_doc.php?id=',$v['order_id'],'">打印发货单</a>';
+                        echo '<a href="javascript:void(0)" onclick="order_op_pre(',$v['order_id'],',',$v['total'],');Popup.popping(\'cancel\',true)">取消</a>';
                         break;
                     case 40:
-                        echo '<a href="javascript:void(0)" onclick="Popup.popping(\'shipments\',true)">确认发货</a>';
+                        echo '<a href="javascript:void(0)" onclick="order_op_pre(',$v['order_id'],',',$v['total'],');Popup.popping(\'shipments\',true)">确认发货</a>';
                         break;
                     case 50:
-                        echo '<a href="javascript:void(0)" onclick="Popup.popping(\'success\',true)">确认成功</a>';
+                        echo '<a href="javascript:void(0)" onclick="order_op_pre(',$v['order_id'],',',$v['total'],');Popup.popping(\'success\',true)">确认成功</a>';
                         break;
                     case 60:
                         //echo '<a href="javascript:void(0)" onclick="Popup.popping(\'upload\',true)">上传商品图</a>';
@@ -134,8 +135,28 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
         </tr>
     </table>
 </div>
-
-
+<!-- 弹出层 取消 -->
+<div class="popping sty350" id="cancel" style="display:none;">
+    <div class="popping_title">
+        <h2>取消</h2>
+        <div class="closed" onclick="Popup.closed('cancel')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="popping_content">
+         <div class="status">
+            <div class="img_icon"><img src="images/icon1.gif" /></div>
+            <div class="status_con">
+                <h3>您确定要取消此订单？如确定取消请填写取消原因。</h3>
+                <p>取消原因：</p>
+                <p><textarea class="pop_textarea" rows="" cols="" id="order_cancel_desc"></textarea></p>
+                <div class="error">请输入取消原因</div>
+                <div class="pop_submit pad_none">
+                    <input type="button" value="确 定" class="loginbtn" onclick="order_op(0);Popup.closed('cancel')" />
+                    <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('cancel')" />
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
 <!-- 弹出层 确认到款 -->
 <div class="popping sty350" id="confirm_rmb" style="display:none;">
     <div class="popping_title">
@@ -146,11 +167,11 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
          <div class="status">
             <div class="img_icon"><img src="images/icon1.gif" /></div>
             <div class="status_con">
-                <p>订单编号：00001</p>
-                <p>金额为：￥827</p>
+                <p class="order_id_op">订单编号：</p>
+                <p class="total_op">金额为：￥</p>
                 <p>您确定已经到款？</p>
                 <div class="pop_submit pad_none">
-                    <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('confirm_rmb')" />
+                    <input type="button" value="确 定" class="loginbtn" onclick="order_op(20);Popup.closed('confirm_rmb')" />
                     <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('confirm_rmb')" />
                 </div>
             </div>
@@ -167,14 +188,71 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
          <div class="status">
             <div class="img_icon"><img src="images/icon1.gif" /></div>
             <div class="status_con">
-                <p>订单编号：00001</p>
+                <p class="order_id_op">订单编号：</p>
                 <p>确定要生产此订单？</p>
                 <div class="pop_submit pad_none">
-                    <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('orders')" />
+                    <input type="button" value="确 定" class="loginbtn" onclick="order_op(30);Popup.closed('orders')" />
                     <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('orders')" />
                 </div>
             </div>
          </div>
+    </div>
+</div>
+<!-- 弹出层 打印发货单 -->
+<div class="popping sty900" id="print" style="display:none;">
+    <div class="popping_title">
+        <h2>打印发货单</h2>
+        <div class="closed" onclick="Popup.closed('print')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="popping_content">
+        <div class="print">
+            <div class="print_logo">
+              <img src="images/logo.jpg" />
+            </div>
+            <div class="print_order">
+                <h2><label>订单号：</label><p id="print_order_id"></p></h2>
+                <h3><label>订购时间：</label><p id="print_cdate"></p></h3>
+            </div>
+            <div class="print_list">
+                <table width="100%">
+                    <tr>
+                        <td class="sty">收花人姓名</td>
+                        <td class="sty_l sty1" id="print_cust_name"></td>
+                        <td class="sty">收花人电话</td>
+                        <td class="sty_l sty1" id="print_cust_mobile"></td>
+                    </tr>
+                    <tr>
+                        <td class="sty">收花人地址</td>
+                        <td colspan="3" class="sty_l" id="print_cust_address"></td>
+                    </tr>
+                    <tr>
+                        <td class="sty">花礼名称</td>
+                        <td colspan="3" class="sty_l" id="print_prod_name"></td>
+                    </tr>
+                    <tr>
+                        <td class="sty">送花日期</td>
+                        <td colspan="3" class="sty_l" id="print_book_date"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="signature">
+                <h2>收花人签字：</h2>
+            </div>
+            <div class="print_order">
+                <h2>
+                    <span>花范儿</span>
+                    <p>花有品人有范儿，传情达意尽在花范儿</p>
+                </h2>
+                <h3>
+                    <span>欢迎关注花范儿官方微博：@花范儿花店（sina）</span>
+                    <p>www.huafaner.com</p>
+                </h3>
+            </div>
+        </div>
+        <div class="pop_submit_con">
+            <input type="button" value="打 印" class="loginbtn" onclick="printdiv();order_op(40)" />
+            <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('print')" />
+        </div>
     </div>
 </div>
 <!-- 弹出层 确认发货 -->
@@ -187,11 +265,11 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
          <div class="status">
             <div class="img_icon"><img src="images/icon1.gif" /></div>
             <div class="status_con">
-                <p>订单编号：00001</p>
-                <p>金额为：￥827</p>
+                <p class="order_id_op">订单编号：</p>
+                <p class="total_op">金额为：￥</p>
                 <p>您确定要发货？</p>
                 <div class="pop_submit pad_none">
-                    <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('shipments')" />
+                    <input type="button" value="确 定" class="loginbtn" onclick="order_op(50);Popup.closed('shipments')" />
                     <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('shipments')" />
                 </div>
             </div>
@@ -208,34 +286,11 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
          <div class="status">
             <div class="img_icon"><img src="images/icon1.gif" /></div>
             <div class="status_con">
-                <p>订单编号：00001</p>
+                <p class="order_id_op">订单编号：</p>
                 <p>您确定要此订单已经成功完成？</p>
                 <div class="pop_submit pad_none">
-                    <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('success')" />
+                    <input type="button" value="确 定" class="loginbtn" onclick="order_op(60);Popup.closed('success')" />
                     <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('success')" />
-                </div>
-            </div>
-         </div>
-    </div>
-</div>
-
-<!-- 弹出层 取消 -->
-<div class="popping sty350" id="cancel" style="display:none;">
-    <div class="popping_title">
-        <h2>取消</h2>
-        <div class="closed" onclick="Popup.closed('cancel')"><a href="javascript:void(0)">×</a></div>
-    </div>
-    <div class="popping_content">
-         <div class="status">
-            <div class="img_icon"><img src="images/icon1.gif" /></div>
-            <div class="status_con">
-                <h3>您确定要取消此订单？如确定取消请填写取消原因。</h3>
-                <p>取消原因：</p>
-                <p><textarea class="pop_textarea" rows="" cols="" name=""></textarea></p>
-                <div class="error">请输入取消原因</div>
-                <div class="pop_submit pad_none">
-                    <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('cancel')" />
-                    <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('cancel')" />
                 </div>
             </div>
          </div>
@@ -254,70 +309,5 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
             <input type="button" value="上 传" class="loginbtn" onclick="Popup.closed('upload')" />
             <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('upload')" />
         </div>
-    </div>
-</div>
-<!-- 弹出层 打印发货单 -->
-<div class="popping sty900" id="print" style="display:none;">
-    <div class="popping_title">
-        <h2>打印发货单</h2>
-        <div class="closed" onclick="Popup.closed('print')"><a href="javascript:void(0)">×</a></div>
-    </div>
-    <div class="popping_content">        
-        
-        <div class="print">
-            <div class="print_logo">
-              <img src="images/logo.jpg" />
-            </div>
-            <div class="print_order"><h2><label>订单号：</label><p>12345678904564</p></h2><h3><label>订购时间：</label><p>2012-08-29 19:20:58</p></h3></div>
-            <div class="print_list">
-                <table width="100%">
-                  <tr>
-                    <td class="sty">收花人姓名</td>
-                    <td class="sty_l sty1">大牛</td>
-                    <td class="sty">收花人电话</td>
-                    <td class="sty_l sty1">12345678907</td>
-                  </tr>
-                  <tr>
-                    <td class="sty">收花人姓名</td>
-                    <td class="sty_l sty1">大牛</td>
-                    <td class="sty">收花人电话</td>
-                    <td class="sty_l sty1">12345678907</td>
-                  </tr>
-                  <tr>
-                    <td class="sty">收花人地址</td>
-                    <td colspan="3" class="sty_l">北京市朝阳区朝外大街甲6号万通中心D座23层 , 100020</td>
-                  </tr>
-                  <tr>
-                    <td class="sty">花礼名称</td>
-                    <td colspan="3" class="sty_l">花礼名称花礼名称花礼名称花礼名称</td>
-                  </tr>
-                  <tr>
-                    <td class="sty">送花日期</td>
-                    <td colspan="3" class="sty_l">2012-08-29 08:00AM--19:00AM</td>
-                  </tr>
-                </table>
-          </div>
-            <div class="signature">
-                <h2>收花人签字：</h2>
-            </div>
-            <div class="print_order">
-                <h2>
-                    <span>花范儿</span>
-                    <p>花有品人有范儿，传情达意尽在花范儿</p>
-                </h2>
-                <h3>
-                    <span>欢迎关注花范儿官方微博：@花范儿花店（sina）</span>
-                    <p>www.huafaner.com</p>
-                </h3>
-                
-            </div>
-        </div>
-        
-        
-        <div class="pop_submit_con">
-            <input type="button" value="打 印" class="loginbtn" onclick="Popup.closed('print')" />
-            <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('print')" />
-        </div>
-        
     </div>
 </div>

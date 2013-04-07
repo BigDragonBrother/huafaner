@@ -161,7 +161,7 @@ if($order['only_order_id']>0)
     </div>
     <div class="con_list">
         <span class="con_tit">实付金额：</span>
-        <p><input id="total_pay" class="same" type="text" /></p>
+        <p><input id="total_pay" class="same" type="text" value="<?php echo $order['total_pay'];?>"/></p>
         <div class="error">金额不能为空/金额格式不正确！</div>
     </div>
     <div class="con_list pad_n">
