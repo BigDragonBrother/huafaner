@@ -106,7 +106,6 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
                         break;
                     case 30:
                         echo '<a href="javascript:void(0)" onclick="order_op_print(',$v['order_id'],');Popup.popping(\'print\',true)">打印发货单</a>';
-                        //echo '<a href="print_doc.php?id=',$v['order_id'],'">打印发货单</a>';
                         echo '<a href="javascript:void(0)" onclick="order_op_pre(',$v['order_id'],',',$v['total'],');Popup.popping(\'cancel\',true)">取消</a>';
                         break;
                     case 40:
