@@ -18,7 +18,7 @@ class Conf
     //cookie
     public static $pageSet = array("page_size" => 10, "cache_time" => 30, "cache_type" => "mem");
     public static $cookieSet = array('domain' => 'huafanerb.com', 'path' => '/', 'lifetime' => 144000, 'numlifetime' => 14400);
-    public static $urlSet = array('registerurl'=>'http://huafanerb.com/index.php?t=reg','loginurl' => 'http://huafanerb.com/index.php?t=login', 'homepage' => 'http://huafanerb.com/index.php','domain'=>'http://huafanerb.com/huafaner/');
+    public static $urlSet = array('registerurl'=>'http://huafanerb.com/index.php?t=reg','loginurl' => 'http://huafanerb.com/index.php?t=login', 'homepage' => 'http://huafanerb.com/index.php','domain'=>'http://huafanerb.com/');
     
     //memcache
     public static $memCacheHost = array(array('127.0.0.1', 11211, 33), array('127.0.0.1', 11211, 33));
