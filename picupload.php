@@ -3,7 +3,7 @@ include_once 'conf.inc';
 include_once PATH_LIB.'/tools.inc';
 include_once PATH_LIB.'/CreatMiniature.inc';
 
-if ($_FILES['pic']["error"] > 0) 
+if ($_FILES["pic"]["error"] > 0) 
 {
     echo json_encode("上传失败");
     return;

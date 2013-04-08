@@ -43,12 +43,6 @@ class orderDal {
  
     static function orderop($newstatus,$order_id,$order_cancel_desc)
     {
-<<<<<<< HEAD
-        if($newstatus==0)
-            $sql="update hua_order set order_status=$newstatus,order_cancel_desc='$order_cancel_desc' where order_id=$order_id";
-        else
-            $sql="update hua_order set order_status=$newstatus where order_id=$order_id";
-=======
         $a="";
         switch ($newstatus) {
             case 0:
@@ -69,8 +63,17 @@ class orderDal {
             default:
                 break;
         }
-        $sql="update hua_order set order_status=$newstatus,udate=now() $a where order_id=$order_id";
->>>>>>> get the udate
+        if($newstatus==0)
+        {
+            $sql="update hua_order set order_status=$newstatus,
+        order_cancel_desc='$order_cancel_desc',udate=now() $a
+        where order_id=$order_id";
+        }
+        else
+        {
+            $sql="update hua_order set order_status=$newstatus,udate=now() $a where order_id=$order_id";
+        }
+        echo $sql;
         if (!is_object(DB::huaDB()))
             return array();
         $row = DB::huaDB()->simplePrepare($sql);

@@ -3,7 +3,7 @@ include_once 'conf.inc';
 include_once PATH_LIB . '/tools.inc';
 include_once PATH_BLL . '/prodBll.inc';
 
-$dict_list=prodBll::getDict();
+$dict_list=prodBll::getDict('prod_tag');
 $prod_type=Tools::getValue('type');
 $prod_tag=Tools::getValue('tag');
 
@@ -40,10 +40,7 @@ elseif ($prod_tag!='') {
         <dl class="w_890">
             <?php
                 foreach ($dict_list as $k => $v) {
-                    if($v['dict_type']=="tag_2")
-                    {
-                        echo "<dd><a href=\"javascript:void(0)\" onclick=\"list_add('",$v['dict_id'],"','",$v['dict_name'],"')\">",$v['dict_name'],"</a></dd>";
-                    }
+                    echo "<dd><a href=\"javascript:void(0)\" onclick=\"list_add('",$v['dict_id'],"','",$v['dict_name'],"')\">",$v['dict_name'],"</a></dd>";
                 }
             ?>
         </dl>

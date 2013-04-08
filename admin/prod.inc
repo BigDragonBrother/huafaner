@@ -196,17 +196,17 @@ else
         <div class="radio_list">
             <p>
                 <label for="a1">
-                <input name="prod_onshelf_type" checked="checked" type="radio" value="1" />
+                <input name="prod_onshelf_type"  checked="checked" type="radio" value="1" />
                 立即上架</label>
             </p>
             <p>
                 <label for="a2">
-                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==1?'checked="checked"':''; ?> type="radio" value="2" />设定</label>
-                <input type="text" id="prod_onshelf_time" name="prod_onshelf_time" value="<?php echo $prod&$prod['prod_onshelf_type']==1?$prod['prod_onshelf_time']:''; ?>" class="same sty85"/>上架
+                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==2?'checked="checked"':''; ?> type="radio" value="2" />设定</label>
+                <input type="text" id="prod_onshelf_time" name="prod_onshelf_time" value="<?php echo $prod&$prod['prod_onshelf_type']==2?$prod['prod_onshelf_time']:''; ?>" class="same sty85"/>上架
             </p>
             <p>
                 <label for="a3">
-                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==2?'checked="checked"':''; ?> type="radio" value="3" />放入仓库</label>
+                <input name="prod_onshelf_type" <?php echo $prod&$prod['prod_onshelf_type']==3?'checked="checked"':''; ?> type="radio" value="3" />放入仓库</label>
             </p>
         </div>
     </div>

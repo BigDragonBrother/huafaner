@@ -97,12 +97,12 @@ if(isset($_COOKIE['user_id']))
                     <!-- 保养说明 -->
                     <div class="det_rcon line_ser">
                         <h3>保养说明</h3>
-                        <p class="text_lin"><?php echo $prod['prod_area_range']; ?></p>
+                        <p class="text_lin"><?php echo $prod['prod_care_desc_dict']; ?></p>
                     </div>
                     <!-- 订购说明 -->
                     <div class="det_rcon line_ser">
                         <h3>订购说明</h3>
-                        <p class="text_lin"><?php echo $prod['prod_freight']; ?></p>
+                        <p class="text_lin"><?php echo $prod['prod_order_desc_dict']; ?></p>
                     </div>
                     <!-- 您可能也会喜欢喜欢 -->
                     <div class="det_rcon">

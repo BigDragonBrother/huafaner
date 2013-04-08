@@ -57,6 +57,6 @@ class="sel"
 </dl>
 <dl>
     <dt>页面管理</dt>
-    <dd><a href="首页.html">首页</a></dd>
-    <dd><a href="专题活动页.html">专题活动页</a></dd>
+    <dd><a href="admin.php?k=design_index">首页</a></dd>
+    <dd><a href="admin.php?k=design_sub">专题活动页</a></dd>
 </dl>

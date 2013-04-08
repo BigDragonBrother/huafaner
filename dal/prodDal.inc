@@ -132,7 +132,7 @@ class prodDal {
     }
     
     static function getProdByname($prod_name) {
-        $sql = "select * from hua_prod where prod_name='$prod_name' and prod_cat=1";
+        $sql = "select * from hua_prod where prod_name='$prod_name'";
         if (!is_object(DB::huaDB()))
             return array();
         $result = DB::huaDB()->allPrepare($sql);
@@ -144,8 +144,12 @@ class prodDal {
     }
 
     static function getProdByid($prod_id) {
-        $sql = "select a.*,b.dict_name from hua_prod a
-            left join hua_dict b on a.prod_type=b.dict_id 
+        $sql = "select a.*,b.dict_name prod_type_dict,
+            c.dict_desc prod_care_desc_dict,d.dict_desc prod_order_desc_dict
+            from hua_prod a
+            left join hua_dict b on a.prod_type=b.dict_id
+            left join hua_dict c on a.prod_care_desc=c.dict_id
+            left join hua_dict d on a.prod_order_desc=d.dict_id
             where prod_id=$prod_id";
         if (!is_object(DB::huaDB()))
             return array();
@@ -224,27 +228,27 @@ class prodDal {
     }
     static function getProdTopN($n) {
         $sql = "select 
-            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_id,a.prod_name,a.prod_title,
             a.prod_sale_price,a.prod_onshelf_type,b.pic_path
             from hua_prod a
             left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
             where 
-            prod_onshelf_type=1 and prod_cat=1
-            order by a.prod_show_seq desc limit $n";
+            prod_onshelf_type=1
+            order by a.prod_id desc limit $n";
         if (!is_object(DB::huaDB()))
             return array();
         return DB::huaDB()->allPrepare($sql);
     }
     static function getProdByType($prod_type) {
         $sql = "select 
-            a.prod_id,a.prod_show_seq,a.prod_name,a.prod_title,
+            a.prod_id,a.prod_name,a.prod_title,
             a.prod_sale_price,a.prod_onshelf_type,b.pic_path
             from hua_prod a
             left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
             where 
-            prod_onshelf_type=1 and prod_cat=1
+            prod_onshelf_type=1
             and prod_type=$prod_type
-            order by a.prod_show_seq desc";
+            order by a.prod_id desc";
         if (!is_object(DB::huaDB()))
             return array();
         return DB::huaDB()->allPrepare($sql);
