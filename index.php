@@ -1,12 +1,11 @@
 <?php
 include_once 'conf.inc';
 include_once PATH_LIB . '/tools.inc';
+include_once PATH_BLL . '/designBll.inc';
 include_once PATH_BLL . '/prodBll.inc';
-include_once PATH_BLL . '/subBll.inc';
 
-$prod_list = prodBll::getProdTopN(100);
-$sub_list= subBll::getBigSubs(5);
-$small_sub_list= subBll::getSmallSubs(4);
+$d_var=designBll::get_design('index');
+var_dump($d_var['d_var']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -23,84 +22,6 @@ $small_sub_list= subBll::getSmallSubs(4);
     </head>
     <body>
         <?php include_once PATH_INC . '/head.inc'; ?>
-        <!-- 网站海报
-        <div class="banner">
-            <div class="demo">
-                <div class="num">
-                    <?php
-                        if (count($sub_list) > 1) {
-                        foreach ($sub_list as $k => $v) {
-                            if ($k == 0) {
-                                echo "<a class=\"cur\">" . ($k + 1) . "</a>";
-                            } else {
-                                echo "<a class=\"\">" . ($k + 1) . "</a>";
-                            }
-                        }
-                    }
-                    ?>
-                </div>
-                <ul>
-                    <?php
-                        foreach($sub_list as $k=>$v)
-                        {
-                            if($k==0)
-                            {
-                                echo "<li style=\"display: block;\"><a href=\"sub.php?id=".$v['sub_id']."\" target=\"blank\"><img src=\"".$v['sub_pic']."\"></a></li>";
-                            }
-                            else
-                            {
-                                echo "<li style=\"display: none;\"><a href=\"sub.php?id=".$v['sub_id']."\" target=\"blank\"><img src=\"".$v['sub_pic']."\"></a></li>";
-                            }
-                        }
-                    ?>
-                </ul>
-            </div>
-        </div> -->
-        <!-- 首页当期热卖 
-        <div class="main">
-            <h2>当期热卖</h2>
-            <ul class="pout_box">
-                <?php
-                    foreach ($small_sub_list as $k=>$v)
-                    {
-                        $temp=substr($v['prod_id_list'],0,strlen($v['prod_id_list'])-1);
-                        echo "<li class=\"prods\"><a href=\"prod.php?id=".$temp."\" target=\"blank\"><img src=\"".$v['sub_pic']."\" /></a></li>";
-                    }
-                ?>
-            </ul>-->
-            <!-- 当期热卖
-            <div class="main">
-                <h2>经典设计</h2>
-                <div class="pout_box wrap">
-                    <?php
-                    foreach ($prod_list as $k => $v) {
-                        $picname_arr=explode('.',$v['pic_path']);
-                        ?>
-                        <div class="prod">
-                            <div class="prod_img">
-                                <a href="prod.php?id=<?php echo $v['prod_id']; ?>" target="blank">
-                                    <img src="<?php  echo $picname_arr[0],'_310.',$picname_arr[1]; ?>" />
-                                </a>
-                            </div>
-                            <div class="prod_info" style="display:none">
-                                <div class="send">
-                                    ￥<?php echo number_format($v['prod_sale_price'], 1); ?>
-                                </div>
-                                <div class="prod_con">
-                                    <dl>
-                                        <dt><a href="prod.php?id=<?php echo $v['prod_id']; ?>"><?php echo $v['prod_name']; ?></a></dt>
-                                        <dd><?php echo $v['prod_title']; ?></dd>
-                                    </dl>
-                                    <h4><a href="prod.php?id=<?php echo $v['prod_id']; ?>" class="buy"></a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-            </div>
-        </div> -->
         <!-- 海报区 -->
         <div class="ind_banner">
             <div class="banner_bj clearer">

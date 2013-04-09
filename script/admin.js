@@ -233,6 +233,8 @@ function showRequest()
 function showResponse(data)
 {
     $('#pic'+pic).attr('src',data);
+    $('#desc'+pic).val($('#file_poster_desc').val());
+    $('#prod'+pic).val();
 }
 
 function deletesubstr(p,s)
@@ -484,4 +486,39 @@ function orderlistclean()
     $('#cust_mobile').val('');
     $('#book_date_low').val('');
     $('#book_date_high').val('');
+}
+
+function design_index_commit()
+{
+    design_string = 'pic_nav:'+$('#pic_nav').attr('src')
+        +';pic_poster1:'+$('#pic_poster1').attr('src')
+        +';pic_poster2:'+$('#pic_poster2').attr('src')
+        +';pic_file_poster1:'+$('#pic_file_poster1').attr('src')
+        +';pic_file_poster2:'+$('#pic_file_poster2').attr('src')
+        +';pic_file_poster3:'+$('#pic_file_poster3').attr('src')
+        +';pic_file_poster4:'+$('#pic_file_poster4').attr('src')
+        +';desc_file_poster1:'+$('#desc_file_poster1').attr('src')
+        +';desc_file_poster2:'+$('#desc_file_poster2').attr('src')
+        +';desc_file_poster3:'+$('#desc_file_poster3').attr('src')
+        +';desc_file_poster4:'+$('#desc_file_poster4').attr('src')
+        +';prod_file_poster1:'+$('#prod_file_poster1').attr('src')
+        +';prod_file_poster2:'+$('#prod_file_poster2').attr('src')
+        +';prod_file_poster3:'+$('#prod_file_poster3').attr('src')
+        +';prod_file_poster4:'+$('#prod_file_poster4').attr('src');
+    $.ajax({
+        url:"dbport.php",
+        data:{
+            action:"design_index",
+            design_var:design_string
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(data)
+        {
+            if(data)
+            {
+                alert('首页更新成功');
+            };
+        }
+    });
 }

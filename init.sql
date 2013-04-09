@@ -188,3 +188,15 @@ udate datetime
 alter table hua_sub add sub_pic_list varchar(500);
 alter table hua_sub add sub_pic_main varchar(500);
 alter table hua_sub add sub_desc varchar(500);
+
+页面设计表
+create table hua_design
+(
+d_id int not null auto_increment primary key,
+d_page varchar(200),
+d_var varchar(500),
+cdate datetime,
+udate datetime
+)
+
+

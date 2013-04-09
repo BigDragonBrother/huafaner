@@ -49,10 +49,18 @@
     	<h3>最新设计</h3>
         <div class="new_design">
             <div class="imgpic sty300">
-                <a href="javascript:void(0)" onclick="Popup.popping('file_poster',true)">点击上传</a>
+                <a href="javascript:void(0)" onclick="pic='_file_poster1';Popup.popping('file_poster',true)">
+                    <img id="pic_file_poster1" alt="点击上传图片" style="height:143px;width:300px;" src=""/>
+                </a>
+                <input type="hidden" id="desc_file_poster1" value="" />
+                <input type="hidden" id="prod_file_poster1" value="" />
             </div>
             <div class="imgpic sty300">
-                <a href="javascript:void(0)" onclick="Popup.popping('file_poster',true)">点击上传</a>
+                <a href="javascript:void(0)" onclick="pic='_file_poster2';Popup.popping('file_poster',true)">
+                    <img id="pic_file_poster2" alt="点击上传图片" style="height:143px;width:300px;" src=""/>
+                </a>
+                <input type="hidden" id="desc_file_poster2" value="" />
+                <input type="hidden" id="prod_file_poster2" value="" />
             </div>
         </div>
         <div class="clearer"></div>
@@ -89,10 +97,18 @@
     	<h3>经典热卖</h3>
         <div class="new_design">
             <div class="imgpic sty300">
-                <a href="javascript:void(0)" onclick="Popup.popping('file_poster',true)">点击上传</a>
+                <a href="javascript:void(0)" onclick="pic='_file_poster3';Popup.popping('file_poster',true)">
+                    <img id="pic_file_poster3" alt="点击上传图片" style="height:143px;width:300px;" src=""/>
+                </a>
+                <input type="hidden" id="desc_file_poster3" value="" />
+                <input type="hidden" id="prod_file_poster3" value="" />
             </div>
             <div class="imgpic sty300">
-                <a href="javascript:void(0)" onclick="Popup.popping('file_poster',true)">点击上传</a>
+                <a href="javascript:void(0)" onclick="pic='_file_poster4';Popup.popping('file_poster',true)">
+                    <img id="pic_file_poster4" alt="点击上传图片" style="height:143px;width:300px;" src=""/>
+                </a>
+                <input type="hidden" id="desc_file_poster4" value="" />
+                <input type="hidden" id="prod_file_poster4" value="" />
             </div>
         </div>
         <div class="clearer"></div>
@@ -156,7 +172,7 @@
 <div class="clearer"></div>
 <div class="btn_submit">
     <input type="button" value="预 览" class="loginbtn" />
-    <input type="button" value="提 交" class="loginbtn" />
+    <input type="button" value="提 交" class="loginbtn" onclick="design_index_commit()" />
 </div>
 
 
@@ -197,54 +213,6 @@
         </form>
     </div>
 </div>
-<!-- 弹出层 删除海报 -->
-<div class="popping sty350" id="del_poster" style="display:none;">
-	<div class="popping_title">
-    	<h2>删除海报</h2>
-        <div class="closed" onclick="Popup.closed('del_poster')"><a href="javascript:void(0)">×</a></div>
-    </div>
-    <div class="pop_infocon">
-        	<h3>你确定是要删除此海报么？</h3>
-        </div>
-     
-    <div class="pop_submit_con">
-        <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('del_poster')" />
-        <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('del_poster')" />
-    </div>
-</div>
-<!-- 弹出层 移动前后 -->
-<div class="popping sty350" id="forward_poster" style="display:none;">
-	<div class="popping_title">
-    	<h2>上移</h2>
-        <div class="closed" onclick="Popup.closed('forward_poster')"><a href="javascript:void(0)">×</a></div>
-    </div>
-    <div class="popping_content">
-    	 <div class="status">
-         	<div class="img_icon"><img src="images/icon1.gif" /></div>
-            <div class="popping_content">
-            	<h3>您确定是将此位置上移一个么？</h3> 
-                <div class="pop_submit pad_none">
-                    <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('forward_poster')" />
-                    <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('forward_poster')" />
-                </div>
-            </div>
-         </div>
-    </div>
-    
-    <div class="popping_title">
-    	<h2>上移成功</h2>
-        <div class="closed" onclick="Popup.closed('forward_poster')"><a href="javascript:void(0)">×</a></div>
-    </div>
-    <div class="popping_content">
-            <div class="pop_infocon">
-                <h3>此海报已经上移成功！</h3>
-            </div>
-            <div class="pop_submit_con">
-                <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('forward_poster')" />
-                <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('forward_poster')" />
-            </div>
-    </div>
-</div>
 <!-- 弹出层 上传小海报 -->
 <div class="popping sty600" id="file_poster" style="display:none;">
 	<div class="popping_title">
@@ -252,8 +220,16 @@
         <div class="closed" onclick="Popup.closed('file_poster')"><a href="javascript:void(0)">×</a></div>
     </div>
      <div class="content">
-        <div class="con_list"><span class="con_tit">上传图片：</span><p><input name="" class="" type="file" /></p></div>
-        <div class="con_list"><span class="con_tit">图片描述：</span><p><input name="" class="same" type="text" /></p></div>
+        <form id="form_pic_file_poster" name="form_pic_file_poster" action="picupload.php" method="post" enctype="multipart/form-data">
+        <div class="con_list">
+            <span class="con_tit">上传图片：</span>
+            <p><input id="pic" name="pic" type="file" /></p>
+        </div>
+        </form>
+        <div class="con_list">
+            <span class="con_tit">图片描述：</span>
+            <p><input id="file_poster_desc" class="same" type="text" /></p>
+        </div>
         <div class="con_list">
         	<span class="con_tit">选择商品：</span>
         	<div class="pad_l120">
@@ -285,7 +261,7 @@
         </div>
      </div>
     <div class="pop_submit_con">
-        <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('file_poster')" />
+        <input type="button" value="确 定" class="loginbtn" onclick="fileupload('form_pic_file_poster');Popup.closed('file_poster')" />
         <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('file_poster')" />
     </div>
 </div>
@@ -333,5 +309,56 @@
     <div class="pop_submit_con">
         <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('file_com')" />
         <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('file_com')" />
+    </div>
+</div>
+
+
+
+<!-- 弹出层 删除海报 -->
+<div class="popping sty350" id="del_poster" style="display:none;">
+    <div class="popping_title">
+        <h2>删除海报</h2>
+        <div class="closed" onclick="Popup.closed('del_poster')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="pop_infocon">
+            <h3>你确定是要删除此海报么？</h3>
+        </div>
+     
+    <div class="pop_submit_con">
+        <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('del_poster')" />
+        <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('del_poster')" />
+    </div>
+</div>
+<!-- 弹出层 移动前后 -->
+<div class="popping sty350" id="forward_poster" style="display:none;">
+    <div class="popping_title">
+        <h2>上移</h2>
+        <div class="closed" onclick="Popup.closed('forward_poster')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="popping_content">
+         <div class="status">
+            <div class="img_icon"><img src="images/icon1.gif" /></div>
+            <div class="popping_content">
+                <h3>您确定是将此位置上移一个么？</h3> 
+                <div class="pop_submit pad_none">
+                    <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('forward_poster')" />
+                    <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('forward_poster')" />
+                </div>
+            </div>
+         </div>
+    </div>
+    
+    <div class="popping_title">
+        <h2>上移成功</h2>
+        <div class="closed" onclick="Popup.closed('forward_poster')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="popping_content">
+            <div class="pop_infocon">
+                <h3>此海报已经上移成功！</h3>
+            </div>
+            <div class="pop_submit_con">
+                <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('forward_poster')" />
+                <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('forward_poster')" />
+            </div>
     </div>
 </div>

@@ -5,6 +5,7 @@ include_once PATH_BLL.'/prodBll.inc';
 include_once PATH_BLL.'/userBll.inc';
 include_once PATH_BLL.'/orderBll.inc';
 include_once PATH_BLL.'/subBll.inc';
+include_once PATH_BLL.'/designBll.inc';
 include_once PATH_LIB.'/mail.inc';
 include_once PATH_LIB."/cookie.inc";
 
@@ -257,6 +258,9 @@ switch ($action)
         $secure = $_SERVER['SERVER_PORT'] == 443 ? 1 : 0;
         $expire = time() - 3600;
         setcookie("adminuser", 0, $expire, $cookieSet["path"], $cookieSet["domain"], $secure);
+        break;
+    case 'design_index':
+        $return=designBll::design_index(Tools::getValue('design_var'));
         break;
     default:
 }
