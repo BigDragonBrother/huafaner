@@ -98,9 +98,9 @@ function Prod_add(prod_id)
             prod_title:$('#prod_title').val().trim(),
             prod_type:$('#prod_type').val(),
             prod_sale_price:$('#prod_sale_price').val(),
-            pic0:$('#pic0').attr('src'),
-            pic1:$('#pic1').attr('src'),
-            pic2:$('#pic2').attr('src'),
+            pic0:$('#pic1').attr('src'),
+            pic1:$('#pic2').attr('src'),
+            pic2:$('#pic3').attr('src'),
             prod_word:$('#prod_word').val().trim(),
             prod_medium:$('#prod_medium').val().trim(),
             standards:$('#standards').val().trim(),
@@ -108,7 +108,7 @@ function Prod_add(prod_id)
             prod_order_desc:$('#prod_order_desc').val(),
             prod_tag:str,
             prod_stock_up:$('#prod_stock_up').val().trim(),
-            prod_date_range:$('#prod_date_range').val().trim(),
+            prod_date_range:0,//$('#prod_date_range').val().trim(),
             prod_onshelf_type:$('input:radio[name="prod_onshelf_type"]:checked').val(),
             prod_onshelf_time:$('#prod_onshelf_time').val().trim()
         },
@@ -127,8 +127,8 @@ function Prod_add(prod_id)
                 return;
             }
             alert(succ);
-            location.reload();
-            //window.location.href='admin.php?k=prodlist';
+            //location.reload();
+            window.location.href='admin.php?k=prodlist';
         }
     });
 }
