@@ -480,7 +480,7 @@ function fileupload(obj)
 function showRequest() 
 {}
 function showResponse(data)
-{
+{    
     if(pic!="")
     {
         $('#pic'+pic).attr('src',data);

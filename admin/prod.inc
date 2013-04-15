@@ -11,6 +11,7 @@ if($prod_id)
 else
 {
     $prod=false;
+    $prod_pic=array();
     $prod_tag=array();
 }
 ?>
@@ -64,18 +65,18 @@ else
     <div class="con_list">
         <span class="con_tit">商品图片：</span>
         <div class="imgpic">
-            <a href="javascript:void(0)" onclick="pic=0;Popup.popping('add_pic',true);">
-                <img id="pic0" style="width:150px;height:143px;" alt="列表图" src="<?php echo count($prod_pic)>0?$prod_pic[0]['pic_path']:''; ?>"/>
-            </a>
-        </div>
-        <div class="imgpic">
             <a href="javascript:void(0)" onclick="pic=1;Popup.popping('add_pic',true);">
-                <img id="pic1" style="width:150px;height:143px;" alt="缩略图" src="<?php echo count($prod_pic)>1?$prod_pic[1]['pic_path']:''; ?>"/>
+                <img id="pic1" style="width:150px;height:143px;" alt="列表图" src="<?php echo $prod_id&count($prod_pic)>0?$prod_pic[0]['pic_path']:''; ?>"/>
             </a>
         </div>
         <div class="imgpic">
             <a href="javascript:void(0)" onclick="pic=2;Popup.popping('add_pic',true);">
-                <img id="pic2" style="width:150px;height:143px;" alt="详情图" src="<?php echo count($prod_pic)>2?$prod_pic[2]['pic_path']:''; ?>"/>
+                <img id="pic2" style="width:150px;height:143px;" alt="缩略图" src="<?php echo $prod_id&count($prod_pic)>1?$prod_pic[1]['pic_path']:''; ?>"/>
+            </a>
+        </div>
+        <div class="imgpic">
+            <a href="javascript:void(0)" onclick="pic=3;Popup.popping('add_pic',true);">
+                <img id="pic3" style="width:150px;height:143px;" alt="详情图" src="<?php echo $prod_id&count($prod_pic)>2?$prod_pic[2]['pic_path']:''; ?>"/>
             </a>
         </div>
         <div class="error">请上传列表图/详情图！</div>                

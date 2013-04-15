@@ -24,7 +24,7 @@ switch ($action)
         $return =  prodBll::delDict(Tools::getValue('value'));
         break;
     case 'prod_add':
-        $pic_arr=array(0=>Tools::getValue('pic0'),1=>Tools::getValue('pic1'),2=>Tools::getValue('pic2'));
+        $pic_arr=array(0=>Tools::getValue('pic1'),1=>Tools::getValue('pic2'),2=>Tools::getValue('pic3'));
         $return = prodBll::addProd(
                     Tools::getValue('prod_name'),
                     str_replace("'","\\'",Tools::getValue('prod_title')),
