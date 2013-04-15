@@ -1,11 +1,7 @@
 <?php
 include_once 'conf.inc';
 include_once PATH_LIB . '/tools.inc';
-include_once PATH_BLL . '/designBll.inc';
 include_once PATH_BLL . '/prodBll.inc';
-
-$d_var=designBll::get_design('index');
-var_dump($d_var['d_var']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +22,33 @@ var_dump($d_var['d_var']);
         <div class="ind_banner">
             <div class="banner_bj clearer">
                 <div class="banner_l">
-                    <img src="images/a1.jpg" />
+            
+            <div class="demo">
+                <div class="num">
+                    <?php
+                        foreach ($design['poster'] as $k => $v) {
+                            if($k==0)
+                                echo '<a class="cur">',$k+1,'</a>';
+                            else
+                                echo '<a class="">',$k+1,'</a>';
+                        }
+                    ?>
+                </div>
+                <ul>
+                    <?php 
+                        foreach ($design['poster'] as $k => $v) {
+                    ?>
+                    <li <?php echo $k==0?'style="display: block;"':''; ?>>
+                        <a href="sub.php?id=<?php echo $v['poster_sub']; ?>">
+                            <img src="<?php echo $v['poster_pic'] ?>" style="width:729px;height:366px;"/>
+                        </a>
+                    </li>
+                    <?php
+                        }
+                    ?>
+                </ul>
+            </div>
+        
                 </div>
                 <div class="ind_share">
                     <div class="infolist"><img src="images/a2.jpg" /></div>
@@ -43,29 +65,41 @@ var_dump($d_var['d_var']);
             <h2>最新<span class="green">设计</span></h2>
             <ul class="ind_rec">
                 <li>
-                    <p><a href="#"><img src="images/a3.jpg" /></a></p>
-                    <div class="title"><span>雨后</span></div>
+                    <p>
+                        <a href="prod.php?id=<?php echo $design['file_poster'][0]['poster_prod']; ?>">
+                            <img src="<?php echo $design['file_poster'][0]['poster_pic']; ?>" style="width:477px;height:320px;"/>
+                        </a>
+                    </p>
+                    <div class="title"><span><?php echo $design['file_poster'][0]['poster_desc']; ?></span></div>
                 </li>
                 <li>
-                    <p><a href="#"><img src="images/a4.jpg" /></a></p>
-                    <div class="title"><span>Flower Dance 花之舞</span></div>
+                    <p>
+                        <a href="prod.php?id=<?php echo $design['file_poster'][1]['poster_prod']; ?>">
+                            <img src="<?php echo $design['file_poster'][1]['poster_pic']; ?>" style="width:477px;height:320px;"/>
+                        </a>
+                    </p>
+                    <div class="title"><span><?php echo $design['file_poster'][1]['poster_desc']; ?></span></div>
                 </li>
             </ul>
         </div>
         <div class="ind_main">
             <dl class="ind_con">
-                <dd>
-                    <p><a href="#"><img src="images/a5.jpg" /></a></p>
-                    <div class="title"><span>海洋风情多肉桌摆</span></div>        
-                </dd>
-                <dd>
-                    <p><a href="#"><img src="images/a6.jpg" /></a></p>
-                    <div class="title"><span>红与绿</span></div> 
-                </dd>
-                <dd>
-                    <p><a href="#"><img src="images/a7.jpg" /></a></p>
-                    <div class="title"><span>爱情的香与毒</span></div>
-                </dd>
+                <?php
+                    for($i=0;$i<=2;$i++)
+                    {
+                        $prod_com=prodBll::getProdPicByid($design['prod'][$i]['prod_id']);
+                ?>
+                        <dd>
+                            <p>
+                                <a href="prod.php?id=<?php echo $prod_com['prod_id']; ?>">
+                                    <img src="<?php echo $prod_com['list_pic']; ?>" style="width:310px;height:296px;"/>
+                                </a>
+                            </p>
+                            <div class="title"><span><?php echo $prod_com['prod_name']; ?></span></div>
+                        </dd>
+                <?php
+                    }
+                ?>
             </dl>
         </div>
         <!-- 经典热卖 -->
@@ -73,41 +107,41 @@ var_dump($d_var['d_var']);
             <h2><span class="blue">经典</span>热卖</h2>
             <ul class="ind_rec">
                 <li>
-                    <p><a href="#"><img src="images/a3.jpg" /></a></p>
-                    <div class="title"><span>雨后</span></div>
+                    <p>
+                        <a href="prod.php?id=<?php echo $design['file_poster'][2]['poster_prod']; ?>">
+                            <img src="<?php echo $design['file_poster'][2]['poster_pic']; ?>" style="width:477px;height:320px;"/>
+                        </a>
+                    </p>
+                    <div class="title"><span><?php echo $design['file_poster'][2]['poster_desc']; ?></span></div>
                 </li>
                 <li>
-                    <p><a href="#"><img src="images/a4.jpg" /></a></p>
-                    <div class="title"><span>Flower Dance 花之舞</span></div>
+                    <p>
+                        <a href="prod.php?id=<?php echo $design['file_poster'][3]['poster_prod']; ?>">
+                            <img src="<?php echo $design['file_poster'][3]['poster_pic']; ?>" style="width:477px;height:320px;"/>
+                        </a>
+                    </p>
+                    <div class="title"><span><?php echo $design['file_poster'][3]['poster_desc']; ?></span></div>
                 </li>
             </ul>
         </div>
         <div class="ind_main">
             <dl class="ind_con">
-                <dd>
-                    <p><a href="#"><img src="images/a5.jpg" /></a></p>
-                    <div class="title"><span>海洋风情多肉桌摆</span></div>        
-                </dd>
-                <dd>
-                    <p><a href="#"><img src="images/a6.jpg" /></a></p>
-                    <div class="title"><span>红与绿</span></div> 
-                </dd>
-                <dd>
-                    <p><a href="#"><img src="images/a7.jpg" /></a></p>
-                    <div class="title"><span>爱情的香与毒</span></div>
-                </dd>
-                <dd>
-                    <p><a href="#"><img src="images/a5.jpg" /></a></p>
-                    <div class="title"><span>海洋风情多肉桌摆</span></div>        
-                </dd>
-                <dd>
-                    <p><a href="#"><img src="images/a6.jpg" /></a></p>
-                    <div class="title"><span>红与绿</span></div> 
-                </dd>
-                <dd>
-                    <p><a href="#"><img src="images/a7.jpg" /></a></p>
-                    <div class="title"><span>爱情的香与毒</span></div>
-                </dd>
+                <?php
+                    for($i=3;$i<=8;$i++)
+                    {
+                        $prod_com=prodBll::getProdPicByid($design['prod'][$i]['prod_id']);
+                ?>
+                        <dd>
+                            <p>
+                                <a href="prod.php?id=<?php echo $prod_com['prod_id']; ?>">
+                                    <img src="<?php echo $prod_com['list_pic']; ?>" style="width:310px;height:296px;"/>
+                                </a>
+                            </p>
+                            <div class="title"><span><?php echo $prod_com['prod_name']; ?></span></div>
+                        </dd>
+                <?php
+                    }
+                ?>
             </dl>
         </div>
         <!-- 花范儿故事 -->

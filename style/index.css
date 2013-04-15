@@ -84,7 +84,14 @@ body { background:url(../images/flower_bj.gif);}
 .ind_share ul { margin-top:6px;}
 .ind_share ul li.mar_r { margin-right:3px;}
 
-
+/* 网站海报 */
+/*.banner,.topic { padding:10px 24px 10px 0;}*/
+.demo{ position:relative; width:729px; height:366px; overflow:hidden;}
+.num{ position:absolute; z-index:8; right:10px; bottom:10px;}
+.num a{ width:23px; height:23px; line-height:23px; color:#fff; display:inline-block; text-align:center; margin:0 3px; cursor:pointer; font-size:12px;}
+.num a.cur{ background:url(../images/icon1.png) no-repeat;_background:none;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='images/icon1.png'); color:#fff;}
+.demo ul{ position:relative;}
+.demo ul li{ position:absolute; z-index:1;}
 
 
 /* 主体信息  ****************************************************************************************************/

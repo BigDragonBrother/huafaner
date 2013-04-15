@@ -66,6 +66,9 @@ switch ($action)
     case 'prod_onshelf':
         $return =  prodBll::prodOnshelf(Tools::getValue('prod_id'),Tools::getValue('prod_onshelf_status'));
         break;
+    case 'get_prodpic_byid':
+        $return =  prodBll::getProdPicByid(Tools::getValue('prod_id'));
+        break;
     case 'list_search':
         $return=prodBll::listSearch(Tools::getValue('dict_list'));
         break;

@@ -84,6 +84,11 @@ class prodBll
     {
         return prodDal::getProdByid($prod_id);
     }
+
+    static function getProdPicByid($prod_id)
+    {
+        return prodDal::getProdPicByid($prod_id);
+    }
     
     static function getProdByids($prod_id_list)
     {

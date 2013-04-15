@@ -145,12 +145,14 @@ class prodDal {
 
     static function getProdByid($prod_id) {
         $sql = "select a.*,b.dict_name prod_type_dict,
-            c.dict_desc prod_care_desc_dict,d.dict_desc prod_order_desc_dict
+            c.dict_desc prod_care_desc_dict,d.dict_desc prod_order_desc_dict,
+            e.pic_path
             from hua_prod a
             left join hua_dict b on a.prod_type=b.dict_id
             left join hua_dict c on a.prod_care_desc=c.dict_id
             left join hua_dict d on a.prod_order_desc=d.dict_id
-            where prod_id=$prod_id";
+            left join hua_prod_pic e on a.prod_id=e.prod_id and e.pic_seq=0
+            where a.prod_id=$prod_id";
         if (!is_object(DB::huaDB()))
             return array();
         $result = DB::huaDB()->allPrepare($sql);
@@ -159,6 +161,23 @@ class prodDal {
         } else {
             return array();
         }
+    }
+
+    static function getProdPicByid($prod_id){
+        $sql = "select a.*,b.pic_path list_pic,c.pic_path small_pic,d.pic_path big_pic
+            from hua_prod a
+            left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+            left join hua_prod_pic c on a.prod_id=c.prod_id and c.pic_seq=1
+            left join hua_prod_pic d on a.prod_id=d.prod_id and d.pic_seq=2
+            where a.prod_id=$prod_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $result = DB::huaDB()->allPrepare($sql);
+        if ($result->data) {
+            return $result->data[0];
+        } else {
+            return array();
+        }   
     }
 
     static function getOnlyprods($n)
@@ -188,7 +207,7 @@ class prodDal {
     static function getProdByids($prod_id_list) {
         $sql = "select a.*,b.* from hua_prod a
             left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
-            where a.prod_id in ($prod_id_list) and prod_cat=1";
+            where a.prod_id in ($prod_id_list)";
         if (!is_object(DB::huaDB()))
             return array();
         $result = DB::huaDB()->allPrepare($sql);

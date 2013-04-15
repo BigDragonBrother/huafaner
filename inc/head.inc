@@ -1,8 +1,17 @@
+<?php
+include_once PATH_BLL . '/designBll.inc';
+$d_var=designBll::get_design('index');
+$design=json_decode($d_var['d_var'],true);
+?>
 <!-- 网站头部 -->
 <div class="header_top">
     <div class="header">
-        <div class="logo"><a href="index.php"><img src="images/logo.jpg"  alt="返回花范儿首页" title="返回花范儿首页" /></a></div>
-        <div class="top_banner"><img src="images/banner.jpg" /></div>
+        <div class="logo">
+            <a href="index.php"><img src="images/logo.jpg"  alt="返回花范儿首页" title="返回花范儿首页" /></a>
+        </div>
+        <div class="top_banner">
+            <img src="<?php echo $design['pic_nav']; ?>" style="height:60px;width:370px;"/>
+        </div>
     </div>
 </div>
 <!-- 菜单导航 -->

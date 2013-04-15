@@ -194,7 +194,7 @@ create table hua_design
 (
 d_id int not null auto_increment primary key,
 d_page varchar(200),
-d_var varchar(500),
+d_var varchar(1000),
 cdate datetime,
 udate datetime
 )

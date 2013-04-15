@@ -207,35 +207,6 @@ function prod_onshelf(prod_id,prod_onshelf_status)
     });
 }
 
-var pic;
-function fileupload(obj)
-{
-    //pic=obj;
-    var options = {
-    dataType:'json', 
-    type:'post',
-    url:'picupload.php',
-    beforeSubmit:showRequest,  
-    success:showResponse,
-    error : function(XMLResponse) {  
-                    alert(XMLResponse.responseText);  
-                    alert('操作失败！');  
-    } 
-    };
-    $('#'+obj).ajaxSubmit(options);
-}
-
-function showRequest() 
-{ 
-    
-}
-
-function showResponse(data)
-{
-    $('#pic'+pic).attr('src',data);
-    $('#desc'+pic).val($('#file_poster_desc').val());
-    $('#prod'+pic).val();
-}
 
 function deletesubstr(p,s)
 {
@@ -488,23 +459,96 @@ function orderlistclean()
     $('#book_date_high').val('');
 }
 
+//upload the picture
+var pic;
+function fileupload(obj)
+{
+    //pic=obj;
+    var options = {
+    dataType:'json', 
+    type:'post',
+    url:'picupload.php',
+    beforeSubmit:showRequest,
+    success:showResponse,
+    error : function(XMLResponse) {  
+                    alert(XMLResponse.responseText);  
+                    alert('操作失败！');  
+    } 
+    };
+    $('#'+obj).ajaxSubmit(options);
+}
+function showRequest() 
+{}
+function showResponse(data)
+{
+    if(pic!="")
+    {
+        $('#pic'+pic).attr('src',data);
+        $('#desc'+pic).val($('#file_poster_desc').val());
+        $('#prod'+pic).val($(":radio[name='file_poster_prods']:checked").val());
+        pic="";
+    }
+    if(poster_cur!="")
+    {
+        $('#'+poster_cur).children('.imgpic').children().children().attr('src',data);
+        $('#'+poster_cur).children('.imgpic').children().children().attr('value',$(":radio[name='poster_sub']:checked").val());
+        poster_cur="";
+    }
+}
+
+//design the index
+var poster_index=1;
+var poster_cur;
+var prod_cur;
+function design_add_poster(obj)
+{
+    poster_index=poster_index+1;
+    var temp = $(obj).parent().parent().html();
+    $(obj).parent().parent().parent().append('<div class="poster" id="poster_'+poster_index+'">'+temp+'</div>');
+}
+function design_add_prod()
+{
+    var prod_id = $(":radio[name='file_com_prods']:checked").val();
+    if(prod_id>0)
+    {
+        $('#pic'+prod_cur).attr('value',prod_id);
+        //$('#pic'+prod_cur).attr('src',prod_id);
+        $.ajax({
+        url:"dbport.php",
+        data:{
+            action:"get_prodpic_byid",
+            prod_id:prod_id
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(data)
+        {
+            $('#pic'+prod_cur).attr('src',data['list_pic']);
+        }
+    });
+    }
+}
 function design_index_commit()
 {
-    design_string = 'pic_nav:'+$('#pic_nav').attr('src')
-        +';pic_poster1:'+$('#pic_poster1').attr('src')
-        +';pic_poster2:'+$('#pic_poster2').attr('src')
-        +';pic_file_poster1:'+$('#pic_file_poster1').attr('src')
-        +';pic_file_poster2:'+$('#pic_file_poster2').attr('src')
-        +';pic_file_poster3:'+$('#pic_file_poster3').attr('src')
-        +';pic_file_poster4:'+$('#pic_file_poster4').attr('src')
-        +';desc_file_poster1:'+$('#desc_file_poster1').attr('src')
-        +';desc_file_poster2:'+$('#desc_file_poster2').attr('src')
-        +';desc_file_poster3:'+$('#desc_file_poster3').attr('src')
-        +';desc_file_poster4:'+$('#desc_file_poster4').attr('src')
-        +';prod_file_poster1:'+$('#prod_file_poster1').attr('src')
-        +';prod_file_poster2:'+$('#prod_file_poster2').attr('src')
-        +';prod_file_poster3:'+$('#prod_file_poster3').attr('src')
-        +';prod_file_poster4:'+$('#prod_file_poster4').attr('src');
+    var design_string = '{"pic_nav":"'+$('#pic_nav').attr('src')+'","poster":[';
+    
+    $('[id=pic_poster]').each(function(){
+        design_string = design_string + '{"poster_pic":"'+ $(this).attr('src')
+            + '","poster_sub":"'+ $(this).attr('value') +'"},';
+    });
+    design_string = design_string.substring(0,design_string.length-1) + '],"file_poster":[';
+
+    for (var i = 1; i <= 4; i++) {
+        design_string=design_string+'{"poster_pic":"'+$('#pic_file_poster'+i).attr('src')
+            + '","poster_desc":"'+$('#desc_file_poster'+i).val()
+            + '","poster_prod":"'+$('#prod_file_poster'+i).val()+'"},';
+    }
+    design_string = design_string.substring(0,design_string.length-1) + '],"prod":[';
+
+    for (var i = 1; i <= 9; i++) {
+        design_string=design_string+'{"prod_id":"'+$('#pic_file_com'+i).attr('value')+'"},';
+    }
+    design_string = design_string.substring(0,design_string.length-1) + ']}';
     $.ajax({
         url:"dbport.php",
         data:{
