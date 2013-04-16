@@ -48,7 +48,7 @@ include_once PATH_LIB . '/tools.inc';
                     	<p><input name="reg_mobile" id="reg_mobile" type="text" onkeydown="EnterReg(event,'<?php echo Tools::getValue('id')?Tools::getValue('id'):0; ?>')" class="rl_input" tabindex="4"/></p>
                     </dd>
                     <dd><input name="reg_license" id="reg_license" type="checkbox" value="" checked class="mr5" tabindex="5"/>
-                        <label>我已阅读并同意<a href="service.php">《服务条款》</a></label></dd>
+                        <label>我已阅读并同意<a href="service.php" target="_blank">《服务条款》</a></label></dd>
                     <dd>
                         <a href="javascript:void(0)" class="btn_reg" tabindex="6" onclick="Register('<?php echo Tools::getValue('id'); ?>')">
                             立即注册

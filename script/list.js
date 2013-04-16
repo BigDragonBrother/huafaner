@@ -1,3 +1,4 @@
+$('#search_list').val('');
 function list_add(dict_id,dict_name)
 {
 	dict_list=$('#search_list').val().split(",");

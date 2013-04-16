@@ -34,7 +34,12 @@ $cust=array();
                 <dl class="input_list pad_bnone">
                     <dd>
                         <label for="b1">称谓*</label>
-                        <input name="cust_title" type="text" id="cust_title" class="inputtext sty160" value="<?php echo empty($cust)?'':$cust['cust_title']; ?>"/>
+                        <select name="cust_title" id="cust_title">
+                            <option value="0">请选择</option>
+                            <option value="小姐" <?php echo !empty($cust)&$cust['cust_title']=='小姐'?'selected':''; ?>>小姐</option>
+                            <option value="女士" <?php echo !empty($cust)&$cust['cust_title']=='女士'?'selected':''; ?>>女士</option>
+                            <option value="先生" <?php echo !empty($cust)&$cust['cust_title']=='先生'?'selected':''; ?>>先生</option>
+                        </select>
                         <div class="form_error" id="cust_title_error" style="display:none">收花人怎么称呼</div>
                     </dd>
                     <dd>

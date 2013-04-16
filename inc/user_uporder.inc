@@ -30,7 +30,7 @@ $minicust_list = userBll::getMiniCust($cust_list);
                             $pd_frpid=split("，",$order['payment']);
                             $path = "p2_Order=".$order['order_id']."&p3_Amt=".$order['total']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];
                             ?>
-                                <a href="yeepay/req.php?<?php echo $path; ?>" class="sty90"><p>立即去支付</p></a>
+                                <a href="yeepay/req.php?<?php echo $path; ?>" class="sty90"><p>立即支付</p></a>
                             <?php
                         }
                         ?>
@@ -98,14 +98,12 @@ $minicust_list = userBll::getMiniCust($cust_list);
                         <table class="list_info">
                             <tr>
                                 <th class="line">花礼名称</th>
-                                <th class="line">原价</th>
                                 <th class="line">现价</th>
                                 <th class="line">数量</th>
                                 <th class="line">小计</th>
                             </tr>
                             <tr>
                                 <td class="text_left"><?php echo $order['prod_name']; ?></td>
-                                <td>￥<?php echo number_format($order['prod_origin_price'], 1); ?></td>
                                 <td>￥<?php echo number_format($order['prod_sale_price'], 1); ?></td>
                                 <td id="prod_cnt" value="<?php echo $order['order_quantity']; ?>"><?php echo $order['order_quantity']; ?></td>
                                 <td id="bargin_price" value="<?php echo $order['prod_sale_price'] * $cnt; ?>">

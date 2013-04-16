@@ -29,7 +29,9 @@ $prod_id=Tools::getValue('prod_id');
                 <dl>
                     <dd>
                         <div class="reg_tit">
-                            <label>邮箱</label><span class="reg_error" id="login_email_error" style="display:none">请输入邮箱</span>
+                            <label>邮箱</label>
+                            <span class="reg_error" id="login_email_error" style="display:none">请输入邮箱</span>
+                            <span class="reg_error" id="login_error" style="display:none">用户名或密码错误</span>
                         </div>
                         <p><input name="login_email" id="login_email" type="text" class="rl_input" /></p>
                     </dd>
@@ -44,9 +46,6 @@ $prod_id=Tools::getValue('prod_id');
                         <a href="user.php?m=user_forgetpwd" class="fl_r">忘记密码?</a></dd>
                     <dd>
                         <a href="javascript:void(0)" class="btn_reg" onclick="Login(<?php echo $prod_id; ?>)">登&nbsp;&nbsp; 录</a>
-                        <div class="reg_tit">
-                            <span class="reg_error" id="login_error" style="display:none">用户名密码错误</span>
-                        </div>
                     </dd>
                 </dl>
             </div>

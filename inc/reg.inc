@@ -2,7 +2,7 @@
     <?php 
         if(strpos($_SERVER['PHP_SELF'],'register.php')>0)
         {
-            echo '<p>已经是花范儿会员，现在<a href="login.php">登陆</a></p>';
+            echo '<p>已经是花范儿会员，现在<a href="login.php">登录</a></p>';
         }
         else
         {

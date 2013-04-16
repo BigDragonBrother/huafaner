@@ -349,9 +349,9 @@ class prodDal {
     static function listSearch($dict_list)
     {
         $sql="select * from hua_prod a
-        join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
+        left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
         where 
-        a.prod_onshelf_type=1 and a.prod_cat=1
+        a.prod_onshelf_type=1
         and a.prod_id in
         (
             select prod_id 

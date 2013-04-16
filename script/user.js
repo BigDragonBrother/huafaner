@@ -259,7 +259,7 @@ function Edit_inform()
 function CustAdd()
 {
     $(".form_error").hide();
-    if($('#cust_title').val().trim()=="")
+    if($('#cust_title').val()==0)
     {
         $('#cust_title_error').show();
         return 0;

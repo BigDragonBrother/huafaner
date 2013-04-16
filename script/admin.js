@@ -99,7 +99,7 @@ function Prod_add(prod_id)
             prod_type:$('#prod_type').val(),
             prod_sale_price:$('#prod_sale_price').val(),
             pic0:$('#pic1').attr('src'),
-            pic1:$('#pic2').attr('src'),
+            pic1:'',//$('#pic2').attr('src'),
             pic2:$('#pic3').attr('src'),
             prod_word:$('#prod_word').val().trim(),
             prod_medium:$('#prod_medium').val().trim(),
@@ -463,7 +463,6 @@ function orderlistclean()
 var pic;
 function fileupload(obj)
 {
-    //pic=obj;
     var options = {
     dataType:'json', 
     type:'post',

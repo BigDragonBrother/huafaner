@@ -65,18 +65,18 @@ else
     <div class="con_list">
         <span class="con_tit">商品图片：</span>
         <div class="imgpic">
-            <a href="javascript:void(0)" onclick="pic=1;Popup.popping('add_pic',true);">
+            <a href="javascript:void(0)" onclick="pic=1;$('#pic').val('');Popup.popping('add_pic',true);">
                 <img id="pic1" style="width:150px;height:143px;" alt="列表图" src="<?php echo count($prod_pic)>0?$prod_pic[0]['pic_path']:''; ?>"/>
             </a>
         </div>
-        <div class="imgpic">
-            <a href="javascript:void(0)" onclick="pic=2;Popup.popping('add_pic',true);">
+        <!--<div class="imgpic">
+            <a href="javascript:void(0)" onclick="pic=2;$('#pic').val('');Popup.popping('add_pic',true);">
                 <img id="pic2" style="width:150px;height:143px;" alt="缩略图" src="<?php echo count($prod_pic)>1?$prod_pic[1]['pic_path']:''; ?>"/>
             </a>
-        </div>
+        </div>-->
         <div class="imgpic">
-            <a href="javascript:void(0)" onclick="pic=3;Popup.popping('add_pic',true);">
-                <img id="pic3" style="width:150px;height:143px;" alt="详情图" src="<?php echo count($prod_pic)>2?$prod_pic[2]['pic_path']:''; ?>"/>
+            <a href="javascript:void(0)" onclick="pic=3;$('#pic').val('');Popup.popping('add_pic',true);">
+                <img id="pic3" style="width:150px;height:143px;" alt="详情图" src="<?php echo count($prod_pic)>1?$prod_pic[1]['pic_path']:''; ?>"/>
             </a>
         </div>
         <div class="error">请上传列表图/详情图！</div>                
@@ -261,7 +261,7 @@ else
         <div class="closed" onclick="Popup.closed('add_pic')"><a href="javascript:void(0)">×</a></div>
     </div>
     <div class="popping_content">
-        <form id="pic" name="pic" action="picupload.php" method="post" enctype="multipart/form-data">
+        <form id="pic_prod" name="pic_prod" action="picupload.php" method="post" enctype="multipart/form-data">
         <div class="con_list">
             <span class="pop_tit">选择文件：</span>
             <p>
@@ -270,7 +270,7 @@ else
             <div class="error">文件格式错误！</div>
         </div>
         <div class="pop_submit">
-            <input type="button" value="上 传" class="loginbtn" onclick="fileupload('pic');Popup.closed('add_pic')" />
+            <input type="button" value="上 传" class="loginbtn" onclick="fileupload('pic_prod');Popup.closed('add_pic')" />
             <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('add_pic')" />
         </div>
         </form>

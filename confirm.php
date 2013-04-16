@@ -24,7 +24,7 @@ if ($prod_id == '') {
         Tools::redirectLink(Conf::$urlSet['homepage']);
     }
 }
-$prod_pic=prodBll::getProdPic($prod_id,Conf::$prod_pic_seq['缩略图']);
+$prod_pic=prodBll::getProdPic($prod_id,Conf::$prod_pic_seq['列表页']);
 
 $only_order_id = Tools::getValue('only_order_id');
 
@@ -211,9 +211,9 @@ if($last_order)
                             </h4>
                             <div class="info_content porel">
                                 <ul>
-                                    <li class="seltectradio"><input name="book_card" type="radio" value="不需要卡片" checked <?php echo $last_order['book_card']=="不需要卡片"?"checked":""; ?> id="c1" onclick="$('.greeting_n').hide();$('.greeting_replace').hide();"/><label for="c1">不需要卡片</label></li>
-                                    <li class="seltectradio"><input name="book_card" type="radio" value="我要一张空白卡片" <?php echo $last_order['book_card']=="我要一张空白卡片"?"checked":""; ?> id="c2" class="greet_replace" /><label for="c2">我要一张空白卡片</label></li>
-                                    <li class="seltectradio"><input name="book_card" type="radio" value="我要一张代写卡片" <?php echo $last_order['book_card']=="我要一张代写卡片"?"checked":""; ?> id="c3" class="greet_n" /><label for="c3">我要一张代写卡片</label></li>
+                                    <li class="seltectradio"><input name="book_card" type="radio" value="不需要卡片" checked <?php echo $last_order&$last_order['book_card']=="不需要卡片"?"checked":""; ?> id="c1" onclick="$('.greeting_n').hide();$('.greeting_replace').hide();"/><label for="c1">不需要卡片</label></li>
+                                    <li class="seltectradio"><input name="book_card" type="radio" value="我要一张空白卡片" <?php echo $last_order&$last_order['book_card']=="我要一张空白卡片"?"checked":""; ?> id="c2" class="greet_replace" /><label for="c2">我要一张空白卡片</label></li>
+                                    <li class="seltectradio"><input name="book_card" type="radio" value="我要一张代写卡片" <?php echo $last_order&$last_order['book_card']=="我要一张代写卡片"?"checked":""; ?> id="c3" class="greet_n" /><label for="c3">我要一张代写卡片</label></li>
                                 </ul>
                                 <div class="greeting_n">
                                     <p>输入卡片留言:</p>
@@ -325,7 +325,11 @@ if($last_order)
                                             <th class="line_ser">小计</th>
                                         </tr>
                                         <tr>
-                                            <td><span><img src="<?php echo isset($prod_pic)?$prod_pic[0]['pic_path']:''; ?>" style="width:128px;height:122px;" /></span></td>
+                                            <td>
+                                                <span>
+                                                    <img src="<?php echo isset($prod_pic)?$prod_pic[0]['pic_path']:''; ?>" style="width:128px;height:122px;" />
+                                                </span>
+                                            </td>
                                             <td><?php echo $prod['prod_name']; ?></td>
                                             <td>￥<?php echo number_format($prod['prod_sale_price'], 1); ?></td>
                                             <td id="prod_cnt" value="<?php echo $cnt; ?>"><?php echo $cnt; ?></td>
@@ -342,7 +346,7 @@ if($last_order)
                                         <a name="datepicker_btn" href="javascript:void(0)"></a>
                                         <label class="wid"><span>送达日期</span></label>
                                         <input name="datepicker" type="text" id="datepicker" class="inputtext sty160" readonly/>
-                                        <div class="form_error" id="datepicker_error" style="display:none">请填写送达日期</div>
+                                        <div class="form_error" style="line-height:30px" id="datepicker_error" style="display:none">请填写送达日期</div>
                                     </li>
                                 </ol>
                             </div>
