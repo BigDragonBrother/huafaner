@@ -7,7 +7,7 @@ include_once PATH_BLL . '/prodBll.inc';
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>花范儿花艺工作室 - 最特别的网络花店_给你惊喜的网络花店_花艺个性设计_花艺量身定制</title>
+        <title>花范儿花店-你的花你的范儿</title>
         <link href="style/global.css" rel="stylesheet" type="text/css" />
         <link href="style/index.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>

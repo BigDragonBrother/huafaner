@@ -56,7 +56,18 @@ $type=Tools::getValue('type');
                     </div>
                     <div class="buy_pay mat_b20"></div>
                     <?php
-                } else {
+                }
+                elseif($order['payment'] == "货到付款")
+                {
+                    ?>
+                    <div class = "success line_ser">
+                        <h3>订单<?php echo $order_id; ?>已经提交成功，请向快递员支付<b class = "green">￥<?php echo $order['total']; ?>元</b></h3>
+                    </div>
+                    <div class="buy_pay mat_b20"></div>
+                    <?php
+                } 
+                else 
+                {
                     ?>
 
                     <div class = "success line_ser">
@@ -77,7 +88,7 @@ $type=Tools::getValue('type');
                 <div class="tip">您可以在<a href="user.php?m=user_order"><span class="green">'我的订单'</span></a>中查看或取消您的订单</div>
             </div>
         </div>
-        </div>
+
         <div class="clearer"></div>
         <?php include_once PATH_INC . '/foot.inc'; ?>
     </body>

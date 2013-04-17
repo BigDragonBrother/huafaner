@@ -19,7 +19,7 @@ if(isset($_COOKIE['user_id']))
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title><?php echo $prod['prod_name'],'-',$prod['prod_word']; ?></title>
+        <title><?php echo $prod['prod_name']; ?>-那些花-花范儿花店</title>
         <link href="style/global.css" rel="stylesheet" type="text/css" />
         <link href="style/index.css" rel="stylesheet" type="text/css" />
         <link href="style/jqzoom.css" rel="stylesheet" type="text/css" />

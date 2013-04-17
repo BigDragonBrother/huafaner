@@ -11,7 +11,10 @@ class prodDal {
 
         if (!is_object(DB::huaDB()))
             return array();
-        return DB::huaDB()->simplePrepare($sql);
+        $row = DB::huaDB()->simplePrepare($sql);
+        if (!$row->isEmpty()) {
+            return DB::huaDB()->lastInsertId();
+        }
     }
 
     static function getDict($type) {

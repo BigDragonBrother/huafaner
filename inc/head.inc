@@ -3,6 +3,7 @@ include_once PATH_BLL . '/designBll.inc';
 $d_var=designBll::get_design('index');
 $design=json_decode($d_var['d_var'],true);
 ?>
+<link rel="shortcut icon" href="images/favicon.ico" />
 <!-- 网站头部 -->
 <div class="header_top">
     <div class="header">

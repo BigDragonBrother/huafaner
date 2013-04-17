@@ -169,7 +169,7 @@ else
         <span class="con_tit">标签：</span>
         <div class="pad_l120">
             <div class="tag_info">
-                <ul>
+                <ul id="prod_tag_list">
                 <?php 
                     foreach ($dict_list as $k => $v) 
                     {

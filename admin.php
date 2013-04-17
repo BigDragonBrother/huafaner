@@ -10,7 +10,6 @@
 <script type="text/javascript" src="script/admin.js" ></script>
 <script language="javascript" src="script/layout.js"></script>
 <script language="javascript" src="script/Library-min.js"></script>
-
 <link href="style/jquery.ui.theme.css" rel="stylesheet" type="text/css"/>
 <link href="style/jquery.ui.datepicker.css" rel="stylesheet" type="text/css"/>
 <script language="javascript" src="script/jquery.ui.core.min.js"></script>
@@ -38,6 +37,7 @@ $(function(){
     $(".sty85").datepicker(options);
 });
 </script>
+<link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 <body>
     <!-- 网站头部 -->

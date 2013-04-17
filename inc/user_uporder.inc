@@ -25,7 +25,7 @@ $minicust_list = userBll::getMiniCust($cust_list);
                     <b>订单号：<?php echo $order['order_id'], "(", Conf::$order_status[$order['order_status']], ")" ?></b>
                     <div class="pay_er">
                         <?php
-                        if($order['payment']!='银行转账'&$order['order_status']==10)
+                        if($order['payment']!='银行转账'&$order['payment']!='货到付款'&$order['order_status']==10)
                         {
                             $pd_frpid=split("，",$order['payment']);
                             $path = "p2_Order=".$order['order_id']."&p3_Amt=".$order['total']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];

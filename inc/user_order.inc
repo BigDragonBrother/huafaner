@@ -41,7 +41,7 @@
                     <td>
                         <?php
                         if ($v['order_status'] == 10) {
-                            if($v['payment']!='银行转账')
+                            if($v['payment']!='银行转账'&$v['payment']!='货到付款')
                             {
                                 $pd_frpid=split("，",$v['payment']);
                                 $path = "p2_Order=".$v['order_id']."&p3_Amt=".$v['total']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];

@@ -12,7 +12,7 @@ if(Tools::getValue('order_mobile'))
     $where = $where." and order_mobile ='".Tools::getValue('order_mobile')."'";
 if(Tools::getValue('cust_mobile'))
     $where = $where." and cust_mobile ='".Tools::getValue('cust_mobile')."'";
-if(Tools::getValue('order_status'))
+if(Tools::getValue('order_status')!="")
     $where = $where." and order_status =".Tools::getValue('order_status');
 if(Tools::getValue('book_date_low'))
     $where = $where." and book_date >=".Tools::getValue('book_date_low');
@@ -20,7 +20,7 @@ if(Tools::getValue('book_date_high'))
     $where = $where." and book_date >=".Tools::getValue('book_date_high');
 if($where!="")
     $where = "where ".substr($where,4);
-
+$url="order_id=".Tools::getValue('order_id')."&cust_id=".Tools::getValue('cust_id')."&order_mobile=".Tools::getValue('order_mobile')."&cust_mobile=".Tools::getValue('cust_mobile')."&order_status=".Tools::getValue('order_status')."&book_date_low=".Tools::getValue('book_date_low')."&book_date_high=".Tools::getValue('book_date_high');
 $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
 ?>
 <div class="title"><h2>详单查询</h2></div>
@@ -126,9 +126,9 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
         <tr>
             <td colspan="10" class="bjnone">
                 <div class="pages">
-                    <a href="admin.php?k=orderlist">首页</a>
-                    <a href="admin.php?k=orderlist&page_num=<?php echo $page_num+1; ?>">下一页</a>
-                    <a href="admin.php?k=orderlist&page_num=<?php echo $page_num-1; ?>">上一页</a>
+                    <a href="admin.php?k=orderlist&<?php echo $url,'&page_num=1'; ?>">首页</a>
+                    <a href="admin.php?k=orderlist&<?php echo $url,'&page_num=',$page_num+1; ?>">下一页</a>
+                    <a href="admin.php?k=orderlist&<?php echo $url,'&page_num=',$page_num-1; ?>">上一页</a>
                 </div>
             </td>
         </tr>

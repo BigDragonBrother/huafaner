@@ -3,9 +3,9 @@ $user_id=Tools::getValue('user_id');
 $user_link=Tools::getValue('user_link');
 ?>
 <!--忘记密码-->
-<div class="content" style="margin-top:15px;<?php echo $user_link==""?"":"display:none;"; ?>" id="forgetpwd">
+<div class="ind_main" style="<?php echo $user_link==""?"":"display:none;"; ?>" id="forgetpwd">
 	<h1>个人资料</h1>
-	<div class="info">
+	<div class="detailed_info">
     	<form>
         <div class="edit">
             <h4 class="line">忘记密码</h4>
@@ -23,9 +23,9 @@ $user_link=Tools::getValue('user_link');
     </div>
 </div>
 <!--忘记密码1-->
-<div class="content" style="margin-top:15px;display:none;" id="forgetpwd1">
+<div class="ind_main" style="display:none;" id="forgetpwd1">
     <h1>个人资料</h1>
-    <div class="info">
+    <div class="detailed_info">
         <form>
         <div class="edit">
             <h4 class="line">忘记密码</h4>
@@ -46,9 +46,9 @@ $user_link=Tools::getValue('user_link');
 </div>
 
 <!--忘记密码2-->
-<div class="content" style="margin-top:15px;display:none;" id="forgetpwd2">
+<div class="ind_main" style="display:none;" id="forgetpwd2">
     <h1>个人资料</h1>
-    <div class="info">
+    <div class="detailed_info">
         <form>
         <div class="edit">
             <h4 class="line">忘记密码</h4>
@@ -67,9 +67,9 @@ $user_link=Tools::getValue('user_link');
 </div>
 
 <!--忘记密码3-->
-<div class="content" style="margin-top:15px;<?php echo $user_link==""?"display:none;":""; ?>" id="forgetpwd3">
+<div class="ind_main" style="<?php echo $user_link==""?"display:none;":""; ?>" id="forgetpwd3">
     <h1>个人资料</h1>
-    <div class="info">
+    <div class="detailed_info">
         <form>
         <div class="edit">
             <h4 class="line">重置密码</h4>
@@ -96,14 +96,14 @@ $user_link=Tools::getValue('user_link');
 </div>
 
 <!--忘记密码4-->
-<div class="content" style="margin-top:15px;display:none;" id="forgetpwd4">
+<div class="ind_main" style="display:none;" id="forgetpwd4">
     <h1>个人资料</h1>
-    <div class="info">
+    <div class="detailed_info">
         <form>
         <div class="edit">
             <h4 class="line">重置密码</h4>
             <ul>
-                <li id="reset_success">新密码已经设置成功，请<a href="<?php echo Conf::$urlset['loginurl']; ?>">登录</a></li>
+                <li id="reset_success">新密码已经设置成功，请<a href="<?php echo Conf::$urlSet['loginurl']; ?>">登录</a></li>
                 <li id="reset_fail">重置密码链接不对或已过期，请<a href="user.php?m=forgetpwd">重新找回密码</a></li>
             </ul>
         </div>

@@ -27,9 +27,9 @@ function Prod_type_add()
         },
         type: "POST",
         dataType: "json",
-        success: function()
+        success: function(data)
         {
-            location.reload();
+            $('#prod_type').append('<option value="'+data+'">'+$('#dict_prod_type').val()+'</option>');
         }
     });
 }
@@ -44,9 +44,10 @@ function Prod_tag_add()
         },
         type: "POST",
         dataType: "json",
-        success: function()
+        success: function(data)
         {
-            location.reload();
+            $('#prod_tag_list').append('<li><input name="prod_tag" type="checkbox" value="'+data+'"/>'+$('#dict_prod_tag').val()+'</li>');
+            //location.reload();
         }
     });
 }
@@ -127,8 +128,8 @@ function Prod_add(prod_id)
                 return;
             }
             alert(succ);
-            //location.reload();
-            window.location.href='admin.php?k=prodlist';
+            location.reload();
+            //window.location.href='admin.php?k=prodlist';
         }
     });
 }
@@ -361,7 +362,7 @@ function order_update()
             book_date:$('#book_date').val(),
             book_card:$('#book_card').val(),
             book_card_content:$('#book_card_content').val(),
-            order_sign:$('#order_sign').val(),
+            order_sign:'',//$('#order_sign').val(),
             remarks:$('#remarks').text(),
             total_pay:$('#total_pay').val()
         },
@@ -493,6 +494,9 @@ function showResponse(data)
         $('#'+poster_cur).children('.imgpic').children().children().attr('value',$(":radio[name='poster_sub']:checked").val());
         poster_cur="";
     }
+    $("[id='pic']").each(function(){
+            $(this).val('');
+        });
 }
 
 //design the index

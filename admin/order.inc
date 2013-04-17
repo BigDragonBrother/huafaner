@@ -130,13 +130,13 @@ if($order['only_order_id']>0)
         <p><textarea id="book_card_content" name="" cols="" rows="" class="textarea"><?php echo $order['book_card_content']; ?></textarea></p>
         <div class="error">卡片内容不能为空！</div>
     </div>
-    <div class="con_list">
+    <!--<div class="con_list">
         <span class="con_tit">落款：</span>
         <p><input id="order_sign" class="same" type="text" value="<?php echo $order['order_sign'];?>" /></p>
         <label for="a2">
             <input name="" class="inputcheckbox" id="a2" type="checkbox" value="" />匿名送花
         </label>
-        </div>
+    </div>-->
     <div class="con_list">
         <span class="con_tit">订单备注：</span>
         <p><textarea id="remarks" cols="" rows="" class="textarea"><?php echo $order['remarks'];?></textarea></p>
