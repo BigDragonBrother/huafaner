@@ -228,9 +228,9 @@ function selectProd(obj)
     }
 }
 
-function sub_add(sub_id)
+function sub_add(sub_type,sub_id)
 {
-    if(sub_id==undefined)
+    if(sub_id=='')
     {
         action="sub_add";
         succ="主题添加成功";
@@ -248,17 +248,16 @@ function sub_add(sub_id)
         url:"dbport.php",
         data:{
             action:action,
+            sub_type:sub_type,
             sub_id:sub_id,
-            sub_show_seq:$('#sub_show_seq').val().trim(),
             sub_name:$('#sub_name').val().trim(),
             sub_desc:$('#sub_desc').val().trim(),
-            sub_start:$('#sub_start').val(),
-            sub_end:$('#sub_end').val(),
-            sub_pic_main:$('#pic0').find('#pic_path').val(),
-            sub_pic_list:$('#pic1').find('#pic_path').val(),
-            sub_pic:$('#pic2').find('#pic_path').val(),
             sub_tag:str,
-            prod_id_list:$('#prod_id_list').text()
+            sub_pic_list:$('#pic_sub_list').attr('src'),
+            sub_pic:$('#pic_sub').attr('src'),
+            sub_on:$('input:radio[name="sub_on"]:checked').val(),
+            sub_start:$('#sub_start').val(),
+            prod_id_list:''//$('#prod_id_list').text()
         },
         type: "POST",
         dataType: "json",
@@ -270,7 +269,7 @@ function sub_add(sub_id)
                 return;
             }
             alert(succ);
-            window.location.href='admin.php?k=adminsublist';
+            //window.location.href='admin.php?k=sublist';
         }
     });
     

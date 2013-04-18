@@ -180,12 +180,11 @@ switch ($action)
         break;
     case 'sub_add':
         $return = subBll::sub_add(
+                Tools::getValue('sub_type'),
                 Tools::getValue('sub_name'),
                 Tools::getValue('sub_desc'),
-                Tools::getValue('sub_show_seq'),
+                Tools::getValue('sub_on'),
                 Tools::getValue('sub_start'),
-                Tools::getValue('sub_end'),
-                Tools::getValue('sub_pic_main'),
                 Tools::getValue('sub_pic_list'),
                 Tools::getValue('sub_pic'),
                 Tools::getValue('sub_tag'),
@@ -196,10 +195,8 @@ switch ($action)
                 Tools::getValue('sub_id'),
                 Tools::getValue('sub_name'),
                 Tools::getValue('sub_desc'),
-                Tools::getValue('sub_show_seq'),
+                Tools::getValue('sub_on'),
                 Tools::getValue('sub_start'),
-                Tools::getValue('sub_end'),
-                Tools::getValue('sub_pic_main'),
                 Tools::getValue('sub_pic_list'),
                 Tools::getValue('sub_pic'),
                 Tools::getValue('sub_tag'),

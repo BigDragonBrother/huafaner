@@ -3,9 +3,11 @@ include_once PATH_DAL.'/subDal.inc';
 
 class subBll
 {
-    static function sub_add($sub_name,$sub_desc,$sub_show_seq,$sub_start,$sub_end,$sub_pic_main,$sub_pic_list,$sub_pic,$sub_tag,$prod_id_list)
+    static function sub_add($sub_type,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$sub_tag,$prod_id_list)
     {
-        $sub_id =  subDal::sub_add($sub_name,$sub_desc,$sub_show_seq,$sub_start,$sub_end,$sub_pic_main,$sub_pic_list,$sub_pic,$sub_tag,$prod_id_list);
+        if($sub_start=="")
+            $sub_start=date("Y-m-d");
+        $sub_id =  subDal::sub_add($sub_type,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$prod_id_list);
         if(!$sub_id)
         {
             return false;
@@ -14,9 +16,11 @@ class subBll
         return true;
     }
     
-    static function sub_update($sub_id,$sub_name,$sub_desc,$sub_show_seq,$sub_start,$sub_end,$sub_pic_main,$sub_pic_list,$sub_pic,$sub_tag,$prod_id_list)
+    static function sub_update($sub_id,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$sub_tag,$prod_id_list)
     {
-        $result = subDal::sub_update($sub_id,$sub_name,$sub_desc,$sub_show_seq,$sub_start,$sub_end,$sub_pic_main,$sub_pic_list,$sub_pic,$sub_tag,$prod_id_list);
+        if($sub_start=="")
+            $sub_start=date("Y-m-d");
+        $result = subDal::sub_update($sub_id,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$prod_id_list);
         if(!$result)
         {
             return false;
@@ -24,15 +28,15 @@ class subBll
         subDal::updateSubTag($sub_tag,$sub_id);
         return true;
     }
-    
+
     static function getAllSub()
     {
         return subDal::getAllSub()->data;
     }
     
-    static function getSubList()
+    static function getList($sub_type)
     {
-        return subDal::getSubList()->data;
+        return subDal::getList($sub_type)->data;
     }
     
     static function getBigSubs($n)
@@ -45,9 +49,9 @@ class subBll
         return subDal::getSmallSubs($n)->data;
     }
     
-    static function getSubByid($sub_id)
+    static function getByid($sub_id)
     {
-        return subDal::getSubByid($sub_id)->data[0];
+        return subDal::getByid($sub_id)->data[0];
     }
 
     static function getSubTagBySubid($sub_id)

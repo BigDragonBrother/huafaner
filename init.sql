@@ -199,4 +199,20 @@ cdate datetime,
 udate datetime
 )
 
+create table hua_sub
+(
+sub_id int not null auto_increment primary key,
+sub_type varchar(10),
+sub_name varchar(100),
+sub_desc varchar(1000),
+sub_on varchar(5),
+sub_start varchar(100),
+sub_pic_list varchar(50),
+sub_pic varchar(50),
+prod_id_list varchar(500),
+cdate datetime,
+udate datetime
+)default charset=GBK;
+
+
 

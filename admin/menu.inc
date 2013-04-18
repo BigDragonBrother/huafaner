@@ -37,10 +37,10 @@ class="sel"
 </dl>
 <dl>
     <dt>专题管理</dt>
-    <dd><a href="发布专题.html">发布专题</a></dd>
-    <dd><a href="发布活动.html">发布活动</a></dd>
-    <dd><a href="维护专题.html">维护专题</a></dd>
-    <dd><a href="维护活动.html">维护活动</a></dd>
+    <dd><a href="admin.php?k=sub">发布专题</a></dd>
+    <dd><a href="admin.php?k=pub">发布活动</a></dd>
+    <dd><a href="admin.php?k=sublist">维护专题</a></dd>
+    <dd><a href="admin.php?k=publist">维护活动</a></dd>
 </dl>
 <dl>
     <dt>会员管理</dt>
