@@ -8,8 +8,8 @@ $sub_id = Tools::getValue('id');
 $sina_pic_share="";
 $qq_pic_share="";
 if ($sub_id) {
-    $sub = subBll::getSubByid($sub_id);
-    $prod_list = prodBll::getProdByids(substr($sub['prod_id_list'], 0, strlen($sub['prod_id_list']) - 1));
+    $sub = subBll::getByid($sub_id);
+    $prod_list = prodBll::getProdByids($sub['prod_id_list']);
     $sina_pic_share=Conf::$pic_path.$sub['sub_pic'];
     $qq_pic_share=$sina_pic_share;
 }

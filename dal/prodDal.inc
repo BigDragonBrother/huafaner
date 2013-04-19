@@ -279,7 +279,10 @@ class prodDal {
 
     static function getProds($where,$page_num=1,$page_size=10) {
         $start = $page_size*($page_num-1);
-        $sql = "select * from hua_prod $where
+        $sql = "select a.*,b.dict_name 
+            from hua_prod a
+            left join hua_dict b on a.prod_type=b.dict_id
+            $where
             order by prod_id desc limit $start,$page_size";
         if (!is_object(DB::huaDB()))
             return array();

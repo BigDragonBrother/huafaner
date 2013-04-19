@@ -7,7 +7,11 @@ class designBll
     {
     	return designDal::design_index($design_var)->data;
     }
-
+	
+	static function design_sublist($design_var)
+    {
+    	return designDal::design_sublist($design_var)->data;
+    }
     static function get_design($d_page)
     {
     	return designDal::get_design($d_page);

@@ -20,6 +20,11 @@ $where="";
 $page_num=1;
 $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
 ?>
+<script type="text/javascript">
+$(function(){
+$('#sub_prod_ids').val('');
+});
+</script>
 <div class="title">
     <h2>发布专题</h2><span>以下均为必填项</span>
 </div>
@@ -61,8 +66,19 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
             </div>
             <div class="clearer"></div>
             <div class="tag_info">
-                <ul>
-                    <li><span>商品名称</span><a href="#">×</a></li>
+                <input type="hidden" value="<?php echo $sub?$sub['prod_id_list']:''; ?>" id="sub_prod_ids" />
+                <ul id="sub_prod_list">
+                    <?php
+                    if($sub)
+                    {
+                        $sub_prod_ids=$sub['prod_id_list'].split(',');
+                        foreach ($sub_prod_ids as $k => $v) 
+                        {
+                            $prod=prodBll::getProdByid($v);
+                            echo '<li><span>',$prod['prod_name'],'</span><a href="javascript:void(0)" onclick="subDelProd(this)" value="',$prod['prod_id'],'">×</a></li>';
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -85,7 +101,7 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
         </div>
     </div>
     <div class="btn_submit">
-        <input type="button" value="发 布" class="loginbtn" />
+        <input type="button" value="发 布" class="loginbtn" onclick="sub_add('sub','<?php echo $sub?$sub['sub_id']:''; ?>')"/>
         <input type="button" value="取 消" class="loginbtn" />
     </div>
 </div>
@@ -129,14 +145,14 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
                 foreach ($prod_list as $k => $v) {
                 ?>
                     <tr>
-                        <td><input type="checkbox" name="sub" /></td>
+                        <td><input type="checkbox" name="sub_prod" value="<?php echo $v['prod_id'],':',$v['prod_name']; ?>"/></td>
                         <td><?php echo $v['prod_id']; ?></td>
                         <td><?php echo $v['prod_name']; ?></td>
-                        <td><?php echo $v['prod_type']; ?></td>
+                        <td><?php echo $v['dict_name']; ?></td>
                         <td><?php echo $v['prod_sale_price']; ?></td>
                         <td><?php echo $v['prod_onshelf_time']; ?></td>
-                        <td><?php echo $v['prod_onshelf_type']; ?></td>
-                        <td><a href="#">选择此商品</a></td>
+                        <td><?php echo Conf::$prod_onshelf_status[$v['prod_onshelf_type']]; ?></td>
+                        <td><a href="javascript:void(0)" onclick="$(this).parent().children('td:first').attr('checked','checked')">选择此商品</a></td>
                     </tr>
                 <?php
                 }
@@ -151,7 +167,7 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
             </table>
         </div>
         <div class="pop_submit">
-            <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('sel_product')" />
+            <input type="button" value="确 定" class="loginbtn" onclick="subAddProd();Popup.closed('sel_product')" />
         </div>
     </div>
 </div>

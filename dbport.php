@@ -262,6 +262,9 @@ switch ($action)
     case 'design_index':
         $return=designBll::design_index(Tools::getValue('design_var'));
         break;
+    case 'design_sublist':
+        $return=designBll::design_sublist(Tools::getValue('design_var'));
+        break;
     default:
 }
 

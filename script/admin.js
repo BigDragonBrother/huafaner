@@ -228,6 +228,45 @@ function selectProd(obj)
     }
 }
 
+function subAddProd()
+{
+    $("input[name='sub_prod']:checkbox:checked").each(function(){
+        prod_id = $(this).val().split(":")[0];
+        prod_name = $(this).val().split(":")[1];
+        
+        prod_list = $('#sub_prod_ids').val().split(",");
+        ishere=false;
+        for (var i = prod_list.length - 1; i >= 0; i--) {
+            if(prod_list[i]==prod_id)
+            {
+                ishere=true;
+            }
+        };
+        if(ishere)
+        {
+            return;
+        }
+        $('#sub_prod_ids').val($('#sub_prod_ids').val()+prod_id+',');
+        str='<li><span>'+prod_name+'</span><a href="javascript:void(0)" onclick="subDelProd(this)" value="'+prod_id+'">×</a></li>';
+        $('#sub_prod_list').append(str);
+    });
+}
+
+function subDelProd(obj)
+{
+    prod_id=$(obj).attr('value');
+    prod_list = $('#sub_prod_ids').val().split(",");
+    newlist="";
+    for (var i = prod_list.length - 1; i >= 0; i--) {
+        if(prod_list[i]!=prod_id)
+        {
+            newlist=newlist+prod_list[i]+',';
+        }
+    };
+    $('#sub_prod_ids').val(newlist);
+    $(obj).parent().remove();
+}
+
 function sub_add(sub_type,sub_id)
 {
     if(sub_id=='')
@@ -241,7 +280,7 @@ function sub_add(sub_type,sub_id)
         succ="主题更新成功";
     }
     var str="";
-    $("input[name='sub_tag']:checkbox:checked").each(function(){ //由于复选框一般选中的是多个,所以可以循环输出
+    $("input[name='sub_tag']:checkbox:checked").each(function(){ 
         str+=$(this).val()+",";
     }); 
     $.ajax({
@@ -257,7 +296,7 @@ function sub_add(sub_type,sub_id)
             sub_pic:$('#pic_sub').attr('src'),
             sub_on:$('input:radio[name="sub_on"]:checked').val(),
             sub_start:$('#sub_start').val(),
-            prod_id_list:''//$('#prod_id_list').text()
+            prod_id_list:$('#sub_prod_ids').val()
         },
         type: "POST",
         dataType: "json",
@@ -564,6 +603,33 @@ function design_index_commit()
             if(data)
             {
                 alert('首页更新成功');
+            };
+        }
+    });
+}
+function design_sublist_commit()
+{
+    var design_string = '{"poster":[';
+    
+    $('[id=pic_poster]').each(function(){
+        design_string = design_string + '{"poster_pic":"'+ $(this).attr('src')
+            + '","poster_sub":"'+ $(this).attr('value') +'"},';
+    });
+    design_string = design_string.substring(0,design_string.length-1) + ']}';
+
+    $.ajax({
+        url:"dbport.php",
+        data:{
+            action:"design_sublist",
+            design_var:design_string
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(data)
+        {
+            if(data)
+            {
+                alert('专题列表更新成功');
             };
         }
     });

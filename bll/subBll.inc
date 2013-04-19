@@ -7,7 +7,15 @@ class subBll
     {
         if($sub_start=="")
             $sub_start=date("Y-m-d");
-        $sub_id =  subDal::sub_add($sub_type,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$prod_id_list);
+        
+        $prod_ids="";
+        foreach (split(',', $prod_id_list) as $k => $v) {
+            if($v!='')
+                $prod_ids=$prod_ids.$v.',';
+        }
+        $prod_ids=substr($prod_ids, 0,strlen($prod_ids)-1);
+
+        $sub_id =  subDal::sub_add($sub_type,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$prod_ids);
         if(!$sub_id)
         {
             return false;

@@ -48,6 +48,7 @@ else
     	<div class="error">请上传列表页图片/详情页图片！</div>
     </div>
     <div class="con_list">
+        <input type="hidden" value="<?php echo $sub?$sub['prod_id_list']:''; ?>" id="sub_prod_ids" />
     	<span class="con_tit">上线时间：</span>
 	    <div class="radio_list">
         	<p>

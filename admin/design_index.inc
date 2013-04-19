@@ -2,7 +2,7 @@
 include_once PATH_BLL.'/prodBll.inc';
 include_once PATH_BLL.'/subBll.inc';
 $prod_list =prodBll::getProdTopN(100);
-$sub_list=subBll::getSubList();
+$sub_list=subBll::getAllSub();
 ?>
 <div class="title">
 	<h2>首页维护</h2>
@@ -220,14 +220,6 @@ $sub_list=subBll::getSubList();
             <div class="con_list">
                 <span class="pop_tit">选择专题：</span>
                 <div class="pad_l120">
-                    <div class="sel_com">
-                            <input name="poster_sub" type="radio" value="1" />
-                            <div class="img_com">sub1</div>
-                    </div>
-                    <div class="sel_com">
-                            <input name="poster_sub" type="radio" value="2" />
-                            <div class="img_com">sub2</div>
-                    </div>
                     <?php
                         foreach ($sub_list as $k => $v) {
                     ?>
