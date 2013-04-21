@@ -22,8 +22,13 @@ class prodBll
         $prod_word,$prod_medium,$standards,$prod_care_desc,$prod_order_desc,$prod_tag,
         $prod_stock_up,$prod_date_range,$prod_onshelf_type,$prod_onshelf_time)
     {
+        if(self::getProdByname($prod_name)!=array())
+        {
+            return false;
+        }
+
         //立即上架的商品，上架时间为当天
-        if($prod_onshelf_type==0)
+        if($prod_onshelf_type==1)
             $prod_onshelf_time=date("Y-m-d");
         $prod_id = prodDal::addProd(
                 $prod_name,
@@ -53,7 +58,7 @@ class prodBll
         $prod_stock_up,$prod_date_range,$prod_onshelf_type,$prod_onshelf_time)
     {
         //立即上架的商品，上架时间为当天
-        if($prod_onshelf_type==0)
+        if($prod_onshelf_type==1)
             $prod_onshelf_time=date("Y-m-d");
         $result = prodDal::updateProd(
                 $prod_id,

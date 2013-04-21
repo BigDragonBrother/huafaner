@@ -67,14 +67,24 @@ function dict_del()
         }
     });
 }
+
+String.prototype.trim=function(){
+　　    return this.replace(/(^\s*)|(\s*$)/g, "");
+　　 }
+
 function Prod_add(prod_id)
 {
-    if($('#prod_name').val().trim().length==0)
-    {
-        alert('商品名称不能为空');
-        return;
-    }
-    
+    $('.error').hide();
+    if($('#prod_name').val().trim().length==0){$('#prod_name_error').show();return;}
+    if($('#prod_title').val().trim().length==0){$('#prod_title_error').show();return;}
+    if($('#prod_sale_price').val().trim().length==0){$('#prod_sale_price_error').show();return;}
+    if($('#pic1').attr('src').trim().length==0){$('#prod_pic_error').show();return;}
+    if($('#pic3').attr('src').trim().length==0){$('#prod_pic_error').show();return;}
+    if($('#prod_word').val().trim().length==0){$('#prod_word_error').show();return;}
+    if($('#prod_medium').val().trim().length==0){$('#prod_medium_error').show();return;}
+    if($('#standards').val().trim().length==0){$('#standards_error').show();return;}
+    if($('#prod_stock_up').val().trim().length==0){$('#prod_stock_up_error').show();return;}
+
     if(prod_id==undefined)
     {
         action="prod_add";
@@ -128,8 +138,7 @@ function Prod_add(prod_id)
                 return;
             }
             alert(succ);
-            location.reload();
-            //window.location.href='admin.php?k=prodlist';
+            window.location.href='admin.php?k=prod';
         }
     });
 }
@@ -272,17 +281,17 @@ function sub_add(sub_type,sub_id)
     if(sub_id=='')
     {
         action="sub_add";
-        succ="主题添加成功";
+        succ="专题添加成功";
     }
     else
     {
         action="sub_update";
-        succ="主题更新成功";
+        succ="专题更新成功";
     }
-    var str="";
-    $("input[name='sub_tag']:checkbox:checked").each(function(){ 
-        str+=$(this).val()+",";
-    }); 
+    //var str="";
+    //$("input[name='sub_tag']:checkbox:checked").each(function(){ 
+    //    str+=$(this).val()+",";
+    //}); 
     $.ajax({
         url:"dbport.php",
         data:{
@@ -291,8 +300,8 @@ function sub_add(sub_type,sub_id)
             sub_id:sub_id,
             sub_name:$('#sub_name').val().trim(),
             sub_desc:$('#sub_desc').val().trim(),
-            sub_tag:str,
-            sub_pic_list:$('#pic_sub_list').attr('src'),
+            sub_tag:$('#sub_tag').val().trim(),
+            sub_pic_list:'',//$('#pic_sub_list').attr('src'),
             sub_pic:$('#pic_sub').attr('src'),
             sub_on:$('input:radio[name="sub_on"]:checked').val(),
             sub_start:$('#sub_start').val(),
@@ -304,11 +313,11 @@ function sub_add(sub_type,sub_id)
         {
             if(!dbdata)
             {
-                alert('主题添加失败');
+                alert('专题添加失败');
                 return;
             }
             alert(succ);
-            //window.location.href='admin.php?k=sublist';
+            window.location.href='admin.php?k=sub';
         }
     });
     
@@ -603,6 +612,7 @@ function design_index_commit()
             if(data)
             {
                 alert('首页更新成功');
+                window.location.reload();
             };
         }
     });
@@ -630,6 +640,7 @@ function design_sublist_commit()
             if(data)
             {
                 alert('专题列表更新成功');
+                window.location.reload();
             };
         }
     });

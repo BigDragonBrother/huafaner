@@ -44,14 +44,14 @@ if ($sub_id) {
                 ?>
                     <dd>
                         <p>
-                            <a href="prod.php?id=<?php echo $v['prod_id']; ?>" target="_blank">
+                            <a href="prod.php?id=<?php echo $v[0]; ?>" target="_blank">
                                 <img src="<?php echo $v['pic_path']; ?>" style="width:310px;height:296px;"/>
                             </a>
                         </p>
                         <div class="title">
                             <div class="tit_price">
                                 <h3>
-                                    <a href="prod.php?id=<?php echo $v['prod_id']; ?>" target="blank">
+                                    <a href="prod.php?id=<?php echo $v[0]; ?>" target="_blank">
                                         <?php echo $v['prod_title']; ?>
                                     </a>
                                 </h3>
@@ -59,7 +59,7 @@ if ($sub_id) {
                                     ¥<?php echo number_format($v['prod_sale_price'], 1); ?>
                                 </p>
                             </div>
-                            <div class="btn_y"><a href="详情.html">立即购买</a></div>
+                            <div class="btn_y"><a href="prod.php?id=<?php echo $v[0]; ?>" target="_blank">立即购买</a></div>
                             <a class="full"></a>
                         </div>        
                     </dd>

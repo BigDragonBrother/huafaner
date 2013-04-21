@@ -1,6 +1,11 @@
 <?php
 include_once PATH_BLL.'/prodBll.inc';
 include_once PATH_BLL.'/subBll.inc';
+include_once PATH_BLL . '/designBll.inc';
+
+$d_var=designBll::get_design('index');
+$design=json_decode($d_var['d_var'],true);
+
 $prod_list =prodBll::getProdTopN(100);
 $sub_list=subBll::getAllSub();
 ?>
@@ -16,17 +21,21 @@ $sub_list=subBll::getAllSub();
     	<h3>导航维护</h3>
         <div class="imgpic sty500">
         	<a href="javascript:void(0)" onclick="pic='_nav';Popup.popping('add_pic',true)">
-                <img id="pic_nav" alt="点击上传图片" style="height:143px;width:500px;" src=""/>
+                <img id="pic_nav" alt="点击上传图片" style="height:143px;width:500px;" src="<?php echo $design['pic_nav']; ?>"/>
             </a>
         </div>
     </div>
     <div class="clearer"></div>
     <div class="block">
     	<h3>海报维护</h3>
-        <div class="poster" id="poster_1">
+        <?php
+            echo "<script>poster_index=",count($design['poster']),"</script>";
+            foreach ($design['poster'] as $k => $v) {
+        ?>
+        <div class="poster" id="poster_<?php echo $k+1;?>">
             <div class="imgpic sty500">
                 <a href="javascript:void(0)" onclick="poster_cur=$(this).parent().parent().attr('id');Popup.popping('add_poster',true)">
-                    <img id="pic_poster" alt="点击上传图片" style="height:143px;width:500px;" src=""/>
+                    <img id="pic_poster" alt="点击上传图片" style="height:143px;width:500px;" src="<?php echo $v['poster_pic']; ?>" value="<?php echo $v['poster_sub']; ?>"/>
                 </a>
             </div>
             <div class="operating">
@@ -36,6 +45,9 @@ $sub_list=subBll::getAllSub();
                 <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
             </div>
         </div>
+        <?php
+            }
+        ?>        
     </div>
     <div class="clearer"></div>
     <div class="block">
@@ -43,134 +55,29 @@ $sub_list=subBll::getAllSub();
         <div class="new_design">
             <div class="imgpic sty300">
                 <a href="javascript:void(0)" onclick="pic='_file_poster1';Popup.popping('file_poster',true)">
-                    <img id="pic_file_poster1" alt="点击上传图片" style="height:143px;width:300px;" src=""/>
+                    <img id="pic_file_poster1" alt="点击上传图片" style="height:143px;width:300px;" src="<?php echo $design['file_poster'][0]['poster_pic']; ?>"/>
                 </a>
-                <input type="hidden" id="desc_file_poster1" value="" />
-                <input type="hidden" id="prod_file_poster1" value="" />
+                <input type="hidden" id="desc_file_poster1" value="<?php echo $design['file_poster'][0]['poster_desc']; ?>" />
+                <input type="hidden" id="prod_file_poster1" value="<?php echo $design['file_poster'][0]['poster_prod']; ?>" />
             </div>
             <div class="imgpic sty300">
                 <a href="javascript:void(0)" onclick="pic='_file_poster2';Popup.popping('file_poster',true)">
-                    <img id="pic_file_poster2" alt="点击上传图片" style="height:143px;width:300px;" src=""/>
+                    <img id="pic_file_poster2" alt="点击上传图片" style="height:143px;width:300px;" src="<?php echo $design['file_poster'][1]['poster_pic']; ?>"/>
                 </a>
-                <input type="hidden" id="desc_file_poster2" value="" />
-                <input type="hidden" id="prod_file_poster2" value="" />
+                <input type="hidden" id="desc_file_poster2" value="<?php echo $design['file_poster'][1]['poster_desc']; ?>" />
+                <input type="hidden" id="prod_file_poster2" value="<?php echo $design['file_poster'][1]['poster_prod']; ?>" />
             </div>
         </div>
         <div class="clearer"></div>
+        <?php
+            for($i=0;$i<=2;$i++)
+            {
+                $prod_com=prodBll::getProdPicByid($design['prod'][$i]['prod_id']);
+        ?>
         <div class="file_com">
             <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com1';Popup.popping('file_com',true)">
-                    <img id="pic_file_com1" alt="选择商品" style="height:143px;width:196px;" src=""/>
-                </a>
-            </div>
-            <div class="mobile">
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />                    
-            </div>
-        </div>
-        <div class="file_com">
-            <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com2';Popup.popping('file_com',true)">
-                    <img id="pic_file_com2" alt="选择商品" style="height:143px;width:196px;" src=""/>
-                </a>
-            </div>
-            <div class="mobile">
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />                    
-            </div>
-        </div>
-        <div class="file_com">
-            <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com3';Popup.popping('file_com',true)">
-                    <img id="pic_file_com3" alt="选择商品" style="height:143px;width:196px;" src=""/>
-                </a>
-            </div>
-            <div class="mobile">
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />                    
-            </div>
-        </div>
-    </div>
-    <div class="clearer"></div>
-    <div class="block">
-    	<h3>经典热卖</h3>
-        <div class="new_design">
-            <div class="imgpic sty300">
-                <a href="javascript:void(0)" onclick="pic='_file_poster3';Popup.popping('file_poster',true)">
-                    <img id="pic_file_poster3" alt="点击上传图片" style="height:143px;width:300px;" src=""/>
-                </a>
-                <input type="hidden" id="desc_file_poster3" value="" />
-                <input type="hidden" id="prod_file_poster3" value="" />
-            </div>
-            <div class="imgpic sty300">
-                <a href="javascript:void(0)" onclick="pic='_file_poster4';Popup.popping('file_poster',true)">
-                    <img id="pic_file_poster4" alt="点击上传图片" style="height:143px;width:300px;" src=""/>
-                </a>
-                <input type="hidden" id="desc_file_poster4" value="" />
-                <input type="hidden" id="prod_file_poster4" value="" />
-            </div>
-        </div>
-        <div class="clearer"></div>
-        <div class="file_com">
-            <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com4';Popup.popping('file_com',true)">
-                    <img id="pic_file_com4" alt="选择商品" style="height:143px;width:196px;" src=""/>
-                </a>
-            </div>
-            <div class="mobile">
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />                    
-            </div>
-        </div>
-        <div class="file_com">
-            <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com5';Popup.popping('file_com',true)">
-                    <img id="pic_file_com5" alt="选择商品" style="height:143px;width:196px;" src=""/>
-                </a>
-            </div>
-            <div class="mobile">
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />                    
-            </div>
-        </div>
-        <div class="file_com">
-            <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com6';Popup.popping('file_com',true)">
-                    <img id="pic_file_com6" alt="选择商品" style="height:143px;width:196px;" src=""/>
-                </a>
-            </div>
-            <div class="mobile">
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />                    
-            </div>
-        </div>
-        <div class="clearer"></div>
-        <div class="file_com">
-            <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com7';Popup.popping('file_com',true)">
-                    <img id="pic_file_com7" alt="选择商品" style="height:143px;width:196px;" src=""/>
-                </a>
-            </div>
-            <div class="mobile">
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />                    
-            </div>
-        </div>
-        <div class="file_com">
-            <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com8';Popup.popping('file_com',true)">
-                    <img id="pic_file_com8" alt="选择商品" style="height:143px;width:196px;" src=""/>
-                </a>
-            </div>
-            <div class="mobile">
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />                    
-            </div>
-        </div>
-        <div class="file_com">
-            <div class="imgpic sty196">
-                <a href="javascript:void(0)" onclick="prod_cur='_file_com9';Popup.popping('file_com',true)">
-                    <img id="pic_file_com9" alt="选择商品" style="height:143px;width:196px;" src=""/>
+                <a href="javascript:void(0)" onclick="prod_cur='_file_com<?php echo $i+1; ?>';Popup.popping('file_com',true)">
+                    <img id="pic_file_com<?php echo $i+1; ?>" alt="选择商品" style="height:143px;width:196px;" src="<?php echo $prod_com['list_pic']; ?>" value="<?php echo $prod_com['prod_id']; ?>"/>
                 </a>
             </div>
             <div class="mobile">
@@ -178,6 +85,51 @@ $sub_list=subBll::getAllSub();
                 <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
             </div>
         </div>
+        <?php
+            }
+        ?>
+    </div>
+    <div class="clearer"></div>
+    <div class="block">
+    	<h3>经典热卖</h3>
+        <div class="new_design">
+            <div class="imgpic sty300">
+                <a href="javascript:void(0)" onclick="pic='_file_poster3';Popup.popping('file_poster',true)">
+                    <img id="pic_file_poster3" alt="点击上传图片" style="height:143px;width:300px;" src="<?php echo $design['file_poster'][2]['poster_pic']; ?>"/>
+                </a>
+                <input type="hidden" id="desc_file_poster3" value="<?php echo $design['file_poster'][2]['poster_desc']; ?>" />
+                <input type="hidden" id="prod_file_poster3" value="<?php echo $design['file_poster'][2]['poster_prod']; ?>" />
+            </div>
+            <div class="imgpic sty300">
+                <a href="javascript:void(0)" onclick="pic='_file_poster3';Popup.popping('file_poster',true)">
+                    <img id="pic_file_poster4" alt="点击上传图片" style="height:143px;width:300px;" src="<?php echo $design['file_poster'][3]['poster_pic']; ?>"/>
+                </a>
+                <input type="hidden" id="desc_file_poster4" value="<?php echo $design['file_poster'][3]['poster_desc']; ?>" />
+                <input type="hidden" id="prod_file_poster4" value="<?php echo $design['file_poster'][3]['poster_prod']; ?>" />
+            </div>
+        </div>
+        <div class="clearer"></div>
+        <?php
+            for($i=3;$i<=8;$i++)
+            {
+                $prod_com=prodBll::getProdPicByid($design['prod'][$i]['prod_id']);
+        ?>
+        <div class="file_com">
+            <div class="imgpic sty196">
+                <a href="javascript:void(0)" onclick="prod_cur='_file_com<?php echo $i+1; ?>';Popup.popping('file_com',true)">
+                    <img id="pic_file_com<?php echo $i+1; ?>" alt="选择商品" style="height:143px;width:196px;" src="<?php echo $prod_com['list_pic']; ?>" value="<?php echo $prod_com['prod_id']; ?>"/>
+                </a>
+            </div>
+            <div class="mobile">
+                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
+                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_poster',true)" />
+            </div>
+        </div>
+        <?php
+                if($i==5)
+                    echo '<div class="clearer"></div>';
+            }
+        ?>
     </div>
 </div>
 <div class="clearer"></div>

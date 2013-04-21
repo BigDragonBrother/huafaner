@@ -4,11 +4,12 @@ include_once (PATH_DAL . "/db.inc");
 
 class subDal
 {
-    static function sub_add($sub_type,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$prod_id_list)
+    static function sub_add($sub_type,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$sub_tag,$prod_id_list)
     {
-        $sql = "insert into hua_sub(sub_type,sub_name,sub_desc,sub_on,sub_start,sub_pic_list,sub_pic,prod_id_list,cdate,udate)
+        $sql = "insert into hua_sub(sub_type,sub_name,sub_desc,sub_on,sub_start,sub_pic_list,sub_pic,sub_tag,prod_id_list,cdate,udate)
             values
-            ('$sub_type','$sub_name','$sub_desc','$sub_on','$sub_start','$sub_pic_list','$sub_pic','$prod_id_list',now(),now())";
+            ('$sub_type','$sub_name','$sub_desc','$sub_on','$sub_start','$sub_pic_list','$sub_pic','$sub_tag',
+                '$prod_id_list',now(),now())";
         if (!is_object(DB::huaDB()))
             return array();
         $row = DB::huaDB()->simplePrepare($sql);
@@ -16,7 +17,7 @@ class subDal
             return DB::huaDB()->lastInsertId();
         }
     }
-    static function sub_update($sub_id,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$prod_id_list)
+    static function sub_update($sub_id,$sub_name,$sub_desc,$sub_on,$sub_start,$sub_pic_list,$sub_pic,$sub_tag,$prod_id_list)
     {
         $sql = "update hua_sub set sub_name='$sub_name',
             sub_desc='$sub_desc',
@@ -24,6 +25,7 @@ class subDal
             sub_start='$sub_start',
             sub_pic_list='$sub_pic_list',
             sub_pic='$sub_pic',
+            sub_tag='$sub_tag',
             prod_id_list='$prod_id_list',
             udate=now()
             where sub_id=$sub_id";

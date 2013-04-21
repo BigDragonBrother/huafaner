@@ -209,6 +209,7 @@ sub_on varchar(5),
 sub_start varchar(100),
 sub_pic_list varchar(50),
 sub_pic varchar(50),
+sub_tag varchar(100),
 prod_id_list varchar(500),
 cdate datetime,
 udate datetime

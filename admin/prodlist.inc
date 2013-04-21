@@ -44,13 +44,12 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
                 ?>
             </select>
         </dd>
-        <dd class="sty290">
+        <dd style="width:580px">
             <label>上架时间</label>
             <input id="prod_onshelf_time_low" class="same sty85" type="text" value="<?php echo Tools::getValue('prod_onshelf_time_low');?>" />
             <span>至</span>
             <input id="prod_onshelf_time_high" class="same sty85" type="text" value="<?php echo Tools::getValue('prod_onshelf_time_high');?>"/>
-        </dd>
-        <dd class="sty290">
+
             <label>商品价格</label>
             <input id="prod_sale_price_low" class="same sty60" type="text" value="<?php echo Tools::getValue('prod_sale_price_low');?>"/>
             <span>至</span>

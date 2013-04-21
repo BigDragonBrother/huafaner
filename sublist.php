@@ -41,10 +41,11 @@ include_once PATH_BLL . '/subBll.inc';
             <h2><?php echo $sub['sub_name']; ?></h2>
             <p class="text_label">标签：
                 <?php
-                    $tags = subBll::getSubTagBySubid($v['poster_sub']);
-                    foreach ($tags as $k => $value) {
-                        echo "<a href=\"#\">&lt;",$value['dict_name'],"&gt;</a>";
-                    }
+                    echo $sub['sub_tag'];
+                    //$tags = subBll::getSubTagBySubid($v['poster_sub']);
+                    //foreach ($tags as $k => $value) {
+                    //    echo "<a href=\"#\">&lt;",$value['dict_name'],"&gt;</a>";
+                    //}
                 ?>
             </p>
             <p class="text_h"><?php echo $sub['sub_desc']; ?></p>

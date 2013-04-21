@@ -1,6 +1,11 @@
 <?php
 include_once PATH_BLL.'/prodBll.inc';
 include_once PATH_BLL.'/subBll.inc';
+include_once PATH_BLL . '/designBll.inc';
+
+$d_var=designBll::get_design('sublist');
+$design=json_decode($d_var['d_var'],true);
+
 $prod_list =prodBll::getProdTopN(100);
 $sub_list=subBll::getAllSub();
 ?>
@@ -14,12 +19,13 @@ $sub_list=subBll::getAllSub();
 <div class="content">
     <div class="block">
         <?php
-            for ($i=1; $i<=6 ; $i++) { 
+            for ($i=1; $i<=6 ; $i++) {
+                $sub=subBll::getByid($design['poster'][$i-1]['poster_sub']);
         ?>
         <div class="poster" id="poster_<?php echo $i; ?>">
             <div class="imgpic sty500">
                 <a href="javascript:void(0)" onclick="poster_cur=$(this).parent().parent().attr('id');Popup.popping('add_poster',true)">
-                    <img id="pic_poster" alt="点击上传专题图片" style="height:143px;width:500px;" src=""/>
+                    <img id="pic_poster" alt="点击上传专题图片" style="height:143px;width:500px;" src="<?php echo $design['poster'][$i-1]['poster_pic']; ?>" value="<?php echo $design['poster'][$i-1]['poster_sub']; ?>"/>
                 </a>
             </div>
             <div class="operating">

@@ -23,12 +23,12 @@ else
     <div class="con_list">
         <span class="con_tit">商品名称：</span>
         <p><input id="prod_name" value="<?php echo $prod?$prod["prod_name"]:''; ?>" class="same" type="text" /></p>
-        <div class="error">请输入商品名称！</div>
+        <div class="error" id="prod_name_error">请输入商品名称！</div>
     </div>
     <div class="con_list">
         <span class="con_tit">商品副标题：</span>
         <p><input id="prod_title" value="<?php echo $prod?$prod["prod_title"]:''; ?>" class="same" type="text" /></p>
-        <div class="error">请输入商品副标题！</div>
+        <div class="error" id="prod_title_error">请输入商品副标题！</div>
     </div>
     <div class="con_list">
         <span class="con_tit">商品分类：</span>
@@ -60,7 +60,7 @@ else
         <span class="con_tit">商品价格：</span>
         <p><input id="prod_sale_price" value="<?php echo $prod?$prod["prod_sale_price"]:''; ?>" class="same" type="text" /></p>
         <span class="note">元</span>
-        <div class="error">请输入商品价格！</div>
+        <div class="error" id="prod_sale_price_error">请输入商品价格！</div>
     </div>
     <div class="con_list">
         <span class="con_tit">商品图片：</span>
@@ -96,28 +96,28 @@ else
                 <img id="pic3" style="width:150px;height:143px;" alt="详情图" src="<?php echo $big_pic_path; ?>"/>
             </a>
         </div>
-        <div class="error">请上传列表图/详情图！</div>                
+        <div class="error" id="prod_pic_error">请上传列表图/详情图！</div>                
     </div>
     <div class="con_list">
         <span class="con_tit">设计灵感：</span>
         <p>
             <textarea id="prod_word" cols="" rows="" class="textarea"><?php echo $prod?$prod["prod_word"]:''; ?></textarea>
         </p>
-        <div class="error">请输入设计灵感！</div>
+        <div class="error" id="prod_word_error">请输入设计灵感！</div>
     </div>
     <div class="con_list">
         <span class="con_tit">花语：</span>
         <p>
             <textarea id="prod_medium" cols="" rows="" class="textarea"><?php echo $prod?$prod["prod_medium"]:''; ?></textarea>
         </p>
-        <div class="error">请输入花语！</div>
+        <div id="prod_medium_error" class="error">请输入花语！</div>
     </div>
     <div class="con_list">
         <span class="con_tit">规格：</span>
         <p>
             <textarea id="standards" cols="" rows="" class="textarea"><?php echo $prod?$prod["standards"]:''; ?></textarea>
         </p>
-        <div class="error">请输入规格！</div>
+        <div class="error" id="standards_error">请输入规格！</div>
     </div>
     <div class="con_list"><span class="con_tit">保养说明：</span>
         <p>
@@ -199,7 +199,7 @@ else
             <input id="prod_stock_up" class="same sty60" type="text" value="<?php echo $prod?$prod["prod_stock_up"]:''; ?>"/>
         </p>
         <span class="note">天</span>
-        <div class="error">请输入备货天数！</div>
+        <div class="error" id="prod_stock_up_error">请输入备货天数！</div>
     </div>
     <!--<div class="con_list">
         <span class="con_tit">有效期：</span>
