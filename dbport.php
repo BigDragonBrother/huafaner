@@ -17,6 +17,9 @@ switch ($action)
     case 'dict_add':
         $return =  prodBll::addDict(Tools::getValue('dict_type'), Tools::getValue('dict_name'),Tools::getValue('dict_desc'));
         break;
+    case 'dict_update':
+        $return =  prodBll::updateDict(Tools::getValue('dict_type'), Tools::getValue('dict_edit_id'),Tools::getValue('dict_edit_name'),Tools::getValue('dict_edit_desc'));
+        break;
     case 'prod_type_get':
         $return=prodBll::getDict('prod_type');
         break;

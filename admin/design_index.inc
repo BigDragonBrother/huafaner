@@ -101,7 +101,7 @@ $sub_list=subBll::getAllSub();
                 <input type="hidden" id="prod_file_poster3" value="<?php echo $design['file_poster'][2]['poster_prod']; ?>" />
             </div>
             <div class="imgpic sty300">
-                <a href="javascript:void(0)" onclick="pic='_file_poster3';Popup.popping('file_poster',true)">
+                <a href="javascript:void(0)" onclick="pic='_file_poster4';Popup.popping('file_poster',true)">
                     <img id="pic_file_poster4" alt="点击上传图片" style="height:143px;width:300px;" src="<?php echo $design['file_poster'][3]['poster_pic']; ?>"/>
                 </a>
                 <input type="hidden" id="desc_file_poster4" value="<?php echo $design['file_poster'][3]['poster_desc']; ?>" />

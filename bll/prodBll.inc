@@ -10,7 +10,21 @@ class prodBll
     
     static function addDict($type,$dict_name,$dict_desc="")
     {
+        if(self::getDictbyname($type,$dict_name)!=array())
+            return false;
         return prodDal::addDict($type,$dict_name,$dict_desc);
+    }
+
+    static function updateDict($dict_type,$dict_edit_id,$dict_edit_name,$dict_edit_desc)
+    {
+        if($dict_type=="prod_tag"&self::getDictbyname($dict_type,$dict_edit_name)!=array())
+            return false;
+        return prodDal::updateDict($dict_edit_id,$dict_edit_name,$dict_edit_desc);
+    }
+
+    static function getDictbyname($type,$dict_name)
+    {
+        return prodDal::getDictbyname($type,$dict_name);
     }
     
     static function delDict($dict_id)

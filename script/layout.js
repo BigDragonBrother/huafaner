@@ -83,12 +83,14 @@ $('.greet_n').click(
   $("input.inputtext").hover(function () {
     $(this).addClass('inputtext_hover').css("color", "#475e6d");
   }, function () {
-    $(this).removeClass('inputtext_hover').css("color", "#475e6d");
+  	$(this).addClass('inputtext_hover').css("color", "");
+    //$(this).removeClass('inputtext_hover').css("color", "#475e6d");
   });
   $("textarea.inputtext").hover(function () {
     $(this).addClass('inputtext_hover').css("color", "#475e6d");
   }, function () {
-    $(this).removeClass('inputtext_hover').css("color", "#475e6d");
+  	$(this).addClass('inputtext_hover').css("color", "");
+    //$(this).removeClass('inputtext_hover').css("color", "#475e6d");
   });
 
   $("input.login_input").hover(function () {

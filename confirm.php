@@ -71,7 +71,7 @@ if($last_order)
         <script type="text/javascript">
             $(function(){
                 $('form').jqTransform({imgPath:'images'});
-                
+
                 var today = new Date();
                 today.setDate(today.getDate()+1);
                 var options= {
@@ -211,15 +211,15 @@ if($last_order)
                             </h4>
                             <div class="info_content porel">
                                 <ul>
-                                    <li class="seltectradio"><input name="book_card" type="radio" value="不需要卡片" checked <?php echo $last_order&$last_order['book_card']=="不需要卡片"?"checked":""; ?> id="c1" onclick="$('.greeting_n').hide();$('.greeting_replace').hide();"/><label for="c1">不需要卡片</label></li>
+                                    <li class="seltectradio"><input name="book_card" type="radio" value="不需要卡片" checked <?php echo $last_order&$last_order['book_card']=="不需要卡片"?"checked":""; ?> id="book_card_c1" onclick="$('.greeting_n').hide();$('.greeting_replace').hide();"/><label for="c1">不需要卡片</label></li>
                                     <li class="seltectradio"><input name="book_card" type="radio" value="我要一张空白卡片" <?php echo $last_order&$last_order['book_card']=="我要一张空白卡片"?"checked":""; ?> id="c2" class="greet_replace" /><label for="c2">我要一张空白卡片</label></li>
                                     <li class="seltectradio"><input name="book_card" type="radio" value="我要一张代写卡片" <?php echo $last_order&$last_order['book_card']=="我要一张代写卡片"?"checked":""; ?> id="c3" class="greet_n" /><label for="c3">我要一张代写卡片</label></li>
                                 </ul>
-                                <div class="greeting_n">
+                                <div class="greeting_n" style="<?php echo $last_order&$last_order['book_card']=="我要一张代写卡片"?"display:block":""; ?>">
                                     <p>输入卡片留言:</p>
                                     <p><textarea id="book_card_content" name="book_card_content" class="inputtext hw70"></textarea></p>
                                 </div>
-                                <div class="greeting_replace">
+                                <div class="greeting_replace" style="<?php echo $last_order&$last_order['book_card']=="我要一张空白卡片"?"display:block":""; ?>">
                                     <img src="images/greeting.gif" />
                                 </div>
                             </div>
@@ -346,7 +346,7 @@ if($last_order)
                                         <a name="datepicker_btn" href="javascript:void(0)"></a>
                                         <label class="wid"><span>送达日期</span></label>
                                         <input name="datepicker" type="text" id="datepicker" class="inputtext sty160" readonly/>
-                                        <div class="form_error" style="line-height:30px" id="datepicker_error" style="display:none">请填写送达日期</div>
+                                        <div class="form_error" style="line-height:30px;display:none" id="datepicker_error">请填写送达日期</div>
                                     </li>
                                 </ol>
                             </div>

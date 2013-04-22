@@ -17,6 +17,21 @@ class prodDal {
         }
     }
 
+    static function updateDict($dict_edit_id,$dict_edit_name,$dict_edit_desc)
+    {
+        $sql="update hua_dict set dict_name='$dict_edit_name',dict_desc='$dict_edit_desc' where dict_id=$dict_edit_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $row = DB::huaDB()->simplePrepare($sql);
+        if (!$row->isEmpty()) {
+            return TRUE;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     static function getDict($type) {
         $sql = "select * from hua_dict where dict_type='$type'";
         if($type=="all")
@@ -26,6 +41,22 @@ class prodDal {
         if (!is_object(DB::huaDB()))
             return array();
         return DB::huaDB()->allPrepare($sql);
+    }
+
+    static function getDictbyname($type,$dict_name){
+        $sql = "select * from hua_dict where dict_type='$type' and dict_name='$dict_name'";
+        if($type=="all")
+        {
+            $sql="select * from hua_dict where dict_name='$dict_name'";
+        }
+        if (!is_object(DB::huaDB()))
+            return array();
+        $result = DB::huaDB()->allPrepare($sql);
+        if ($result->data) {
+            return $result->data[0];
+        } else {
+            return array();
+        }
     }
 
     static function delDict($dict_id) {

@@ -91,7 +91,7 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
                 <td><?php echo $prod_type; ?></td>
                 <td>￥<?php echo $v['prod_sale_price']; ?></td>
                 <td><?php echo $v['prod_onshelf_time']; ?></td>
-                <td><?php echo $v['prod_date_range']; ?></td>
+                <td><?php //echo $v['prod_date_range']; ?></td>
                 <td><?php echo $v['prod_stock_up']; ?></td>
                 <td><?php echo $prod_onshelf; ?></td>
                 <td>

@@ -120,7 +120,7 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
     </div>
     <div class="popping_content">
          <div class="content">
-            <dl class="locate">
+            <!--<dl class="locate">
                 <dd><label>商品名称</label><input name="" class="same" type="text" /></dd>
                 <dd class="sty230"><label>商品分类</label>
                     <select id="" name="">
@@ -140,12 +140,12 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
                     <input type="button" value="查 询" class="loginbtn" />
                     <input type="button" value="重 置" class="loginbtn" />
                 </dt>
-            </dl>
+            </dl>-->
             <div class="clearer"></div>
             <table class="list">
                 <tr>
                     <th></th><th>商品编号</th><th>商品名称</th><th>商品分类</th>
-                    <th>价格</th><th>上架时间</th><th>状态</th><th>操作</th>
+                    <th>价格</th><th>上架时间</th><th>状态</th>
                 </tr>
                 <?php
                 foreach ($prod_list as $k => $v) {
@@ -162,13 +162,13 @@ $prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
                 <?php
                 }
                 ?>
-                <tr>
+                <!--<tr>
                     <td colspan="8" class="bjnone">
                         <div class="pages">
                             <a href="#">首页</a><a href="#">下一页</a><a href="#">上一页</a><a href="#">尾页</a>
                         </div>
                     </td>
-                </tr>
+                </tr>-->
             </table>
         </div>
         <div class="pop_submit">

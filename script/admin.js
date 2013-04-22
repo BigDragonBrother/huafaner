@@ -10,12 +10,46 @@ function dict_add(dict_type)
         },
         type: "POST",
         dataType: "json",
-        success: function()
+        success: function(data)
         {
-            location.reload();
+            if(data)
+            {
+                location.reload();    
+            }
+            else
+            {
+                alert('类别名称不能重复！');
+            }
         }
     });
 }
+function dict_update(dict_type)
+{
+    $.ajax({
+        url:"dbport.php",
+        data:{
+            action:'dict_update',
+            dict_type:dict_type,
+            dict_edit_id:$('#dict_edit_id').val(),
+            dict_edit_name:$('#dict_edit_name').val(),
+            dict_edit_desc:$('#dict_edit_desc').val()
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(data)
+        {
+            if(data)
+            {
+                location.reload();    
+            }
+            else
+            {
+                alert('类别名称不能重复！');
+            }
+        }
+    });
+}
+
 function Prod_type_add()
 {
     $.ajax({
@@ -29,7 +63,14 @@ function Prod_type_add()
         dataType: "json",
         success: function(data)
         {
-            $('#prod_type').append('<option value="'+data+'">'+$('#dict_prod_type').val()+'</option>');
+            if(data)
+            {
+                $('#prod_type').append('<option value="'+data+'">'+$('#dict_prod_type').val()+'</option>');    
+            }
+            else
+            {
+                alert('类别名称不能重复！');
+            }
         }
     });
 }
@@ -46,8 +87,14 @@ function Prod_tag_add()
         dataType: "json",
         success: function(data)
         {
-            $('#prod_tag_list').append('<li><input name="prod_tag" type="checkbox" value="'+data+'"/>'+$('#dict_prod_tag').val()+'</li>');
-            //location.reload();
+            if(data)
+            {
+                $('#prod_tag_list').append('<li><input name="prod_tag" type="checkbox" value="'+data+'"/>'+$('#dict_prod_tag').val()+'</li>');
+            }
+            else
+            {
+                alert('类别名称不能重复！');
+            }
         }
     });
 }
@@ -544,6 +591,10 @@ function showResponse(data)
     $("[id='pic']").each(function(){
             $(this).val('');
         });
+    $('#file_poster_desc').val('');
+    $("[name='file_poster_prods']").each(function(){
+            $(this).attr('checked','');
+        });
 }
 
 //design the index
@@ -564,19 +615,23 @@ function design_add_prod()
         $('#pic'+prod_cur).attr('value',prod_id);
         //$('#pic'+prod_cur).attr('src',prod_id);
         $.ajax({
-        url:"dbport.php",
-        data:{
-            action:"get_prodpic_byid",
-            prod_id:prod_id
-        },
-        type: "POST",
-        dataType: "json",
-        success: function(data)
-        {
-            $('#pic'+prod_cur).attr('src',data['list_pic']);
-        }
-    });
+            url:"dbport.php",
+            data:{
+                action:"get_prodpic_byid",
+                prod_id:prod_id
+            },
+            type: "POST",
+            dataType: "json",
+            success: function(data)
+            {
+                $('#pic'+prod_cur).attr('src',data['list_pic']);
+
+            }
+        });
     }
+    $("[name='file_com_prods']").each(function(){
+        $(this).attr('checked','');
+    });
 }
 function design_index_commit()
 {

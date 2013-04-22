@@ -73,7 +73,6 @@ class orderDal {
         {
             $sql="update hua_order set order_status=$newstatus,udate=now() $a where order_id=$order_id";
         }
-        echo $sql;
         if (!is_object(DB::huaDB()))
             return array();
         $row = DB::huaDB()->simplePrepare($sql);

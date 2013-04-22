@@ -68,7 +68,7 @@ if($dict_type=="prod_care_desc")
         <h3>添加/编辑保养说明</h3>
         <div class="con_list">
             <span class="con_tit">保养说明名称：</span>
-            <p><input id="dict_name" class="same" type="text" /></p>
+            <p><input id="dict_name" class="same" type="text" value=""/></p>
             <div class="error">类别名称不能重复！</div>
         </div>
         <div class="con_list">
@@ -88,10 +88,10 @@ if($dict_type=="prod_care_desc")
         <h3>保养说明列表</h3>
         <table class="list">
             <tr>
-            <th>保养说明编号</th>
-            <th>保养说明名称</th>
+            <th style="width:100px">保养说明编号</th>
+            <th style="width:100px">保养说明名称</th>
             <th>保养说明内容</th>
-            <th>操作</th>
+            <th style="width:100px">操作</th>
             </tr>
             <?php
             foreach($dict_list as $k=>$v)
@@ -104,8 +104,8 @@ if($dict_type=="prod_care_desc")
                     <td><?php echo $v['dict_name'];?></td>
                     <td><?php echo $v['dict_desc'];?></td>
                     <td>
-                        <a href="javascript:void(0)" onclick="Popup.popping('add_view',true)">查看</a>
-                        <a href="#">修改</a>
+                        <a href="javascript:void(0)" onclick="$('#dict_view_name').text('<?php echo $v['dict_name'];?>');$('#dict_view_desc').text('<?php echo $v['dict_desc'];?>');Popup.popping('dict_view',true)">查看</a>
+                        <a href="javascript:void(0)" onclick="$('#dict_edit_id').val('<?php echo $v['dict_id'];?>');$('#dict_edit_name').val('<?php echo $v['dict_name'];?>');$('#dict_edit_desc').val('<?php echo $v['dict_desc'];?>');Popup.popping('dict_editor',true);">修改</a>
                         <a href="javascript:void(0)" onclick="$('#dict_del_id').val('<?php echo $v['dict_id'];?>');Popup.popping('dict_del',true);">删除</a>
                     </td>
                 </tr>
@@ -113,6 +113,52 @@ if($dict_type=="prod_care_desc")
             }
             ?>
         </table>
+    </div>
+</div>
+<!-- 弹出层 查看 -->
+<div class="popping sty500" id="dict_view" style="display:none;">
+    <div class="popping_title">
+        <h2>查看</h2>
+        <div class="closed" onclick="Popup.closed('dict_view')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="popping_content">
+         <div class="con_list">
+            <span class="pop_tit">保养说明名称：</span>
+            <p class="sty370" id="dict_view_name"></p>
+        </div>
+         <div class="con_list">
+            <span class="pop_tit">保养说明内容：</span>
+            <p class="sty370" id="dict_view_desc"></p>
+        </div>
+    </div>
+</div>
+<!-- 弹出层 修改 -->
+<div class="popping sty500" id="dict_editor" style="display:none;">
+    <div class="popping_title">
+        <h2>查看</h2>
+        <div class="closed" onclick="Popup.closed('dict_editor')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="popping_content">
+        <div class="status">
+            <div class="con_list">
+                <span class="pop_tit">保养说明名称：</span>
+                <p>
+                    <input id="dict_edit_name" class="same" value="" type="text" />
+                    <input id="dict_edit_id" class="same" value="" type="hidden" />
+                </p>
+            </div>
+            <div class="con_list">
+                <span class="pop_tit">保养说明内容：</span>
+                <p>
+                    <!--<input id="dict_edit_desc" class="same" value="" type="text" />-->
+                    <textarea id="dict_edit_desc" class="textarea"></textarea>
+                </p>
+            </div>
+            <div class="pop_submit">
+                <input type="button" value="确 定" class="loginbtn" onclick="dict_update('prod_care_desc');Popup.closed('dict_editor')" />
+                <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('dict_editor')" />
+            </div>
+         </div>
     </div>
 </div>
 <?php
@@ -163,8 +209,8 @@ if($dict_type=="prod_order_desc")
                     <td><?php echo $v['dict_name'];?></td>
                     <td><?php echo $v['dict_desc'];?></td>
                     <td>
-                        <a href="javascript:void(0)" onclick="Popup.popping('add_view',true)">查看</a>
-                        <a href="javascript:void(0)" onclick="Popup.popping('add_view',true)">修改</a>
+                        <a href="javascript:void(0)" onclick="$('#dict_view_name').text('<?php echo $v['dict_name'];?>');$('#dict_view_desc').text('<?php echo $v['dict_desc'];?>');Popup.popping('dict_view',true)">查看</a>
+                        <a href="javascript:void(0)" onclick="$('#dict_edit_id').val('<?php echo $v['dict_id'];?>');$('#dict_edit_name').val('<?php echo $v['dict_name'];?>');$('#dict_edit_desc').val('<?php echo $v['dict_desc'];?>');Popup.popping('dict_editor',true);">修改</a>
                         <a href="javascript:void(0)" onclick="$('#dict_del_id').val('<?php echo $v['dict_id'];?>');Popup.popping('dict_del',true);">删除</a>
                     </td>
                 </tr>
@@ -172,6 +218,52 @@ if($dict_type=="prod_order_desc")
             }
             ?>
         </table>
+    </div>
+</div>
+<!-- 弹出层 查看 -->
+<div class="popping sty500" id="dict_view" style="display:none;">
+    <div class="popping_title">
+        <h2>查看</h2>
+        <div class="closed" onclick="Popup.closed('dict_view')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="popping_content">
+         <div class="con_list">
+            <span class="pop_tit">订购说明名称：</span>
+            <p class="sty370" id="dict_view_name"></p>
+        </div>
+         <div class="con_list">
+            <span class="pop_tit">订购说明内容：</span>
+            <p class="sty370" id="dict_view_desc"></p>
+        </div>
+    </div>
+</div>
+<!-- 弹出层 修改 -->
+<div class="popping sty500" id="dict_editor" style="display:none;">
+    <div class="popping_title">
+        <h2>查看</h2>
+        <div class="closed" onclick="Popup.closed('dict_editor')"><a href="javascript:void(0)">×</a></div>
+    </div>
+    <div class="popping_content">
+        <div class="status">
+            <div class="con_list">
+                <span class="pop_tit">订购说明名称：</span>
+                <p>
+                    <input id="dict_edit_name" class="same" value="" type="text" />
+                    <input id="dict_edit_id" class="same" value="" type="hidden" />
+                </p>
+            </div>
+            <div class="con_list">
+                <span class="pop_tit">订购说明内容：</span>
+                <p>
+                    <!--<input id="dict_edit_desc" class="same" value="" type="text" />-->
+                    <textarea id="dict_edit_desc" class="textarea"></textarea>
+                </p>
+            </div>
+            <div class="pop_submit">
+                <input type="button" value="确 定" class="loginbtn" onclick="dict_update('prod_order_desc');Popup.closed('dict_editor')" />
+                <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('dict_editor')" />
+            </div>
+         </div>
     </div>
 </div>
 <?php
@@ -210,7 +302,7 @@ if($dict_type=="prod_tag")
                 <li>
                     <p><?php echo $v['dict_name'];?></p>
                     <span>
-                        <a href="javascript:void(0)" onclick="Popup.popping('tag_editor',true)">编辑</a>
+                        <a href="javascript:void(0)" onclick="$('#dict_edit_name').val('<?php echo $v['dict_name'];?>');$('#dict_edit_id').val('<?php echo $v['dict_id'];?>');Popup.popping('tag_editor',true)">编辑</a>
                         <a href="javascript:void(0)" onclick="$('#dict_del_id').val('<?php echo $v['dict_id'];?>');Popup.popping('dict_del',true);">删除</a>
                     </span>
                 </li>
@@ -228,9 +320,15 @@ if($dict_type=="prod_tag")
     </div>
     <div class="popping_content">
          <div class="status">
-            <div class="con_list"><span class="pop_tit">编辑标签：</span><p><input name="" class="same" value="爱情" type="text" /></p></div>
+            <div class="con_list">
+                <span class="pop_tit">编辑标签：</span>
+                <p>
+                    <input id="dict_edit_name" class="same" value="" type="text" />
+                    <input id="dict_edit_id" class="same" value="" type="hidden" />
+                </p>
+            </div>
             <div class="pop_submit">
-                <input type="button" value="确 定" class="loginbtn" onclick="Popup.closed('tag_editor')" />
+                <input type="button" value="确 定" class="loginbtn" onclick="dict_update('prod_tag');Popup.closed('tag_editor')" />
                 <input type="button" value="取 消" class="loginbtn" onclick="Popup.closed('tag_editor')" />
             </div>
          </div>
@@ -284,17 +382,6 @@ if($dict_type=="prod_tag")
 <?php
 }
 ?>
-<!-- 弹出层 查看 -->
-<div class="popping sty500" id="add_view" style="display:none;">
-    <div class="popping_title">
-        <h2>查看</h2>
-        <div class="closed" onclick="Popup.closed('add_view')"><a href="javascript:void(0)">×</a></div>
-    </div>
-    <div class="popping_content">
-         <div class="con_list"><span class="pop_tit">保养说明名称：</span><p class="sty370">保养说明名称</p></div>
-         <div class="con_list"><span class="pop_tit">保养说明内容：</span><p class="sty370">保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称保养说明名称</p></div>
-    </div>
-</div>
 <!-- 弹出层 删除 -->
 <div class="popping sty350" id="dict_del" style="display:none;">
     <div class="popping_title">
