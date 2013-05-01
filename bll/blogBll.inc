@@ -5,7 +5,7 @@ class blogBll
 {
     static function add_blog($blog_id,$blog_title,$blog_content)
     {
-        if($blog_id!="")
+        if($blog_id=="undefined")
         {
             return blogDal::update_blog($blog_id,$blog_title,$blog_content);
         }

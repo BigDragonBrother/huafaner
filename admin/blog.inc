@@ -27,7 +27,7 @@ else
     <input type="button" value="提 交" class="loginbtn" onclick="add_blog(<?php echo $blog?$blog["blog_id"]:''; ?>)" />
 </div>
 
-<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 var editor=CKEDITOR.replace("editor1");
 function blogpicupload(obj)
