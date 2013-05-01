@@ -7,11 +7,11 @@ class blogBll
     {
         if($blog_id=="undefined")
         {
-            return blogDal::update_blog($blog_id,$blog_title,$blog_content);
+            return blogDal::add_blog($blog_title,$blog_content);
         }
         else
         {
-            return blogDal::add_blog($blog_title,$blog_content);
+            return blogDal::update_blog($blog_id,$blog_title,$blog_content);
         }
     }
 
