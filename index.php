@@ -2,6 +2,8 @@
 include_once 'conf.inc';
 include_once PATH_LIB . '/tools.inc';
 include_once PATH_BLL . '/prodBll.inc';
+include_once PATH_BLL . '/blogBll.inc';
+$blog_list = blogBll::getTopN(2);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -147,20 +149,21 @@ include_once PATH_BLL . '/prodBll.inc';
         <!-- 花范儿故事 -->
         <div class="ind_main">
             <h2><span class="orange">花范儿</span>故事</h2>
-            <div class="story">
-                <div class="story_img"><a href="#"><img src="images/a8.jpg" /></a></div>
-                <div class="story_con">
-                    <h2><a href="#">花范儿故事</a></h2>
-                    <p>我们渴望精神共鸣，渴望找到志同道合的朋友，渴望血脉喷张的青春。每个人都是独特的，勇于追求自我，这才是潮流的最好代名词。</p>
+            <?php
+            foreach ($blog_list as $k => $v) {
+            ?>
+                <div class="story">
+                    <div class="story_img">
+                        <a href="blog.php?id=<?php echo $v['blog_id'];?>"><img src="images/a8.jpg" /></a>
+                    </div>
+                    <div class="story_con">
+                        <h2><a href="blog.php?id=<?php echo $v['blog_id'];?>"><?php echo $v['blog_title']; ?></a></h2>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <div class="story">
-                <div class="story_img"><a href="#"><img src="images/a8.jpg" /></a></div>
-                <div class="story_con">
-                    <h2><a href="#">花范儿故事</a></h2>
-                    <p>我们渴望精神共鸣，渴望找到志同道合的朋友，渴望血脉喷张的青春。每个人都是独特的，勇于追求自我，这才是潮流的最好代名词。</p>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
         </div>
         <?php include_once PATH_INC . '/foot.inc'; ?>
     </body>

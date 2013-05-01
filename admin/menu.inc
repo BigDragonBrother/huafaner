@@ -1,31 +1,3 @@
-<!--<div class="adminmenu">
-    专题维护
-    <ul>
-        <li><a href="admin.php?k=adminsublist">专题列表</a></li>
-        <li><a href="admin.php?k=adminsub">发布专题</a></li>
-    </ul>
-    <hr/>
-    商品维护
-    <ul>
-        <li><a href="admin.php?k=adminprodlist">商品列表</a></li>
-        <li><a href="admin.php?k=adminprod">发布商品</a></li>
-        <li><a href="admin.php?k=admindict">字典信息</a></li>
-    </ul>
-    <hr/>
-    独一无二
-    <ul>
-        <li><a href="admin.php?k=adminonlyprodlist">商品列表</a></li>
-        <li><a href="admin.php?k=adminonlyprod">发布商品</a></li>
-    </ul>
-    订单管理
-    <ul>
-        <li><a href="admin.php?k=adminorderlist">订单管理</a></li>
-    </ul>
-    <a href="javascript:void(0)" onclick="adminlogout()">退出登陆</a>
-    <hr/>
-</div>
-class="sel"
--->
 <dl>
     <dt>商品管理</dt>
     <dd><a href="admin.php?k=prod">发布商品</a></dd>
@@ -59,4 +31,6 @@ class="sel"
     <dt>页面管理</dt>
     <dd><a href="admin.php?k=design_index">首页</a></dd>
     <dd><a href="admin.php?k=design_sub">专题活动页</a></dd>
+    <dd><a href="admin.php?k=bloglist">博客列表</a></dd>
+    <dd><a href="admin.php?k=blog">发表博客</a></dd>
 </dl>

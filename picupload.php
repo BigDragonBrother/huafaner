@@ -17,7 +17,12 @@ if(!in_array($pic_type, Conf::$picArr))
 }
 
 $pic_name=  'picture/'.date("YmdGis",time()).'.'.$pic_type;
-$mini_pic_name='picture/'.date("YmdGis",time());
+if(count($_POST)>0)
+{
+    if($_POST['pic_path']=="blog")
+        $pic_name= 'picture/blog/'.date("YmdGis",time()).'.'.$pic_type;
+}
+//$mini_pic_name='picture/'.date("YmdGis",time());
 if(move_uploaded_file($_FILES["pic"]["tmp_name"], $pic_name))
 {
     //if(Tools::getValue('pic_path')!==''&  file_exists(Tools::getValue('pic_path')))

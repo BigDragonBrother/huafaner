@@ -28,17 +28,31 @@ $design=json_decode($d_var['d_var'],true);
             <li class="nav_line"></li>
             <li class="<?php echo ($file_name=='list.php'&Tools::getValue('type')=='')||$file_name=='prod.php'?"selected":""; ?>">
                 <a href="list.php">那些花</a></li>
+
+            <?php
+            include_once PATH_BLL . '/prodBll.inc';
+            $prod_type_list = prodBll::getDict('prod_type');
+            foreach ($prod_type_list as $k => $v) {
+            ?>
+                <li class="nav_s <?php echo $file_name=='list.php'&Tools::getValue('type')==$v['dict_id']?"selected":""; ?>">
+                    <a href="list.php?type=<?php echo $v['dict_id']; ?>"><?php echo $v['dict_name']; ?></a>
+                </li>
+            <?php
+            }
+            ?>
+            <!--
             <li class="nav_s <?php echo $file_name=='list.php'&Tools::getValue('type')=='11'?"selected":""; ?>">
                 <a href="list.php?type=11">鲜花</a></li>
             <li class="nav_s <?php echo $file_name=='only.php'?"selected":""; ?>">
                 <a href="only.php">故事订花</a></li>
             <li class="nav_s <?php echo $file_name=='list.php'&Tools::getValue('type')=='13'?"selected":""; ?>">
                 <a href="list.php?type=13">植物</a></li>
+            -->
             <li class="nav_line"></li>
             <li class="<?php echo $file_name=='sub.php?id=7'?"selected":""; ?>">
                 <a href="sublist.php">专题活动</a></li>
             <li class="nav_line"></li>
-            <li><a href="http://blog.huafaner.com" target="_blank">花范儿故事</a></li>
+            <li><a href="blog.php" target="_blank">花范儿故事</a></li>
         </ul>
         <div class="tel"><img src="images/tel.gif" alt="010-64361192" title="010-64361192" /></div>
         <div class="login" style="<?php echo isset($_COOKIE['user_name'])?"display:none":""; ?>">

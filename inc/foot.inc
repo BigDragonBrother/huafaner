@@ -5,7 +5,7 @@
                 <h3 class="ser_tit line_ser">联系我们</h3>
                 <li class="while">工作时间9:00--18:00</li>
                 <li class="qq">2475252675</li>
-                <li class="phone">010-64361192</li>
+                <li class="phone">4008-900-512</li>
                 <li class="email">service@huafaner.com</li>
             </ul>
             <ul class="promise">

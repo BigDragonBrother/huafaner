@@ -6,6 +6,7 @@ include_once PATH_BLL.'/userBll.inc';
 include_once PATH_BLL.'/orderBll.inc';
 include_once PATH_BLL.'/subBll.inc';
 include_once PATH_BLL.'/designBll.inc';
+include_once PATH_BLL.'/blogBll.inc';
 include_once PATH_LIB.'/mail.inc';
 include_once PATH_LIB."/cookie.inc";
 
@@ -267,6 +268,9 @@ switch ($action)
         break;
     case 'design_sublist':
         $return=designBll::design_sublist(Tools::getValue('design_var'));
+        break;
+    case 'add_blog':
+        $return=blogBll::add_blog(Tools::getValue('blog_id'),Tools::getValue('blog_title'),Tools::getValue('blog_content'));
         break;
     default:
 }
