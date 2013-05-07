@@ -12,15 +12,26 @@ else
 ?>
 <div class="content">
 	<div class="block">
-		标题：<input id="blog_title" value="<?php echo $blog?$blog["blog_title"]:''; ?>" type="text"/>
+		博客标题:
+        <input id="blog_title" value="<?php echo $blog?$blog["blog_title"]:''; ?>" type="text"/>
 	</div>
 	<div class="block">
-		<textarea name="editor1" id="editor1" class="ckeditor"><?php echo $blog?$blog["blog_content"]:''; ?></textarea>
-		上传图片:
-		<form id="pic_blog" name="pic_blog" action="picupload.php" method="post" enctype="multipart/form-data">
-			<input type="hidden" id="pic_path" name="pic_path" value="blog" />
-			<input type="file" id="pic" name="pic" onchange="blogpicupload('pic_blog')"/>
-		</form>
+        <form id="pic_blog_index" name="pic_blog_index" action="picupload.php" method="post" enctype="multipart/form-data">
+            首页图片:
+            <img src="<?php echo $blog?$blog["blog_index"]:''; ?>" id="pic_index" name="pic_index" style="width:219px;height:171px;"/>
+            <input type="hidden" id="pic_path" name="pic_path" value="blog" />
+            <input type="file" id="pic" name="pic" onchange="pic_blog=0;blogpicupload('pic_blog_index')"/>
+        </form>
+    </div>
+    <div class="block">
+        <form id="pic_blog" name="pic_blog" action="picupload.php" method="post" enctype="multipart/form-data">
+            上传图片:
+            <input type="hidden" id="pic_path" name="pic_path" value="blog" />
+            <input type="file" id="pic" name="pic" onchange="pic_blog=1;blogpicupload('pic_blog')"/>
+        </form>
+    </div>
+    <div class="block">
+        <textarea name="editor1" id="editor1" class="ckeditor"><?php echo $blog?$blog["blog_content"]:''; ?></textarea>
 	</div>
 </div>
 <div class="btn_submit">
@@ -30,6 +41,7 @@ else
 <script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 var editor=CKEDITOR.replace("editor1");
+var pic_blog="";
 function blogpicupload(obj)
 {
     var options = {
@@ -46,7 +58,14 @@ function blogpicupload(obj)
 }
 function blogPicRes(data)
 {
-	editor.insertHtml('<img src="'+data+'"/>');
+    if(pic_blog==0)
+    {
+        $('#pic_index').attr("src",data);
+    }
+    if(pic_blog==1)
+    {
+        editor.insertHtml('<img src="'+data+'"/>');
+    }
 }
 function add_blog(blog_id)
 {
@@ -56,6 +75,7 @@ function add_blog(blog_id)
                 action:"add_blog",
                 blog_id:blog_id,
                 blog_title:$('#blog_title').val(),
+                blog_index:$('#pic_index').val(),
               	blog_content:editor.getData()
             },
             type: "POST",

@@ -391,8 +391,8 @@ function order_op_print(order_id)
         dataType: "json",
         success: function(order)
         {
-            $('#print_order_id').text(order['order_id']);
-            $('#print_cdate').text(order['cdate']);
+            $('#print_order_id').text('订单号:'+order['order_id']);
+            $('#print_cdate').text('订购时间:'+order['cdate']);
             $('#print_cust_name').text(order['cust_name']);
             $('#print_cust_mobile').text(order['cust_mobile']);
             $('#print_cust_address').text(order['cust_city']+order['cust_town']+order['cust_address']);

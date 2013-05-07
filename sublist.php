@@ -48,13 +48,13 @@ include_once PATH_BLL . '/subBll.inc';
                     //}
                 ?>
             </p>
-            <p class="text_h"><?php echo $sub['sub_desc']; ?></p>
+            <p class="text_h"><?php echo substr($sub['sub_desc'], 0,85) ; ?></p>
             <div class="share_sub">
             	<p><span>分享：</span>
-                    <a class="sina" href="#" title="新浪"></a>
-                    <a class="qq" href="#" title="QQ"></a>
-                    <a class="renren" href="#" title="人人"></a>
-                    <a class="douban" href="#" title="豆瓣"></a>
+                    <a class="sina" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=<?php echo Conf::$appkey['sina']?>',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','<?php echo $v['poster_pic'];?>','#花范儿花店#跟我一起逛逛花范儿看看那些美丽的花草',document.location,'utf-8'));" title="新浪"></a>
+                    <a class="qq" href="javascript:void(0)" onclick="postToWb('<?php echo Conf::$appkey['qq']; ?>','','跟我一起逛逛花范儿看看那些美丽的花草','<?php echo $v['poster_pic']; ?>');return false;" title="腾讯"></a>
+                    <a class="renren" href="javascript:void((function(s,d,e){if(/renren\.com/.test(d.location))return;var f='http://share.renren.com/share/buttonshare?link=',u=d.location,l=d.title+'跟我一起逛逛花范儿看看那些美丽的花草',p=[e(u),'&title=',e(l)].join('');function%20a(){if(!window.open([f,p].join(''),'xnshare',['toolbar=0,status=0,resizable=1,width=626,height=436,left=',(s.width-626)/2,',top=',(s.height-436)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent));" title="人人"></a>
+                    <a class="douban" href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e(d.location.href)+'&title='+e(d.title+'跟我一起逛逛花范儿看看那些美丽的花草')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()" title="豆瓣"></a>
                 </p>
             	<div class="btn_info"><a href="sub.php?id=<?php echo $sub['sub_id']; ?>">查看详情</a></div>
             </div>

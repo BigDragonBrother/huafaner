@@ -219,7 +219,9 @@ create table hua_blog
 (
 blog_id int not null auto_increment primary key,
 blog_title varchar(500),
+blog_index varchar(500),
 blog_content text,
+blog_view int default 0,
 cdate datetime,
 udate datetime
 )default charset=GBK

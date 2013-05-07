@@ -154,11 +154,20 @@ $blog_list = blogBll::getTopN(2);
             ?>
                 <div class="story">
                     <div class="story_img">
-                        <a href="blog.php?id=<?php echo $v['blog_id'];?>"><img src="images/a8.jpg" /></a>
+                        <a href="blog.php?id=<?php echo $v['blog_id'];?>">
+                            <img src="<?php echo $v['blog_index']; ?>" style="width:219px;height:171px;"/>
+                        </a>
                     </div>
                     <div class="story_con">
                         <h2><a href="blog.php?id=<?php echo $v['blog_id'];?>"><?php echo $v['blog_title']; ?></a></h2>
-                        <p></p>
+                        <p>
+                            <?php 
+                            if(strpos($v['blog_content'],"</p>")<85)
+                                echo substr($v['blog_content'],0,strpos($v['blog_content'],"</p>"));
+                            else
+                                echo substr($v['blog_content'],0,85);
+                            ?>
+                            </p>
                     </div>
                 </div>
             <?php

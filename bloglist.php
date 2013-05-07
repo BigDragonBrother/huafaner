@@ -3,25 +3,7 @@ include_once 'conf.inc';
 include_once PATH_LIB . '/tools.inc';
 include_once PATH_BLL . '/blogBll.inc';
 
-$blog=blogBll::get_blog(tools::getValue('id'));
-blogBll::addView(tools::getValue('id'));
-$m="";
-switch(date('m',strtotime($blog['cdate'])))
-{
-    case '01':$m='JAN';break;
-    case '02':$m='FEB';break;
-    case '03':$m='MAR';break;
-    case '04':$m='APR';break;
-    case '05':$m='MAY';break;
-    case '06':$m='JUN';break;
-    case '07':$m='JUL';break;
-    case '08':$m='AUG';break;
-    case '09':$m='SEP';break;
-    case '10':$m='OCT';break;
-    case '11':$m='NOV';break;
-    case '12':$m='DEC';break;
-    default:break;
-}
+$bloglist=blogBll::getTopN(10);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,21 +22,60 @@ switch(date('m',strtotime($blog['cdate'])))
         <?php include_once PATH_INC . '/head.inc'; ?>
         <div class="blackboard">
             <div class="blak_left">
+                <?php
+                foreach ($bloglist as $k => $v) 
+                {
+                    $m="";
+                    switch(date('m',strtotime($v['cdate'])))
+                    {
+                        case '01':$m='JAN';break;
+                        case '02':$m='FEB';break;
+                        case '03':$m='MAR';break;
+                        case '04':$m='APR';break;
+                        case '05':$m='MAY';break;
+                        case '06':$m='JUN';break;
+                        case '07':$m='JUL';break;
+                        case '08':$m='AUG';break;
+                        case '09':$m='SEP';break;
+                        case '10':$m='OCT';break;
+                        case '11':$m='NOV';break;
+                        case '12':$m='DEC';break;
+                        default:break;
+                    }
+                ?>
                 <div class="blak_list">
                     <div class="blak_line"></div>
                     <div class="date">
                         <p><?php echo $m; ?></p>
-                        <p class="month"><?php echo date('d',strtotime($blog['cdate'])); ?></p>
+                        <p class="month"><?php echo date('d',strtotime($v['cdate'])) ?></p>
                     </div>
                     <div class="blak_con">
-                        <h2><?php echo $blog['blog_title']; ?></h2>
+                        <h2><a href="blog.php?id=<?php echo $v['blog_id']; ?>"><?php echo $v['blog_title']; ?></a></h2>
                         <div class="dtime">
-                            <i><?php echo date('H:m:s',strtotime($blog['cdate'])); ?></i>/
-                            <i>浏览<?php echo $blog['blog_view']; ?>次</i>
+                            <i><?php echo date('H:m:s',strtotime($v['cdate'])) ?></i>/
+                            <i>浏览<?php echo $v['blog_view']; ?>次</i>
                         </div>
-                        <?php echo $blog['blog_content']; ?>
+                        <?php echo $v['blog_content']; ?>
                     </div>
                 </div>
+                <?php
+                }
+                ?>
+                <div class="clearer"></div>
+                <div class="blak_line mar_bot"></div>
+                <!-- 分页 
+                <div class="pages">
+                    <a class="a2">&lt; 上一页</a>
+                    <span>1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <em>&hellip;</em>
+                    <a href="#">50</a>
+                    <a class="a1" href="#">下一页 &gt;</a>
+                </div>
+                -->
             </div>
             <div class="blak_right">
                 <div class="blak_pic"><img src="images/blak_right.gif" /></div>

@@ -49,10 +49,12 @@ $design=json_decode($d_var['d_var'],true);
                 <a href="list.php?type=13">植物</a></li>
             -->
             <li class="nav_line"></li>
-            <li class="<?php echo $file_name=='sub.php?id=7'?"selected":""; ?>">
+            <li class="<?php echo $file_name=='sublist.php'?"selected":""; ?>">
                 <a href="sublist.php">专题活动</a></li>
             <li class="nav_line"></li>
-            <li><a href="blog.php" target="_blank">花范儿故事</a></li>
+            <li class="<?php echo $file_name=='bloglist.php'?"selected":""; ?>">
+                <a href="bloglist.php">花范儿故事</a>
+            </li>
         </ul>
         <div class="tel"><img src="images/tel.gif" alt="010-64361192" title="010-64361192" /></div>
         <div class="login" style="<?php echo isset($_COOKIE['user_name'])?"display:none":""; ?>">

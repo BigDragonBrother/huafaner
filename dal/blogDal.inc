@@ -5,9 +5,9 @@ include_once (PATH_DAL . "/db.inc");
 
 class blogDal {
 
-    static function add_blog($blog_title,$blog_content) 
+    static function add_blog($blog_title,$blog_index,$blog_content) 
     {
-        $sql = "insert into hua_blog (blog_title,blog_content,cdate,udate) values ('$blog_title','$blog_content',now(),now())";
+        $sql = "insert into hua_blog (blog_title,blog_index,blog_content,cdate,udate) values ('$blog_title','$blog_index','$blog_content',now(),now())";
 
         if (!is_object(DB::huaDB()))
             return array();
@@ -17,10 +17,9 @@ class blogDal {
         }
     }
 
-    static function update_blog($blog_id,$blog_title,$blog_content)
+    static function update_blog($blog_id,$blog_title,$blog_index,$blog_content)
     {
-        $sql="update hua_blog set blog_title='$blog_title',blog_content='$blog_content',udate=now()
-        where blog_id=$blog_id";
+        $sql="update hua_blog set blog_title='$blog_title',blog_index='$blog_index',blog_content='$blog_content',udate=now() where blog_id=$blog_id";
         if (!is_object(DB::huaDB()))
             return array();
         $row = DB::huaDB()->simplePrepare($sql);
@@ -55,5 +54,20 @@ class blogDal {
         if (!is_object(DB::huaDB()))
             return array();
         return DB::huaDB()->allPrepare($sql);  
+    }
+
+    static function addView($blog_id)
+    {
+        $sql="update hua_blog set blog_view=blog_view+1 where blog_id=$blog_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $row = DB::huaDB()->simplePrepare($sql);
+        if (!$row->isEmpty()) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

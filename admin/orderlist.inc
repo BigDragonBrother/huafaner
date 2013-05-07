@@ -209,8 +209,8 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
               <img src="images/logo.jpg" />
             </div>
             <div class="print_order">
-                <h2><label>订单号：</label><p id="print_order_id"></p></h2>
-                <h3><label>订购时间：</label><p id="print_cdate"></p></h3>
+                <h2><p id="print_order_id"></p></h2>
+                <h3><p id="print_cdate"></p></h3>
             </div>
             <div class="print_list">
                 <table width="100%">

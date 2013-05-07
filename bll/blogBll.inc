@@ -3,15 +3,15 @@ include_once (PATH_DAL."/blogDal.inc");
 
 class blogBll
 {
-    static function add_blog($blog_id,$blog_title,$blog_content)
+    static function add_blog($blog_id,$blog_title,$blog_index,$blog_content)
     {
         if($blog_id=="undefined")
         {
-            return blogDal::add_blog($blog_title,$blog_content);
+            return blogDal::add_blog($blog_title,$blog_index,$blog_content);
         }
         else
         {
-            return blogDal::update_blog($blog_id,$blog_title,$blog_content);
+            return blogDal::update_blog($blog_id,$blog_title,$blog_index,$blog_content);
         }
     }
 
@@ -28,6 +28,11 @@ class blogBll
     static function getTopN($n)
     {
         return blogDal::getTopN($n)->data;
+    }
+
+    static function addView($blog_id)
+    {
+        return blogDal::addView($blog_id);
     }
 }
 ?>
