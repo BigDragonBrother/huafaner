@@ -50,7 +50,7 @@ switch(date('m',strtotime($blog['cdate'])))
                         <h2><?php echo $blog['blog_title']; ?></h2>
                         <div class="dtime">
                             <i><?php echo date('H:m:s',strtotime($blog['cdate'])); ?></i>/
-                            <i>浏览<?php echo $blog['blog_view']; ?>次</i>
+                            <b><?php echo $blog['blog_view']; ?></b>
                         </div>
                         <?php echo $blog['blog_content']; ?>
                     </div>

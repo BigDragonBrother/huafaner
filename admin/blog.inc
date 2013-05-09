@@ -24,6 +24,10 @@ else
         </form>
     </div>
     <div class="block">
+        首页摘要：
+        <textarea name="editor2" id="editor2" class="ckeditor"><?php echo $blog?$blog["blog_sum"]:''; ?></textarea>
+    </div>
+    <div class="block">
         <form id="pic_blog" name="pic_blog" action="picupload.php" method="post" enctype="multipart/form-data">
             上传图片:
             <input type="hidden" id="pic_path" name="pic_path" value="blog" />
@@ -41,6 +45,7 @@ else
 <script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 var editor=CKEDITOR.replace("editor1");
+var editor2=CKEDITOR.replace("editor2");
 var pic_blog="";
 function blogpicupload(obj)
 {
@@ -75,7 +80,8 @@ function add_blog(blog_id)
                 action:"add_blog",
                 blog_id:blog_id,
                 blog_title:$('#blog_title').val(),
-                blog_index:$('#pic_index').val(),
+                blog_index:$('#pic_index').attr('src'),
+                blog_sum:editor2.getData(),
               	blog_content:editor.getData()
             },
             type: "POST",

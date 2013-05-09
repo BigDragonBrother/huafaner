@@ -3,15 +3,15 @@ include_once (PATH_DAL."/blogDal.inc");
 
 class blogBll
 {
-    static function add_blog($blog_id,$blog_title,$blog_index,$blog_content)
+    static function add_blog($blog_id,$blog_title,$blog_index,$blog_sum,$blog_content)
     {
         if($blog_id=="undefined")
         {
-            return blogDal::add_blog($blog_title,$blog_index,$blog_content);
+            return blogDal::add_blog($blog_title,$blog_index,$blog_sum,$blog_content);
         }
         else
         {
-            return blogDal::update_blog($blog_id,$blog_title,$blog_index,$blog_content);
+            return blogDal::update_blog($blog_id,$blog_title,$blog_index,$blog_sum,$blog_content);
         }
     }
 

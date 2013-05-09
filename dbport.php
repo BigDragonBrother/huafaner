@@ -270,7 +270,7 @@ switch ($action)
         $return=designBll::design_sublist(Tools::getValue('design_var'));
         break;
     case 'add_blog':
-        $return=blogBll::add_blog(Tools::getValue('blog_id'),Tools::getValue('blog_title'),Tools::getValue('blog_index'),Tools::getValue('blog_content'));
+        $return=blogBll::add_blog(Tools::getValue('blog_id'),Tools::getValue('blog_title'),Tools::getValue('blog_index'),Tools::getValue('blog_sum'),Tools::getValue('blog_content'));
         break;
     default:
 }

@@ -160,14 +160,7 @@ $blog_list = blogBll::getTopN(2);
                     </div>
                     <div class="story_con">
                         <h2><a href="blog.php?id=<?php echo $v['blog_id'];?>"><?php echo $v['blog_title']; ?></a></h2>
-                        <p>
-                            <?php 
-                            if(strpos($v['blog_content'],"</p>")<85)
-                                echo substr($v['blog_content'],0,strpos($v['blog_content'],"</p>"));
-                            else
-                                echo substr($v['blog_content'],0,85);
-                            ?>
-                            </p>
+                        <p><?php echo $v['blog_sum'];?></p>
                     </div>
                 </div>
             <?php
