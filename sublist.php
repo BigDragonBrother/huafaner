@@ -34,11 +34,13 @@ include_once PATH_BLL . '/subBll.inc';
     <div class="hurdle">
     	<!-- 左侧专题图片 -->
 		<div class="hurdle_l">
-        	<img src="<?php echo $v['poster_pic']; ?>" style="width:628px;height:195px"/>
+            <a href="sub.php?id=<?php echo $sub['sub_id']; ?>">
+        	   <img src="<?php echo $v['poster_pic']; ?>" style="width:628px;height:195px"/>
+            </a>
         </div>
         <!-- 右侧专题基本信息 -->
         <div class="hurdle_r">
-            <h2><?php echo $sub['sub_name']; ?></h2>
+            <h2><a href="sub.php?id=<?php echo $sub['sub_id']; ?>"><?php echo $sub['sub_name']; ?></a></h2>
             <p class="text_label">标签：
                 <?php
                     echo $sub['sub_tag'];
@@ -48,7 +50,11 @@ include_once PATH_BLL . '/subBll.inc';
                     //}
                 ?>
             </p>
-            <p class="text_h"><?php echo substr($sub['sub_desc'], 0,85) ; ?></p>
+            <p class="text_h">
+                <a href="sub.php?id=<?php echo $sub['sub_id']; ?>">
+                    <?php echo substr($sub['sub_desc'], 0,85*3) ; ?>
+                </a>
+            </p>
             <div class="share_sub">
             	<p><span>分享：</span>
                     <a class="sina" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=<?php echo Conf::$appkey['sina']?>',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','<?php echo $v['poster_pic'];?>','#花范儿花店#跟我一起逛逛花范儿看看那些美丽的花草',document.location,'utf-8'));" title="新浪"></a>

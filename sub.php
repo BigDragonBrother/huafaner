@@ -52,7 +52,7 @@ if ($sub_id) {
                             <div class="tit_price">
                                 <h3>
                                     <a href="prod.php?id=<?php echo $v[0]; ?>" target="_blank">
-                                        <?php echo $v['prod_title']; ?>
+                                        <?php echo $v['prod_name']; ?>
                                     </a>
                                 </h3>
                                 <p class="price_con">
