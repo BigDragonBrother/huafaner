@@ -140,34 +140,36 @@ $prod_list=prodBll::getProdTopN(100);
                 </dt>
             </dl>-->
             <div class="clearer"></div>
-            <table class="list">
-                <tr>
-                    <th></th><th>商品编号</th><th>商品名称</th><th>商品分类</th>
-                    <th>价格</th><th>上架时间</th><th>状态</th>
-                </tr>
-                <?php
-                foreach ($prod_list as $k => $v) {
-                ?>
+            <div style="height:400px; overflow:scroll;">
+                <table class="list">
                     <tr>
-                        <td><input type="checkbox" name="sub_prod" value="<?php echo $v['prod_id'],':',$v['prod_name']; ?>"/></td>
-                        <td><?php echo $v['prod_id']; ?></td>
-                        <td><?php echo $v['prod_name']; ?></td>
-                        <td><?php echo $v['dict_name']; ?></td>
-                        <td><?php echo $v['prod_sale_price']; ?></td>
-                        <td><?php echo $v['prod_onshelf_time']; ?></td>
-                        <td><?php echo Conf::$prod_onshelf_status[$v['prod_onshelf_type']]; ?></td>
+                        <th></th><th>商品编号</th><th>商品名称</th><th>商品分类</th>
+                        <th>价格</th><th>上架时间</th><th>状态</th>
                     </tr>
-                <?php
-                }
-                ?>
-                <!--<tr>
-                    <td colspan="8" class="bjnone">
-                        <div class="pages">
-                            <a href="#">首页</a><a href="#">下一页</a><a href="#">上一页</a><a href="#">尾页</a>
-                        </div>
-                    </td>
-                </tr>-->
-            </table>
+                    <?php
+                    foreach ($prod_list as $k => $v) {
+                    ?>
+                        <tr>
+                            <td><input type="checkbox" name="sub_prod" value="<?php echo $v['prod_id'],':',$v['prod_name']; ?>"/></td>
+                            <td><?php echo $v['prod_id']; ?></td>
+                            <td><?php echo $v['prod_name']; ?></td>
+                            <td><?php echo $v['dict_name']; ?></td>
+                            <td><?php echo $v['prod_sale_price']; ?></td>
+                            <td><?php echo $v['prod_onshelf_time']; ?></td>
+                            <td><?php echo Conf::$prod_onshelf_status[$v['prod_onshelf_type']]; ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                    <!--<tr>
+                        <td colspan="8" class="bjnone">
+                            <div class="pages">
+                                <a href="#">首页</a><a href="#">下一页</a><a href="#">上一页</a><a href="#">尾页</a>
+                            </div>
+                        </td>
+                    </tr>-->
+                </table>
+            </div>
         </div>
         <div class="pop_submit">
             <input type="button" value="确 定" class="loginbtn" onclick="subAddProd();Popup.closed('sel_product')" />
