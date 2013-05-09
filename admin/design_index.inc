@@ -30,6 +30,8 @@ $sub_list=subBll::getAllSub();
     	<h3>海报维护</h3>
         <?php
             echo "<script>poster_index=",count($design['poster']),"</script>";
+            if(count($design['poster'])==0)
+                $design['poster']=array(array());
             foreach ($design['poster'] as $k => $v) {
         ?>
         <div class="poster" id="poster_<?php echo $k+1;?>">

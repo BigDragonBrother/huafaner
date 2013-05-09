@@ -224,5 +224,6 @@ blog_content text,
 blog_view int default 0,
 cdate datetime,
 udate datetime
-)default charset=GBK
+)default charset=GBK;
 
+ mget /system1/var/www/ /var/www/server_bak/

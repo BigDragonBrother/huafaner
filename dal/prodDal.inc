@@ -287,7 +287,7 @@ class prodDal {
             left join hua_prod_pic b on a.prod_id=b.prod_id and b.pic_seq=0
             where 
             prod_onshelf_type=1
-            order by a.prod_id desc limit $n";
+            order by RAND() limit $n";
         if (!is_object(DB::huaDB()))
             return array();
         return DB::huaDB()->allPrepare($sql);
@@ -301,7 +301,7 @@ class prodDal {
             where 
             prod_onshelf_type=1
             and prod_type=$prod_type
-            order by a.prod_id desc";
+            order by RAND()";
         if (!is_object(DB::huaDB()))
             return array();
         return DB::huaDB()->allPrepare($sql);

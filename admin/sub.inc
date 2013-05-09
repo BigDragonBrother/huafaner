@@ -23,9 +23,7 @@ else
     </script>
     <?php
 }
-$where="";
-$page_num=1;
-$prod_list=prodBll::getProds($where,$page_num,Conf::$pageSet['page_size']);
+$prod_list=prodBll::getProdTopN(100);
 ?>
 
 <div class="title">
