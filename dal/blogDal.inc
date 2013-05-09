@@ -5,7 +5,7 @@ include_once (PATH_DAL . "/db.inc");
 
 class blogDal {
 
-    static function add_blog($blog_title,$blog_index,$blog_content) 
+    static function add_blog($blog_title,$blog_index,$blog_sum,$blog_content) 
     {
         $sql = "insert into hua_blog (blog_title,blog_index,blog_sum,blog_content,cdate,udate) values ('$blog_title','$blog_index','$blog_sum','$blog_content',now(),now())";
 
@@ -17,7 +17,7 @@ class blogDal {
         }
     }
 
-    static function update_blog($blog_id,$blog_title,$blog_index,$blog_content)
+    static function update_blog($blog_id,$blog_title,$blog_index,$blog_sum,$blog_content)
     {
         $sql="update hua_blog set blog_title='$blog_title',blog_index='$blog_index',blog_sum='$blog_sum',blog_content='$blog_content',udate=now() where blog_id=$blog_id";
         if (!is_object(DB::huaDB()))
