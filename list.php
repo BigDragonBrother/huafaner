@@ -79,7 +79,7 @@ elseif ($prod_tag!='') {
                     <div class="tit_price">
                         <h3>
                             <a href="prod.php?id=<?php echo $v['prod_id']; ?>" target="_blank">
-                                <?php echo substr($v['prod_name'],0,50); ?>
+                                <?php echo substr($v['prod_name'],0,32); ?>
                             </a>
                         </h3>
                         <p class="price_con">
