@@ -44,5 +44,11 @@
             huafaner.com &copy;  2011-2012 All Rights Resered<br />
             www.huafaner.com 京ICP备12035699号
         </div>
+        <div class="service_copy">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffefb3ff7cc8cd6573197aacedb645494' type='text/javascript'%3E%3C/script%3E"));
+</script>
+        </div>
     </div>
 </div>

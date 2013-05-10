@@ -28,7 +28,7 @@ $minicust_list = userBll::getMiniCust($cust_list);
                         if($order['payment']!='银行转账'&$order['payment']!='货到付款'&$order['order_status']==10)
                         {
                             $pd_frpid=split("，",$order['payment']);
-                            $path = "p2_Order=".$order['order_id']."&p3_Amt=".$order['total']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];
+                            $path = "p2_Order=".$order['order_id']."&p3_Amt=".$order['total_pay']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];
                             ?>
                                 <a href="yeepay/req.php?<?php echo $path; ?>" class="sty90"><p>立即支付</p></a>
                             <?php

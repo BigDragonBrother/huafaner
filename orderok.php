@@ -77,7 +77,7 @@ $type=Tools::getValue('type');
                     <div class="buy_pay mat_b20">
                         <?php 
                         $pd_frpid=split("，",$order['payment']);
-                        $path = "p2_Order=".$order['order_id']."&p3_Amt=".$order['total']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];
+                        $path = "p2_Order=".$order['order_id']."&p3_Amt=".$order['total_pay']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];
                         ?>
                         <a href="yeepay/req.php?<?php echo $path; ?>" class="sty113">
                             <p>立即支付</p>

@@ -44,7 +44,7 @@
                             if($v['payment']!='银行转账'&$v['payment']!='货到付款')
                             {
                                 $pd_frpid=split("，",$v['payment']);
-                                $path = "p2_Order=".$v['order_id']."&p3_Amt=".$v['total']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];
+                                $path = "p2_Order=".$v['order_id']."&p3_Amt=".$v['total_pay']."&pd_FrpId=".Conf::$banks[$pd_frpid[1]];
                                 echo "<a href=\"yeepay/req.php?".$path."\" target=\"blank\">支付</a>";
                             }
                             ?>
