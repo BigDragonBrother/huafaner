@@ -34,5 +34,10 @@ class blogBll
     {
         return blogDal::addView($blog_id);
     }
+
+    static function blog_del($blog_id)
+    {
+        return blogDal::blog_del($blog_id);
+    }    
 }
 ?>

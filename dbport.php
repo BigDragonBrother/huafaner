@@ -272,6 +272,9 @@ switch ($action)
     case 'add_blog':
         $return=blogBll::add_blog(Tools::getValue('blog_id'),Tools::getValue('blog_title'),Tools::getValue('blog_index'),Tools::getValue('blog_sum'),Tools::getValue('blog_content'));
         break;
+    case 'blog_del':
+        $return=blogBll::blog_del(Tools::getValue('blog_id'));
+        break;
     default:
 }
 

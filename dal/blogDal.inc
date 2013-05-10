@@ -70,4 +70,19 @@ class blogDal {
             return false;
         }
     }
+
+    static function blog_del($blog_id)
+    {
+        $sql="delete from hua_blog where blog_id=$blog_id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $row = DB::huaDB()->simplePrepare($sql);
+        if (!$row->isEmpty()) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -700,3 +700,25 @@ function design_sublist_commit()
         }
     });
 }
+
+function blog_del(blog_id)
+{
+    $.ajax({
+        url:"dbport.php",
+        data:{
+            action:"blog_del",
+            blog_id:blog_id
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(data)
+        {
+            if(data)
+            {
+                alert('博客删除成功');
+                window.location.reload();
+            };
+        }
+    });   
+}
+

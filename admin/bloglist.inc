@@ -22,7 +22,8 @@ $blog_list=blogBll::getList();
             <td><?php echo $v['cdate']; ?></td>
             <td><?php echo $v['udate']; ?></td>
             <td>
-                <a href="admin.php?k=blog&id=<?php echo $v['blog_id']; ?>">修改</a>
+                <a href="admin.php?k=blog&id=<?php echo $v['blog_id']; ?>">修改</a>|
+                <a href="javascript:void(0)" onclick="blog_del(<?php echo $v['blog_id']; ?>)">删除</a>
             </td>
         </tr>
         <?php
