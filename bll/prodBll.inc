@@ -27,6 +27,11 @@ class prodBll
         return prodDal::getDictbyname($type,$dict_name);
     }
     
+    static function getDictbyid($id)
+    {
+        return prodDal::getDictbyid($id);
+    }
+
     static function delDict($dict_id)
     {
         return prodDal::delDict($dict_id);

@@ -6,7 +6,7 @@ include_once PATH_LIB . '/tools.inc';
 <html xmlns:wb="http://open.weibo.com/wb">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>花范儿--注册</title>
+<title>注册-花范儿花店</title>
 <link href="style/global.css" rel="stylesheet" type="text/css" />
 <link href="style/index.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="script/jquery-1.7.1.min.js"></script>

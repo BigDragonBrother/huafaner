@@ -57,7 +57,7 @@ if($last_order)
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>花范儿</title>
+        <title>确认订单-花范儿花店</title>
         <link href="style/global.css" rel="stylesheet" type="text/css" />
         <link href="style/index.css" rel="stylesheet" type="text/css" />
         <link href="style/jquery.ui.datepicker.css" rel="stylesheet" type="text/css"/>

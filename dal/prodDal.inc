@@ -59,6 +59,18 @@ class prodDal {
         }
     }
 
+    static function getDictbyid($id){
+        $sql = "select * from hua_dict where dict_id=$id";
+        if (!is_object(DB::huaDB()))
+            return array();
+        $result = DB::huaDB()->allPrepare($sql);
+        if ($result->data) {
+            return $result->data[0];
+        } else {
+            return array();
+        }
+    }
+
     static function delDict($dict_id) {
         $sql = "delete from hua_dict where dict_id=$dict_id";
         if (!is_object(DB::huaDB()))

@@ -7,12 +7,15 @@ $dict_list=prodBll::getDict('prod_tag');
 $prod_type=Tools::getValue('type');
 $prod_tag=Tools::getValue('tag');
 
+$title="";
 if($prod_type==''&$prod_tag=='')
 {
     $prod_list=prodBll::getProdTopN(50);    
 }
 elseif ($prod_type!='') {
     $prod_list=prodBll::getProdByType($prod_type);
+    $dict = prodBll::getDictbyid($prod_type);
+    $title = $dict['dict_name'].'-';
 }
 elseif ($prod_tag!='') {
     $prod_list=prodBll::getProdByTag($prod_tag);
@@ -23,7 +26,7 @@ elseif ($prod_tag!='') {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>列表-花范儿花店</title>
+<title><?php echo $title; ?>那些花-花范儿花店</title>
 <link href="style/global.css" rel="stylesheet" type="text/css" />
 <link href="style/index.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="script/jquery-1.7.1.min.js"></script>
