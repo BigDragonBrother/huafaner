@@ -85,15 +85,15 @@ if($order['only_order_id']>0)
 <div class="content bot_b">
     <div class="con_list pad_n">
         <span class="con_tit">订花人姓名：</span>
-        <p><?php echo $order['order_name']; ?></p>
-    </div>
-    <div class="con_list pad_n">
-        <span class="con_tit">会员账号：</span>
         <p><?php echo $order['user_name']; ?></p>
     </div>
     <div class="con_list pad_n">
+        <span class="con_tit">会员账号：</span>
+        <p><?php echo $order['user_email']; ?></p>
+    </div>
+    <div class="con_list pad_n">
         <span class="con_tit">手机号：</span>
-        <p><?php echo $order['order_mobile']; ?></p>
+        <p><?php echo $order['user_mobile']; ?></p>
     </div>
 </div>
 <div class="content bot_b">
