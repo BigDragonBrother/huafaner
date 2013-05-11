@@ -13,10 +13,10 @@ class orderDal {
         $sql = "insert into hua_order 
         (user_id,cust_name,cust_title,cust_province,cust_city,cust_town,cust_address,cust_mobile,
         book_date,book_card,book_card_content,payment,prod_id,
-        order_quantity,total,order_status,coupon_id,coupon_amount,remarks,only_order_id,cdate,udate)
+        order_quantity,total,total_pay,order_status,coupon_id,coupon_amount,remarks,only_order_id,cdate,udate)
         values ($user_id,'$cust_name','$cust_title','$cust_province','$cust_city','$cust_town',
             '$cust_address','$cust_mobile','$book_date','$book_card','$book_card_content','$payment',
-            $prod_id,$order_quantity,$total,10,$coupon_id,$coupon_amount,'$remarks',
+            $prod_id,$order_quantity,$total,$total,10,$coupon_id,$coupon_amount,'$remarks',
             $only_order_id,now(),now())";
 
         if (!is_object(DB::huaDB()))
