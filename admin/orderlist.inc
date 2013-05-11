@@ -120,7 +120,7 @@ $order_list = orderBll::getOrders($where,$page_num,Conf::$pageSet['page_size']);
                     default:
                         break;
                 }
-                echo "</td></tr>";
+                echo '<a href="admin.php?k=orderview&id=',$v['order_id'],'">查看</a></td></tr>';
             }
         ?>
         <tr>
