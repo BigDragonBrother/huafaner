@@ -1,7 +1,6 @@
 <?php
 include_once (PATH_LIB . "/myPDO.inc");
 include_once (PATH_DAL . "/db.inc");
-//include_once(PATH_SMS."/sms.php");
 
 class orderDal {
 
@@ -36,8 +35,6 @@ class orderDal {
             $sql = "update hua_coupon set coupon_status=2 where coupon_id=$coupon_id";
             DB::huaDB()->simplePrepare($sql);
         }
-        
-        //$smsCode=huafaner_sendSMS(1,$order_name,trim($return),$order_mobile,$total,$payment);
         return $return;
     }
  
@@ -76,23 +73,7 @@ class orderDal {
         if (!is_object(DB::huaDB()))
             return array();
         $row = DB::huaDB()->simplePrepare($sql);
-        if (!$row->isEmpty()) 
-        {
-            $order=self::getOrder($order_id);
-            $sms_type=0;
-            if($newstatus==40)
-            {
-                $sms_type=2;
-            }
-            if($newstatus==50)
-            {
-                $sms_type=3;
-            }
-            if($sms_type!=0)
-            {
-                //huafaner_sendSMS($sms_type,$order['order_name'],$order_id,$order['order_mobile']);    
-            }
-        } 
+        
         return $row;
     }
 

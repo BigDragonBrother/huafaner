@@ -14,7 +14,7 @@ class Conf
 {
     public static $adminuser=array("admin"=>"admin","pwd"=>"123qwe");
     //database  
-    public static $huaBase = array("dbtype" => "mysql", "database" => "huafaner", "username" => "root", "password" => "root", "server" => "127.0.0.1"); 
+    public static $huaBase = array("dbtype" => "mysql", "database" => "huafanerb", "username" => "root", "password" => "root", "server" => "127.0.0.1"); 
     //cookie
     public static $pageSet = array("page_size" => 10, "cache_time" => 30, "cache_type" => "mem");
     public static $cookieSet = array('domain' => 'huafanerb.com', 'path' => '/', 'lifetime' => 144000, 'numlifetime' => 14400);
@@ -43,14 +43,13 @@ class Conf
     public static $appkey=array("sina"=>"3911521136","qq"=>"801215752");
     public static $sinaapp=array("AppKey"=>"2970589134","AppSercet"=>"30121d3fafe43b3b231b1301d06b5c1b");
     public static $mail=array("username"=>"inzaghia5@163.com","pwd"=>"vincent1985","smtp"=>"smtp.163.com");
-    public static $sms=array("url"=>"http://sdkhttp.eucp.b2m.cn/sdk/SDKService?wsdl",
-        "serialNumber"=>"3SDK-EMY-0130-NITTL",
-        "password"=>"481829","sessionkey"=>"abcdefg");
+    //public static $sms=array("url"=>"http://sdkhttp.eucp.b2m.cn/sdk/SDKService?wsdl","serialNumber"=>"3SDK-EMY-0130-NITTL","password"=>"481829","sessionkey"=>"abcdefg");
+    public static $sms=array("url"=>"http://sdkhttp.eucp.b2m.cn/sdk/SDKService?wsdl","serialNumber"=>"3SDK-WTU-0130-ODYST","password"=>"127562","sessionkey"=>"abcdefg");
 
     public static $banks=array("工商银行"=>"ICBC-NET-B2C","建设银行"=>"CCB-NET-B2C","农业银行"=>"ABC-NET-B2C",
         "邮政储蓄"=>"POST-NET-B2C","中国银行"=>"BOC-NET-B2C","交通银行"=>"BOCO-NET-B2C","招商银行"=>"CMBCHINA-NET-B2C",
         "光大银行"=>"CEB-NET-B2C","浦发银行"=>"SPDB-NET-B2C","华夏银行"=>"HXB-NET-B2C","广发银行"=>"GDB-NET-B2C",
         "中信银行"=>"ECITIC-NET-B2C","兴业银行"=>"CIB-NET-B2C","深发银行"=>"SDB-NET-B2C","民生银行"=>"CMBC-NET-B2C",
-        "杭州银行"=>"HZBANK-NET-B2C","上海银行"=>"SHB-NET-B2C","宁波银行"=>"NBCB-NET-B2C","平安银行"=>"PINGANBANK-NET");
+        "杭州银行"=>"HZBANK-NET-B2C","上海银行"=>"SHB-NET-B2C","宁波银行"=>"NBCB-NET-B2C","平安银行"=>"PINGANBANK-NET","易宝支付"=>"");
 }
 ?> 

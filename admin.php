@@ -66,6 +66,7 @@ $(function(){
         </div>
     </div>
     <?php
+        ob_start();
         include_once "conf.inc";
         include_once PATH_LIB . '/tools.inc';
 

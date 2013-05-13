@@ -3,7 +3,7 @@ set_time_limit(0);
 
 header("Content-Type: text/html; charset=UTF-8");
 
-define('SCRIPT_ROOT',  dirname(__FILE__).'/');
+define('SCRIPT_ROOT', dirname(__FILE__).'/');
 require_once SCRIPT_ROOT.'include/Client.php';
 require_once SCRIPT_ROOT.'../conf.inc';
 
@@ -16,42 +16,42 @@ $readTimeOut = 10;
 $proxyhost = false;
 $proxyport = false;
 $proxyusername = false;
-$proxypassword = false; 
+$proxypassword = false;
 
 $client = new Client($gwUrl,$serialNumber,$password,$sessionKey,$proxyhost,$proxyport,$proxyusername,$proxypassword,$connectTimeOut,$readTimeOut);
 $client->setOutgoingEncoding("UTF-8");
 
-//Ç×°®µÄÉò¹úÁú,ÄúµÄ¶©µ¥10053ÒÑ¾­Ìá½»,½ð¶î418,ÍøÒøÖ§¸¶,Ö§¸¶±¦,ÇëÄú¾¡¿ì¸¶¿î,ÒÔ±ãÎÒÃÇ°²ÅÅÉú²ú¡¾»¨·¶¶ù¡¿
+//äº²çˆ±çš„æ²ˆå›½é¾™,æ‚¨çš„è®¢å•10053å·²ç»æäº¤,é‡‘é¢418,ç½‘é“¶æ”¯ä»˜,æ”¯ä»˜å®,è¯·æ‚¨å°½å¿«ä»˜æ¬¾,ä»¥ä¾¿æˆ‘ä»¬å®‰æŽ’ç”Ÿäº§ã€èŠ±èŒƒå„¿ã€‘
 function huafaner_sendSMS($type,$order_name,$order_id,$order_mobile,$total,$payment)
 {
 	global $client;
-	//Ìá½»¶©µ¥
+	//æäº¤è®¢å•
 	if($type==1)
 	{
 		if($order_mobile==''||$order_name==''||$order_id==''||$total==''||$payment=='')
 			return 99;
-		$pay=split("£¬",$payment);
+		$pay=split("ï¼Œ",$payment);
 		if(count($pay)==2)
 			$str=$pay[0]."(".$pay[1].")";
 		else
 			$str=$payment;
-		$statusCode = $client->sendSMS(array($order_mobile),"Ç×°®µÄ".$order_name.",ÄúµÄ¶©µ¥".$order_id."ÒÑ¾­Ìá½»,½ð¶î".$total.",".$str.",ÇëÄú¾¡¿ì¸¶¿î,ÒÔ±ãÎÒÃÇ°²ÅÅÉú²ú¡¾»¨·¶¶ù¡¿");
+		$statusCode = $client->sendSMS(array($order_mobile),"äº²çˆ±çš„".$order_name.",æ‚¨çš„è®¢å•".$order_id."å·²ç»æäº¤,é‡‘é¢".$total.",".$str.",è¯·æ‚¨å°½å¿«ä»˜æ¬¾,ä»¥ä¾¿æˆ‘ä»¬å®‰æŽ’ç”Ÿäº§ã€èŠ±èŒƒå„¿ã€‘");
 	}
-	//·¢»õ
+	//å‘è´§
 	if($type==2)
 	{
 		if($order_mobile==''||$order_name==''||$order_id=='')
 			return 99;
-		$statusCode = $client->sendSMS(array($order_mobile),"Ç×°®µÄ".$order_name.",ÄúµÄ¶©µ¥".$order_id."ÒÑ¾­·¢³ö,ÊÕ»¨ÈËÇ©ÊÕºóÎÒÃÇ»á¶ÌÐÅÍ¨ÖªÄú,×£ÄúÓä¿ì!¡¾»¨·¶¶ù¡¿");	
+		$statusCode = $client->sendSMS(array($order_mobile),"äº²çˆ±çš„".$order_name.",æ‚¨çš„è®¢å•".$order_id."å·²ç»å‘å‡º,æ”¶èŠ±äººç­¾æ”¶åŽæˆ‘ä»¬ä¼šçŸ­ä¿¡é€šçŸ¥æ‚¨,ç¥æ‚¨æ„‰å¿«!ã€èŠ±èŒƒå„¿ã€‘");	
 	}
-	//ÊÕ»õ
+	//æ”¶è´§
 	if($type==3)
 	{
 		if($order_mobile==''||$order_name==''||$order_id=='')
 			return 99;
-		$statusCode = $client->sendSMS(array($order_mobile),"Ç×°®µÄ".$order_name.",ÄúµÄ¶©µ¥".$order_id."ÒÑ¾­È·ÈÏÇ©ÊÕ,ÈçÓÐÆäËüÐèÒª»¶Ó­ÖÂµç»òµÇÂ¼ÍøÕ¾!¡¾»¨·¶¶ù¡¿");	
+		$statusCode = $client->sendSMS(array($order_mobile),"äº²çˆ±çš„".$order_name.",æ‚¨çš„è®¢å•".$order_id."å·²ç»ç¡®è®¤ç­¾æ”¶,å¦‚æœ‰å…¶å®ƒéœ€è¦æ¬¢è¿Žè‡´ç”µæˆ–ç™»å½•ç½‘ç«™!ã€èŠ±èŒƒå„¿ã€‘");	
 	}
-	
+
 	return $statusCode;
 }
 ?>

@@ -2,6 +2,7 @@
 include_once PATH_DAL."/orderDal.inc";
 include_once PATH_BLL.'/prodBll.inc';
 include_once PATH_BLL.'/userBll.inc';
+include_once PATH_SMS."/sms.php";
 
 class orderBll
 {
@@ -27,7 +28,7 @@ class orderBll
         
         userBll::addCust($user_id, $cust_title,$cust_name, $cust_province, $cust_city, $cust_town, $cust_address, $cust_mobile, 1);
 
-        return orderDal::orderok($user_id,
+        $return = orderDal::orderok($user_id,
                 $cust_name,
                 $cust_title,
                 $cust_province,
@@ -46,11 +47,39 @@ class orderBll
                 $coupon_amount,
                 $remarks,
                 $only_order_id);
+
+        if($return!=0)
+        {
+            $user = userBll::getUserByid($user_id);
+            $smsCode=huafaner_sendSMS(1,$user['user_name'],$return,$user['user_mobile'],$total,$payment);
+        }
+            
+
+        return $return;
     }
 
     static function orderop($newstatus,$order_id,$order_cancel_desc)
     {
-        return orderDal::orderop($newstatus,$order_id,$order_cancel_desc)->data;
+        $row = orderDal::orderop($newstatus,$order_id,$order_cancel_desc);
+        if (!$row->isEmpty()) 
+        {
+            $order=self::getOrder($order_id);
+            $user = userBll::getUserByid($order['user_id']);
+            $sms_type=0;
+            if($newstatus==50)
+            {
+                $sms_type=2;
+            }
+            if($newstatus==60)
+            {
+                $sms_type=3;
+            }
+            if($sms_type!=0)
+            {
+                huafaner_sendSMS($sms_type,$user['user_name'],$order_id,$user['user_mobile'],0,0);    
+            }
+        } 
+        return $row->data;
     }
     
     static function order_update($order_id,$cust_name,$cust_province,
