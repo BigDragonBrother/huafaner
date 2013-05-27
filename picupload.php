@@ -17,7 +17,7 @@ if(!in_array($pic_type, Conf::$picArr))
 }
 
 $pic_name=  'picture/'.date("YmdGis",time()).'.'.$pic_type;
-if(count($_POST)>0)
+if(count($_POST)>0&array_key_exists('pic_path', $_POST))
 {
     if($_POST['pic_path']=="blog")
         $pic_name= 'picture/blog/'.date("YmdGis",time()).'.'.$pic_type;

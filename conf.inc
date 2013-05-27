@@ -14,7 +14,7 @@ class Conf
 {
     public static $adminuser=array("admin"=>"admin","pwd"=>"123qwe");
     //database  
-    public static $huaBase = array("dbtype" => "mysql", "database" => "huafanerb", "username" => "root", "password" => "root", "server" => "127.0.0.1"); 
+    public static $huaBase = array("dbtype" => "mysql", "database" => "huafaner", "username" => "root", "password" => "root", "server" => "127.0.0.1"); 
     //cookie
     public static $pageSet = array("page_size" => 10, "cache_time" => 30, "cache_type" => "mem");
     public static $cookieSet = array('domain' => 'huafanerb.com', 'path' => '/', 'lifetime' => 144000, 'numlifetime' => 14400);

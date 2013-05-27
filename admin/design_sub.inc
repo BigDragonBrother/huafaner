@@ -30,8 +30,8 @@ $sub_list=subBll::getAllSub();
             </div>
             <div class="operating">
                 <input type="button" value="置 顶" class="loginbtn" onclick="Popup.popping('top_special',true)" />
-                <input type="button" value="前 移" class="loginbtn" onclick="Popup.popping('forward_special',true)" />
-                <input type="button" value="后 移" class="loginbtn" onclick="Popup.popping('forward_special',true)" />
+                <input type="button" value="前 移" class="loginbtn" onclick="sub_move(<?php echo $i,',',$i-1; ?>)" />
+                <input type="button" value="后 移" class="loginbtn" onclick="sub_move(<?php echo $i,',',$i+1; ?>)" />
             </div>
         </div>
         <?php
