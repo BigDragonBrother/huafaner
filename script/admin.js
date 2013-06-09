@@ -700,7 +700,10 @@ function design_sublist_commit()
         }
     });
 }
-
+function sublist_add()
+{
+    //$('#sublist').append();
+}
 function sub_move(source,target)
 {
     var temp = $('#poster_'+target).children("div:first").html();
