@@ -703,7 +703,10 @@ function design_sublist_commit()
 
 function sub_move(source,target)
 {
+    //var temp=$(obj).parent().parent().attr('id');
+    //alert(temp);
     var temp = $('#poster_'+target).children("div:first").html();
+    alert(temp);
     if(temp==null){return;}
     $('#poster_'+target).children("div:first").html($('#poster_'+source).children("div:first").html());
     $('#poster_'+source).children("div:first").html(temp);
