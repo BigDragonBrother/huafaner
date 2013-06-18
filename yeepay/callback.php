@@ -35,16 +35,16 @@ if($bRet)
 			$status=orderBll::order_pay($r6_Order);
 			orderBll::yeepay_log($r0_Cmd,$r1_Code,$r2_TrxId,$r3_Amt,$r4_Cur,$r5_Pid,$r6_Order,$r7_Uid,$r8_MP,$r9_BType);
 		}
-		Tools::redirectLink(Conf::$urlSet['domain'].'orderok.php?id='.$r6_Order.'&type=success');
+		Tools::redirectLink(Conf::$urlSet['domain'].'/orderok.php?id='.$r6_Order.'&type=success');
 	}
 	else
 	{
-		Tools::redirectLink(Conf::$urlSet['domain'].'orderok.php?id='.$r6_Order.'&type=fail');	
+		Tools::redirectLink(Conf::$urlSet['domain'].'/orderok.php?id='.$r6_Order.'&type=fail');	
 	}
 }
 else
 {
-	Tools::redirectLink(Conf::$urlSet['domain'].'orderok.php?id='.$r6_Order.'&type=fail');
+	Tools::redirectLink(Conf::$urlSet['domain'].'/orderok.php?id='.$r6_Order.'&type=fail');
 }
    
 ?>
