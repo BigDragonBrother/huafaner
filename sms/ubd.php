@@ -20,6 +20,31 @@ $proxypassword = false;
 
 $client = new Client($gwUrl,$serialNumber,$password,$sessionKey,$proxyhost,$proxyport,$proxyusername,$proxypassword,$connectTimeOut,$readTimeOut);
 $client->setOutgoingEncoding("UTF-8");
-$content = "再冷漠的姑娘也无法拒绝闪亮的玫瑰！再平淡的生活也需要鲜花的点缀!再羞涩的爱情也需要鲜花的表白！--姑娘可以冷漠，生活可以平淡,但表达爱情必须有自己的范儿!看看【花范儿花店】，让你用花发现爱情和生命中的色彩！--www.huafaner.com.weixin://qr/nHU6NRvEDiVxhwpWnyC4（或在公众账号搜索：花范儿花店）4008-900-512";
-$client->sendSMS(array('18618148163'),$content);
+$content = "再冷漠的姑娘也无法拒绝闪亮的玫瑰！再平淡的生活也需要鲜花的点缀!再羞涩的爱情也需要鲜花的表白！--姑娘可以冷漠，生活可以平淡,但表达爱情必须有自己的范儿!看看【花范儿花店】，让你用花发现爱情和生命中的色彩！--www.huafaner.com--weixin://qr/nHU6NRvEDiVxhwpWnyC4（或在公众账号搜索：花范儿花店）4008-900-512";
+
+//$client->sendSMS(array('18618148163','18600092829'),$content);
+//exit();
+
+$file = fopen("20130606-0.csv", "r") or exit("Unable to open file!");
+$i=0;
+$mobile_list = array();
+while($i<=50)
+{
+	$i++;
+	if(feof($file))
+		break;
+  	$line = fgets($file);
+ 	$tk = split(",",$line);
+ 	if(count($tk)<>4)
+ 		continue;
+ 	$mobile_list[] = $tk[3];
+
+ 	if(count($mobile_list) == 10 )
+ 	{
+ 		var_dump($mobile_list);
+ 		//$client->sendSMS($mobile_list,$content);
+ 		$mobile_list = array();
+ 	}
+}
+fclose($file);
 ?>
